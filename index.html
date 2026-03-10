@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="bg-orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
     <header class="header">
       <div class="container nav">
         <a class="logo" href="#inicio">Pedro Campos</a>
@@ -48,10 +55,11 @@
               <a class="btn btn-primary" href="https://www.linkedin.com/in/pedro-campos-1473a5345/" target="_blank" rel="noreferrer">LinkedIn</a>
               <a class="btn btn-secondary" href="https://github.com/plc232007" target="_blank" rel="noreferrer">GitHub</a>
               <a class="btn btn-secondary" href="mailto:pleitecampos@gmail.com">E-mail</a>
-              <a class="btn btn-secondary" href="#contato">Currículo (sob solicitação)</a>
+              <a class="btn btn-secondary" href="curriculo-pedro-leite-campos.pdf" download>Baixar Currículo (PDF)</a>
+              <a class="btn btn-secondary" href="curriculo-pedro-leite-campos.txt" download>Baixar Currículo (TXT)</a>
             </div>
           </div>
-          <aside class="profile-card" aria-label="Foto de perfil">
+          <aside class="profile-card card" aria-label="Foto de perfil" data-tilt>
             <div class="avatar">PLC</div>
             <p class="profile-name">Pedro Leite Campos</p>
             <p class="profile-role">Computação & Fullstack em formação</p>
@@ -76,7 +84,7 @@
         <div class="container">
           <h3>Habilidades</h3>
           <div class="grid three">
-            <article class="card">
+            <article class="card" data-tilt>
               <h4>Soft Skills</h4>
               <ul>
                 <li>Raciocínio lógico e analítico</li>
@@ -87,7 +95,7 @@
                 <li>Proatividade</li>
               </ul>
             </article>
-            <article class="card">
+            <article class="card" data-tilt>
               <h4>Hard Skills</h4>
               <ul>
                 <li>Análise de requisitos e documentação funcional</li>
@@ -97,7 +105,7 @@
                 <li>Desenvolvimento Back-end (Python, Flask, APIs RESTful)</li>
               </ul>
             </article>
-            <article class="card">
+            <article class="card" data-tilt>
               <h4>Ferramentas & Tecnologias</h4>
               <ul class="tags">
                 <li>JavaScript</li>
@@ -122,7 +130,7 @@
         <div class="container">
           <h3>Experiência profissional</h3>
           <div class="timeline">
-            <article class="card">
+            <article class="card" data-tilt>
               <p class="period">Engesoftware Tecnologia</p>
               <h4>Analista de Requisitos (Estágio)</h4>
               <ul>
@@ -132,7 +140,7 @@
                 <li>Prototipação e análise de interfaces e fluxos no Figma.</li>
               </ul>
             </article>
-            <article class="card">
+            <article class="card" data-tilt>
               <p class="period">Engesoftware Tecnologia</p>
               <h4>Desenvolvedor (Estágio)</h4>
               <ul>
@@ -150,7 +158,7 @@
         <div class="container">
           <h3>Formação, idiomas e certificações</h3>
           <div class="grid two">
-            <article class="card">
+            <article class="card" data-tilt>
               <h4>Formação acadêmica</h4>
               <ul>
                 <li><strong>Colégio Militar Dom Pedro II</strong> — Ensino Fundamental e Médio (2013 - 2024)</li>
@@ -161,7 +169,7 @@
                 <li>Inglês intermediário</li>
               </ul>
             </article>
-            <article class="card">
+            <article class="card" data-tilt>
               <h4>Certificações</h4>
               <ul>
                 <li>Algoritmo e Lógica de Programação (Udemy)</li>
@@ -181,7 +189,7 @@
             Seção preparada para expansão do portfólio com novos projetos acadêmicos e profissionais.
           </p>
           <div class="grid two">
-            <article class="card project-placeholder">
+            <article class="card project-placeholder" data-tilt>
               <h4>Nome do projeto</h4>
               <p>Descrição objetiva do problema, solução e impacto gerado.</p>
               <p><strong>Tecnologias:</strong> Ex.: React, Python, Flask, PostgreSQL</p>
@@ -190,7 +198,7 @@
                 <a href="#" aria-disabled="true">Demonstração</a>
               </div>
             </article>
-            <article class="card project-placeholder">
+            <article class="card project-placeholder" data-tilt>
               <h4>Nome do projeto</h4>
               <p>Descrição objetiva do problema, solução e impacto gerado.</p>
               <p><strong>Tecnologias:</strong> Ex.: TypeScript, Node.js, Figma</p>

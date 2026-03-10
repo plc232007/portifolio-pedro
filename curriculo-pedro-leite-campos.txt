@@ -1,0 +1,63 @@
+Pedro Leite Campos
+Estudante de Ciencias da Computacao
+
+Contato
+- Telefone: +55 61 99286-6000
+- E-mail: pleitecampos@gmail.com
+- GitHub: https://github.com/plc232007
+- LinkedIn: https://www.linkedin.com/in/pedro-campos-1473a5345/
+
+Resumo Profissional
+Sempre fui movido pela logica e pela matematica, o que me levou a Computacao.
+No mercado, comecei entendendo as necessidades dos clientes atraves da analise de requisitos.
+Essa experiencia facilitou minha transicao para o Desenvolvimento de Software,
+onde atuo hoje como estagiario.
+Meu foco e usar essa bagagem de analise para programar solucoes que resolvam problemas reais
+de forma organizada.
+
+Experiencia Profissional
+
+Engesoftware Tecnologia
+Analista de Requisitos (Estagio)
+- Analise de requisitos
+- Traducao de regras de negocio em especificacoes tecnicas para desenvolvimento
+- Gestao de backlog e fluxo de trabalho utilizando Jira, Trello e Kanban
+- Prototipacao e analise de interfaces e fluxos no Figma orientada a implementacao
+
+Engesoftware Tecnologia
+Desenvolvedor (Estagio)
+- Desenvolvimento Front-end com interfaces web dinamicas utilizando JavaScript, TypeScript e HTML5/CSS
+- Desenvolvimento Back-end com construcao e consumo de APIs RESTful utilizando Python e Flask
+- Versionamento com Git
+- Implementacao de solucoes via WordPress
+
+Formacao Academica
+- Ensino Fundamental e Medio — Colegio Militar Dom Pedro II (2013 - 2024)
+- Bacharelado em Ciencia da Computacao — Centro Universitario IESB (2025 - 2028)
+
+Habilidades
+Soft skills:
+- Raciocinio logico e analitico
+- Resolucao de problemas
+- Aprendizado continuo
+- Comunicacao clara e tecnica
+- Resiliencia
+- Proatividade
+
+Hard skills e tecnologias:
+- Analise de requisitos
+- Documentacao funcional
+- Backlog (Jira, Trello, Kanban)
+- Prototipacao (Figma)
+- JavaScript, TypeScript, HTML5, CSS3
+- Python, Flask, APIs REST
+- Git, WordPress
+
+Idiomas
+- Ingles intermediario
+
+Certificacoes
+- Algoritmo e Logica de Programacao (Udemy)
+- Arquitetura de Redes (Udemy)
+- Linux (Udemy)
+- JavaScript / TypeScript (Udemy)
