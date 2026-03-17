@@ -15,11 +15,30 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
+  
+  <!-- GSAP para animações profissionais -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- Particles.js para efeitos de partículas -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <!-- Vanilla Tilt para efeitos 3D -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  
   <script src="./assets/js/script.js" defer></script>
 </head>
 
 <body>
-  <canvas id="matrix-bg"></canvas>
+  <!-- Cursor customizado -->
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+  
+  <!-- Partículas de fundo -->
+  <div id="particles-js"></div>
+  
+  <!-- Gradiente animado de fundo -->
+  <div class="animated-gradient"></div>
 
   <div class="wrap">
     <header class="header">
@@ -213,7 +232,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="sobre">
+      <section class="section reveal" id="sobre" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Sobre mim</h3>
@@ -258,7 +277,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="habilidades">
+      <section class="section reveal" id="habilidades" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Habilidades</h3>
@@ -370,7 +389,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="experiencia">
+      <section class="section reveal" id="experiencia" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Experiência Profissional</h3>
@@ -418,9 +437,11 @@
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
       </section>
 
-      <section class="section reveal" id="formacao">
+      <section class="section reveal" id="formacao" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Formação, Idiomas & Certificações</h3>
@@ -495,7 +516,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="projetos">
+      <section class="section reveal" id="projetos" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Projetos</h3>
@@ -729,7 +750,7 @@
         </div>
       </section>
 
-      <section class="section reveal" id="contato">
+      <section class="section reveal" id="contato" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Contato</h3>
