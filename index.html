@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -20,8 +20,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   
-  <!-- Particles.js para efeitos de partículas -->
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Fira Code — fonte monoespaçada para o fundo de código -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
   
   <!-- Vanilla Tilt para efeitos 3D -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
@@ -220,7 +220,7 @@
                 <div class="stat-lbl">Estágios</div>
               </div>
               <div class="stat-item">
-                <div class="stat-num">4</div>
+                <div class="stat-num">6</div>
                 <div class="stat-lbl">Certs.</div>
               </div>
               <div class="stat-item">
@@ -246,6 +246,10 @@
               lógico, organização e visão de produto. Minha experiência com análise de requisitos fortaleceu minha
               capacidade de compreender problemas reais, estruturar soluções e transformá-las em aplicações funcionais,
               claras e bem pensadas.
+              <br /><br />
+              Além disso, presto serviços de tecnologia na <strong class="about-highlight">Leite Campos Consultoria</strong>,
+              empresa da minha família, onde desenvolvo soluções digitais sob medida — desde sites e sistemas internos
+              até automações e consultoria técnica para clientes reais.
             </div>
 
             <div class="about-fun">
@@ -353,10 +357,17 @@
                     <div class="bar-fill" data-width="80"></div>
                   </div>
                 </div>
+
+                <div class="bar-item">
+                  <label><span>Vibe Coding & IA aplicada</span><span>85%</span></label>
+                  <div class="bar-track">
+                    <div class="bar-fill bar-fill--ai" data-width="85"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card skill-card--wide">
               <div class="skill-card-head">
                 <div class="skill-icon-wrap">
                   <svg viewBox="0 0 20 20" fill="none" stroke="var(--orange)" stroke-width="1.5" class="icon-md"
@@ -367,23 +378,40 @@
                     <rect x="11" y="11" width="6" height="6" rx="1"></rect>
                   </svg>
                 </div>
-                <h4>Ferramentas & Stack</h4>
+                <h4>Ferramentas &amp; Stack</h4>
               </div>
 
-              <ul class="tags">
-                <li>JavaScript</li>
-                <li>TypeScript</li>
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>Python</li>
-                <li>Flask</li>
-                <li>APIs REST</li>
-                <li>Git</li>
-                <li>Jira</li>
-                <li>WordPress</li>
-                <li>Figma</li>
-                <li>Kanban</li>
-              </ul>
+              <div class="tools-split">
+                <div class="tools-group">
+                  <span class="tools-group-label">Linguagens &amp; Tecnologias</span>
+                  <ul class="tags">
+                    <li>JavaScript</li>
+                    <li>TypeScript</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>Python</li>
+                    <li>Flask</li>
+                    <li>APIs REST</li>
+                    <li>Git</li>
+                    <li>Jira</li>
+                    <li>WordPress</li>
+                    <li>Figma</li>
+                    <li>Kanban</li>
+                  </ul>
+                </div>
+
+                <div class="tools-divider"></div>
+
+                <div class="tools-group">
+                  <span class="tools-group-label tools-group-label--ai">&#10022; IA &amp; Vibe Coding</span>
+                  <ul class="tags">
+                    <li class="tag--ai">Claude Code</li>
+                    <li class="tag--ai">Codex</li>
+                    <li class="tag--ai">Cursor</li>
+                    <li class="tag--ai">GitHub Copilot</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -510,6 +538,19 @@
                 <div class="cert-badge-dot"></div>
                 <span class="cert-name">JavaScript / TypeScript</span>
                 <span class="cert-src">Udemy</span>
+              </div>
+
+              <div class="cert-entry">
+                <div class="cert-badge-dot"></div>
+                <span class="cert-name">Claude 101</span>
+                <span class="cert-src">Anthropic</span>
+              </div>
+
+              <div class="cert-entry">
+                <div class="cert-badge-dot cert-badge-dot--wip"></div>
+                <span class="cert-name">Claude Code</span>
+                <span class="cert-tag-wip">Em progresso</span>
+                <span class="cert-src">Anthropic</span>
               </div>
             </div>
           </div>
@@ -747,6 +788,35 @@
               </div>
             </article>
           </div>
+
+          <!-- Projetos reais — Leite Campos Consultoria -->
+          <div class="client-projects-banner">
+            <div class="client-projects-left">
+              <div class="client-proj-icon">🏢</div>
+              <div>
+                <div class="client-proj-company">Leite Campos Consultoria</div>
+                <h4 class="client-proj-title">Projetos Reais & Soluções para Clientes</h4>
+                <p class="client-proj-desc">
+                  Desenvolvimento de sites, sistemas internos, automações e consultoria técnica entregues
+                  a clientes reais através da empresa da família. Projetos sob confidencialidade — detalhes
+                  disponíveis mediante contato.
+                </p>
+                <div class="client-proj-tags">
+                  <span class="tech-pill">Sites</span>
+                  <span class="tech-pill">Sistemas Web</span>
+                  <span class="tech-pill">Automações</span>
+                  <span class="tech-pill">Consultoria TI</span>
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">JavaScript</span>
+                </div>
+              </div>
+            </div>
+            <div class="client-projects-right">
+              <span class="client-proj-badge">Projetos Reais</span>
+              <a class="btn btn-primary" href="mailto:pleitecampos@gmail.com">Solicitar portfólio</a>
+            </div>
+          </div>
+
         </div>
       </section>
 

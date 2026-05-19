@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
   initThemeToggle();
-  initParticles();
+  initCodeBackground();
   initCustomCursor();
   
   // Garantir que o conteúdo seja visível mesmo se GSAP falhar
@@ -63,108 +63,108 @@ function initThemeToggle() {
 
     localStorage.setItem("theme", isLight ? "light" : "dark");
     
-    // Reinicializar partículas com nova cor
-    initParticles();
+    // Reinicializar fundo com nova cor
+    initCodeBackground();
   });
 }
 
 // ============================================
-// PARTÍCULAS DE FUNDO (Particles.js)
+// MATRIX RAIN (Canvas)
 // ============================================
-function initParticles() {
-  if (typeof particlesJS === 'undefined') return;
-  
-  const isLight = document.body.classList.contains("light-theme");
-  
-  particlesJS("particles-js", {
-    particles: {
-      number: {
-        value: 80,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: isLight ? "#0077cc" : "#00c8ff"
-      },
-      shape: {
-        type: "circle",
-        stroke: {
-          width: 0,
-          color: "#000000"
-        }
-      },
-      opacity: {
-        value: 0.3,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false
-        }
-      },
-      size: {
-        value: 3,
-        random: true,
-        anim: {
-          enable: true,
-          speed: 2,
-          size_min: 0.1,
-          sync: false
-        }
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: isLight ? "#0077cc" : "#00c8ff",
-        opacity: 0.2,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 1.5,
-        direction: "none",
-        random: true,
-        straight: false,
-        out_mode: "out",
-        bounce: false,
-        attract: {
-          enable: true,
-          rotateX: 600,
-          rotateY: 1200
-        }
+let _codeAnimId = null;
+
+function initCodeBackground() {
+  if (_codeAnimId) {
+    cancelAnimationFrame(_codeAnimId);
+    _codeAnimId = null;
+  }
+
+  const container = document.getElementById('particles-js');
+  if (!container) return;
+
+  let canvas = container.querySelector('canvas.code-bg-canvas');
+  if (!canvas) {
+    canvas = document.createElement('canvas');
+    canvas.className = 'code-bg-canvas';
+    canvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
+    container.innerHTML = '';
+    container.appendChild(canvas);
+  }
+
+  const ctx = canvas.getContext('2d');
+  const isLight = document.body.classList.contains('light-theme');
+
+  // Caracteres: katakana + binário + símbolos de código
+  const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0101{}()<>=/*#&@!?$%';
+
+  const fontSize = 14;
+  let cols, drops, glowDrops;
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    cols = Math.floor(canvas.width / fontSize);
+    drops = Array.from({ length: cols }, () => Math.random() * -canvas.height / fontSize);
+    // Algumas colunas têm brilho extra (cabeça da gota)
+    glowDrops = new Set(
+      Array.from({ length: Math.floor(cols * 0.3) }, () => Math.floor(Math.random() * cols))
+    );
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Cores base
+  const colorMain   = isLight ? 'rgba(0,119,204,'  : 'rgba(0,200,255,';
+  const colorBright  = isLight ? 'rgba(0,150,220,0.6)' : 'rgba(160,240,255,0.7)';
+  const colorFade    = isLight ? 'rgba(244,248,252,' : 'rgba(5,11,20,';
+  const fadeAlpha    = isLight ? '0.25)' : '0.20)';
+
+  function draw() {
+    // Rastro de desvanecimento — efeito clássico de caudas
+    ctx.fillStyle = colorFade + fadeAlpha;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = `${fontSize}px 'Fira Code', monospace`;
+
+    for (let i = 0; i < cols; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+
+      const isGlow = glowDrops.has(i);
+
+      if (isGlow) {
+        // Cabeça da gota: sutil com glow leve
+        ctx.shadowColor = isLight ? '#0077cc' : '#00c8ff';
+        ctx.shadowBlur = 8;
+        ctx.fillStyle = colorBright;
+        ctx.fillText(char, x, y);
+        ctx.shadowBlur = 0;
+      } else {
+        // Corpo da gota: opacidade bem reduzida
+        const depthAlpha = Math.min(0.30, 0.05 + (drops[i] % 20) / 20 * 0.25);
+        ctx.fillStyle = colorMain + depthAlpha + ')';
+        ctx.fillText(char, x, y);
       }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: {
-          enable: true,
-          mode: "grab"
-        },
-        onclick: {
-          enable: true,
-          mode: "push"
-        },
-        resize: true
-      },
-      modes: {
-        grab: {
-          distance: 140,
-          line_linked: {
-            opacity: 0.5
-          }
-        },
-        push: {
-          particles_nb: 4
-        }
+
+      // Reinicia a coluna ao sair da tela, com offset aleatório
+      if (y > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+        // Aleatoriamente adiciona/remove brilho extra
+        if (Math.random() > 0.6) glowDrops.add(i);
+        else glowDrops.delete(i);
       }
-    },
-    retina_detect: true
-  });
+
+      drops[i] += 0.12 + Math.random() * 0.10;
+    }
+
+    _codeAnimId = requestAnimationFrame(draw);
+  }
+
+  draw();
 }
+
 
 // ============================================
 // CURSOR CUSTOMIZADO
