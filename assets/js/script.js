@@ -225,6 +225,70 @@ function initCustomCursor() {
 }
 
 // ============================================
+// ORBS DE FUNDO — parallax + tint por seção
+// ============================================
+function initBackgroundOrbs() {
+  const orbs = document.querySelectorAll('.bg-orb');
+  if (!orbs.length) return;
+
+  // Parallax: cada orb se move em velocidade/direção diferente conforme o scroll
+  const config = [
+    { y: 40,  x:  6 },
+    { y: -55, x: -8 },
+    { y: 30,  x:  10 },
+    { y: -65, x: -5 }
+  ];
+
+  orbs.forEach((orb, i) => {
+    const c = config[i] || { y: 30, x: 0 };
+    gsap.to(orb, {
+      yPercent: c.y,
+      xPercent: c.x,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: document.body,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1.2
+      }
+    });
+  });
+
+  // Tint sutil — hue-rotate diferente por seção (apenas no tema escuro)
+  const sectionHues = {
+    inicio:      0,
+    sobre:      -8,
+    habilidades: 12,
+    experiencia: 28,
+    formacao:   -22,
+    projetos:    18,
+    contato:     0
+  };
+
+  const orbsContainer = document.querySelector('.bg-orbs');
+  if (!orbsContainer) return;
+
+  Object.entries(sectionHues).forEach(([id, hue]) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    ScrollTrigger.create({
+      trigger: section,
+      start: 'top 55%',
+      end: 'bottom 45%',
+      onToggle: ({ isActive }) => {
+        if (!isActive) return;
+        gsap.to(orbsContainer, {
+          '--orb-hue': hue + 'deg',
+          duration: 1.4,
+          ease: 'power2.inOut'
+        });
+      }
+    });
+  });
+}
+
+// ============================================
 // ANIMAÇÕES COM GSAP
 // ============================================
 function initGSAPAnimations() {
@@ -234,6 +298,9 @@ function initGSAPAnimations() {
   }
   
   gsap.registerPlugin(ScrollTrigger);
+
+  // Parallax dos orbs de gradiente + tint sutil por seção
+  initBackgroundOrbs();
 
   // Animação do Hero
   gsap.from('.hero-badge', {
