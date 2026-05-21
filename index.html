@@ -8,6 +8,20 @@
     content="Portfólio de Pedro Leite Campos — Ciência da Computação, Fullstack Dev & Análise de Requisitos." />
   <title>Pedro Leite Campos | Portfólio Fullstack</title>
 
+  <!-- Open Graph / LinkedIn / WhatsApp -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pedro Leite Campos | Portfólio Fullstack" />
+  <meta property="og:description" content="Desenvolvedor Fullstack e Analista de Requisitos — Python, FastAPI, JavaScript, IA generativa. Veja meus projetos e entre em contato." />
+  <meta property="og:url" content="https://plc232007.github.io/portifolio-pedro/" />
+  <meta property="og:image" content="https://plc232007.github.io/portifolio-pedro/assets/img/pedro-normal.png" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pedro Leite Campos | Portfólio Fullstack" />
+  <meta name="twitter:description" content="Desenvolvedor Fullstack e Analista de Requisitos — Python, FastAPI, JavaScript, IA generativa." />
+  <meta name="twitter:image" content="https://plc232007.github.io/portifolio-pedro/assets/img/pedro-normal.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -330,42 +344,42 @@
 
               <div class="bar-row">
                 <div class="bar-item">
-                  <label><span>Back-end (Python/Flask)</span><span>90%</span></label>
+                  <label><span>Back-end (Python/Flask)</span><span class="skill-level skill-level--comfort">Confortável</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="90"></div>
                   </div>
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Vibe Coding &amp; IA aplicada</span><span>85%</span></label>
+                  <label><span>Vibe Coding &amp; IA aplicada</span><span class="skill-level skill-level--comfort">Confortável</span></label>
                   <div class="bar-track">
                     <div class="bar-fill bar-fill--ai" data-width="85"></div>
                   </div>
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Git &amp; Versionamento</span><span>80%</span></label>
+                  <label><span>Git &amp; Versionamento</span><span class="skill-level skill-level--familiar">Familiarizado</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="80"></div>
                   </div>
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Front-end (JS/TS/HTML/CSS)</span><span>78%</span></label>
+                  <label><span>Front-end (JS/TS/HTML/CSS)</span><span class="skill-level skill-level--familiar">Familiarizado</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="78"></div>
                   </div>
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Prototipação (Figma)</span><span>75%</span></label>
+                  <label><span>Prototipação (Figma)</span><span class="skill-level skill-level--learning">Em aprendizado</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="75"></div>
                   </div>
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Análise de Requisitos</span><span>70%</span></label>
+                  <label><span>Análise de Requisitos</span><span class="skill-level skill-level--learning">Em aprendizado</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="70"></div>
                   </div>
@@ -451,10 +465,10 @@
                   <span class="exp-badge">Estágio</span>
                 </div>
                 <ul class="exp-list">
-                  <li>Análise de requisitos e levantamento de necessidades de negócio.</li>
-                  <li>Tradução de regras de negócio em especificações técnicas.</li>
-                  <li>Gestão de backlog com Jira, Trello e metodologia Kanban.</li>
-                  <li>Prototipação e análise de fluxos de interface no Figma.</li>
+                  <li>Levantei e documentei requisitos de mais de 20 funcionalidades em sprints quinzenais.</li>
+                  <li>Traduzi regras de negócio em especificações técnicas consumidas por 3 times de desenvolvimento.</li>
+                  <li>Mantive backlog organizado no Jira com mais de 80 itens priorizados por sprint.</li>
+                  <li>Prototipei fluxos de 4 módulos do sistema no Figma, reduzindo retrabalho de front-end.</li>
                 </ul>
               </div>
             </div>
@@ -471,10 +485,10 @@
                   <span class="exp-badge">Estágio</span>
                 </div>
                 <ul class="exp-list">
-                  <li>Front-end com interfaces web dinâmicas: JavaScript, TypeScript, HTML5/CSS.</li>
-                  <li>Back-end com Python, Flask e APIs RESTful.</li>
-                  <li>Versionamento e colaboração com Git.</li>
-                  <li>Implementação de soluções via WordPress.</li>
+                  <li>Desenvolvo interfaces web dinâmicas com JavaScript, TypeScript e HTML5/CSS em ciclos semanais.</li>
+                  <li>Construo endpoints RESTful com Python e Flask integrados a banco de dados relacional.</li>
+                  <li>Contribuo com mais de 50 commits em repositórios colaborativos usando Git e code review.</li>
+                  <li>Implemento e mantenho soluções WordPress para clientes internos com prazo definido.</li>
                 </ul>
               </div>
             </div>
@@ -647,6 +661,17 @@
                 backend moderno com Python, organização de código e persistência de dados.
               </p>
 
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># GET /tasks</span>
+<span class="pp-key">curl</span> http://localhost:8000/tasks
+
+<span class="pp-string">[
+  {"id": 1, "title": "Revisar spec", "done": false},
+  {"id": 2, "title": "Deploy API",   "done": true }
+]</span></pre>
+              </div>
+
               <div class="proj-meta">
                 <div class="proj-meta-item">
                   <span class="proj-meta-label">Objetivo</span>
@@ -674,9 +699,6 @@
                 <a class="proj-link" href="https://github.com/plc232007/to-do-list" target="_blank" rel="noreferrer">
                   GitHub
                 </a>
-                <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
-                  Demo em breve
-                </a>
               </div>
             </article>
 
@@ -692,6 +714,15 @@
                 natural e executa um pipeline multiagente para gerar análise técnica, arquitetura, plano de
                 implementação, código Python, testes automatizados e relatório final.
               </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># Pipeline multiagente</span>
+<span class="pp-key">input</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Analista]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Arquiteto]</span>
+       <span class="pp-arrow">→</span> <span class="pp-agent">[Dev]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[QA]</span> <span class="pp-arrow">→</span> <span class="pp-string">report.md</span>
+
+<span class="pp-comment">✓ spec.md  ✓ arch.md  ✓ code.py  ✓ tests</span></pre>
+              </div>
 
               <div class="proj-meta">
                 <div class="proj-meta-item">
@@ -720,9 +751,6 @@
                 <a class="proj-link" href="https://github.com/plc232007/factoryflow-ai" target="_blank"
                   rel="noreferrer">
                   GitHub
-                </a>
-                <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
-                  Demo local
                 </a>
               </div>
             </article>
@@ -810,35 +838,12 @@
 
               <div class="proj-links">
                 <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
-                  Repositório em breve
-                </a>
-                <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
                   Em desenvolvimento
                 </a>
               </div>
             </article>
           </div>
 
-          <!-- Projetos Reais -->
-          <div class="projects-subsection-header projects-subsection-header--real">
-            <span class="projects-subsection-icon">🏢</span>
-            <div>
-              <h4 class="projects-subsection-title">Projetos Reais</h4>
-              <p class="projects-subsection-desc">Soluções entregues para clientes reais — adicione seus projetos aqui
-              </p>
-            </div>
-          </div>
-
-          <div class="projects-grid">
-            <!-- Placeholder — adicione seus projetos reais aqui -->
-            <article class="proj-card proj-card--placeholder-real">
-              <div class="proj-placeholder-inner">
-                <span class="proj-placeholder-icon">🚀</span>
-                <p class="proj-placeholder-text">Seu próximo projeto real aqui</p>
-                <span class="proj-placeholder-hint">Em breve</span>
-              </div>
-            </article>
-          </div>
 
         </div>
       </section>
