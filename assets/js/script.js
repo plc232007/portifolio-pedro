@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initBackToTop();
   initHeaderScroll();
   initProjectCardGlow();
+  initFABButtons();
 });
 
 // ============================================
@@ -491,4 +492,31 @@ function initProjectCardGlow() {
       card.style.setProperty('--mouse-y', `${y}%`);
     });
   });
+}
+
+// ============================================
+// FLOATING ACTION BUTTONS (PDF + WHATSAPP)
+// ============================================
+function initFABButtons() {
+  const fabPdf = document.getElementById('fab-pdf');
+  if (!fabPdf) return;
+
+  fabPdf.addEventListener('click', () => {
+    // Download direto — funciona local e hospedado
+    const link = document.createElement('a');
+    link.href = './assets/docs/curriculo-pedro-leite-campos.pdf';
+    link.download = 'Pedro-Leite-Campos-Curriculo.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+
+  // Animar entrada dos FABs
+  const fabGroup = document.getElementById('fab-group');
+  if (fabGroup && typeof gsap !== 'undefined') {
+    gsap.fromTo(fabGroup.children, 
+      { opacity: 0, x: 60 },
+      { opacity: 1, x: 0, duration: 0.5, stagger: 0.15, delay: 1.5, ease: 'back.out(1.7)' }
+    );
+  }
 }

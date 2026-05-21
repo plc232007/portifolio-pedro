@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -15,17 +15,17 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
-  
+
   <!-- GSAP para animações profissionais -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
+
   <!-- Fira Code — fonte monoespaçada para o fundo de código -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-  
+
   <!-- Vanilla Tilt para efeitos 3D -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  
+
   <script src="./assets/js/script.js" defer></script>
 </head>
 
@@ -33,10 +33,10 @@
   <!-- Cursor customizado -->
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
-  
+
   <!-- Partículas de fundo -->
   <div id="particles-js"></div>
-  
+
   <!-- Gradiente animado de fundo -->
   <div class="animated-gradient"></div>
 
@@ -117,6 +117,7 @@
     </header>
 
     <main>
+      <!-- ========== HERO ========== -->
       <section class="hero" id="inicio">
         <div class="container hero-grid">
           <div>
@@ -212,7 +213,7 @@
               </div>
             </div>
             <p class="profile-name">Pedro Leite Campos</p>
-            <p class="profile-role">Computação & Fullstack em formação</p>
+            <p class="profile-role">Computação &amp; Fullstack em formação</p>
 
             <div class="profile-stats">
               <div class="stat-item">
@@ -220,7 +221,7 @@
                 <div class="stat-lbl">Estágios</div>
               </div>
               <div class="stat-item">
-                <div class="stat-num">6</div>
+                <div class="stat-num">7</div>
                 <div class="stat-lbl">Certs.</div>
               </div>
               <div class="stat-item">
@@ -232,6 +233,7 @@
         </div>
       </section>
 
+      <!-- ========== SOBRE ========== -->
       <section class="section reveal" id="sobre" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
@@ -247,7 +249,8 @@
               capacidade de compreender problemas reais, estruturar soluções e transformá-las em aplicações funcionais,
               claras e bem pensadas.
               <br /><br />
-              Além disso, presto serviços de tecnologia na <strong class="about-highlight">Leite Campos Consultoria</strong>,
+              Além disso, presto serviços de tecnologia na <strong class="about-highlight">Leite Campos
+                Consultoria</strong>,
               empresa da minha família, onde desenvolvo soluções digitais sob medida — desde sites e sistemas internos
               até automações e consultoria técnica para clientes reais.
             </div>
@@ -281,6 +284,7 @@
         </div>
       </section>
 
+      <!-- ========== HABILIDADES ========== -->
       <section class="section reveal" id="habilidades" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
@@ -290,6 +294,7 @@
           </div>
 
           <div class="skills-grid">
+            <!-- Soft Skills -->
             <div class="skill-card">
               <div class="skill-card-head">
                 <div class="skill-icon-wrap">
@@ -307,10 +312,11 @@
                 <li>Resolução de problemas</li>
                 <li>Aprendizado contínuo</li>
                 <li>Comunicação técnica clara</li>
-                <li>Resiliência & Proatividade</li>
+                <li>Resiliência &amp; Proatividade</li>
               </ul>
             </div>
 
+            <!-- Hard Skills — ordem decrescente -->
             <div class="skill-card">
               <div class="skill-card-head">
                 <div class="skill-icon-wrap">
@@ -324,9 +330,23 @@
 
               <div class="bar-row">
                 <div class="bar-item">
-                  <label><span>Análise de Requisitos</span><span>70%</span></label>
+                  <label><span>Back-end (Python/Flask)</span><span>90%</span></label>
                   <div class="bar-track">
-                    <div class="bar-fill" data-width="70"></div>
+                    <div class="bar-fill" data-width="90"></div>
+                  </div>
+                </div>
+
+                <div class="bar-item">
+                  <label><span>Vibe Coding &amp; IA aplicada</span><span>85%</span></label>
+                  <div class="bar-track">
+                    <div class="bar-fill bar-fill--ai" data-width="85"></div>
+                  </div>
+                </div>
+
+                <div class="bar-item">
+                  <label><span>Git &amp; Versionamento</span><span>80%</span></label>
+                  <div class="bar-track">
+                    <div class="bar-fill" data-width="80"></div>
                   </div>
                 </div>
 
@@ -338,13 +358,6 @@
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Back-end (Python/Flask)</span><span>90%</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="90"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
                   <label><span>Prototipação (Figma)</span><span>75%</span></label>
                   <div class="bar-track">
                     <div class="bar-fill" data-width="75"></div>
@@ -352,21 +365,15 @@
                 </div>
 
                 <div class="bar-item">
-                  <label><span>Git & Versionamento</span><span>80%</span></label>
+                  <label><span>Análise de Requisitos</span><span>70%</span></label>
                   <div class="bar-track">
-                    <div class="bar-fill" data-width="80"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <label><span>Vibe Coding & IA aplicada</span><span>85%</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill bar-fill--ai" data-width="85"></div>
+                    <div class="bar-fill" data-width="70"></div>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Ferramentas & Stack — linha inteira -->
             <div class="skill-card skill-card--wide">
               <div class="skill-card-head">
                 <div class="skill-icon-wrap">
@@ -391,6 +398,11 @@
                     <li>CSS3</li>
                     <li>Python</li>
                     <li>Flask</li>
+                    <li>Django</li>
+                    <li>React</li>
+                    <li>Pandas</li>
+                    <li>SQL</li>
+                    <li>AWS</li>
                     <li>APIs REST</li>
                     <li>Git</li>
                     <li>Jira</li>
@@ -417,6 +429,7 @@
         </div>
       </section>
 
+      <!-- ========== EXPERIÊNCIA ========== -->
       <section class="section reveal" id="experiencia" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
@@ -469,10 +482,11 @@
         </div>
       </section>
 
+      <!-- ========== FORMAÇÃO & CERTIFICAÇÕES ========== -->
       <section class="section reveal" id="formacao" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
-            <h3>Formação, Idiomas & Certificações</h3>
+            <h3>Formação, Idiomas &amp; Certificações</h3>
             <div class="section-line"></div>
             <span class="section-tag">README.md</span>
           </div>
@@ -547,8 +561,14 @@
               </div>
 
               <div class="cert-entry">
-                <div class="cert-badge-dot cert-badge-dot--wip"></div>
+                <div class="cert-badge-dot"></div>
                 <span class="cert-name">Claude Code</span>
+                <span class="cert-src">Anthropic</span>
+              </div>
+
+              <div class="cert-entry">
+                <div class="cert-badge-dot cert-badge-dot--wip"></div>
+                <span class="cert-name">Claude Code in Action</span>
                 <span class="cert-tag-wip">Em progresso</span>
                 <span class="cert-src">Anthropic</span>
               </div>
@@ -557,12 +577,22 @@
         </div>
       </section>
 
+      <!-- ========== PROJETOS ========== -->
       <section class="section reveal" id="projetos" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
             <h3>Projetos</h3>
             <div class="section-line"></div>
             <span class="section-tag">builds</span>
+          </div>
+
+          <!-- Projetos Acadêmicos -->
+          <div class="projects-subsection-header">
+            <span class="projects-subsection-icon">🎓</span>
+            <div>
+              <h4 class="projects-subsection-title">Projetos Acadêmicos</h4>
+              <p class="projects-subsection-desc">Projetos de estudo, aprendizado e experimentação</p>
+            </div>
           </div>
 
           <div class="projects-grid">
@@ -789,37 +819,31 @@
             </article>
           </div>
 
-          <!-- Projetos reais — Leite Campos Consultoria -->
-          <div class="client-projects-banner">
-            <div class="client-projects-left">
-              <div class="client-proj-icon">🏢</div>
-              <div>
-                <div class="client-proj-company">Leite Campos Consultoria</div>
-                <h4 class="client-proj-title">Projetos Reais & Soluções para Clientes</h4>
-                <p class="client-proj-desc">
-                  Desenvolvimento de sites, sistemas internos, automações e consultoria técnica entregues
-                  a clientes reais através da empresa da família. Projetos sob confidencialidade — detalhes
-                  disponíveis mediante contato.
-                </p>
-                <div class="client-proj-tags">
-                  <span class="tech-pill">Sites</span>
-                  <span class="tech-pill">Sistemas Web</span>
-                  <span class="tech-pill">Automações</span>
-                  <span class="tech-pill">Consultoria TI</span>
-                  <span class="tech-pill">Python</span>
-                  <span class="tech-pill">JavaScript</span>
-                </div>
+          <!-- Projetos Reais -->
+          <div class="projects-subsection-header projects-subsection-header--real">
+            <span class="projects-subsection-icon">🏢</span>
+            <div>
+              <h4 class="projects-subsection-title">Projetos Reais</h4>
+              <p class="projects-subsection-desc">Soluções entregues para clientes reais — adicione seus projetos aqui
+              </p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Placeholder — adicione seus projetos reais aqui -->
+            <article class="proj-card proj-card--placeholder-real">
+              <div class="proj-placeholder-inner">
+                <span class="proj-placeholder-icon">🚀</span>
+                <p class="proj-placeholder-text">Seu próximo projeto real aqui</p>
+                <span class="proj-placeholder-hint">Em breve</span>
               </div>
-            </div>
-            <div class="client-projects-right">
-              <span class="client-proj-badge">Projetos Reais</span>
-              <a class="btn btn-primary" href="mailto:pleitecampos@gmail.com">Solicitar portfólio</a>
-            </div>
+            </article>
           </div>
 
         </div>
       </section>
 
+      <!-- ========== CONTATO ========== -->
       <section class="section reveal" id="contato" style="opacity: 1 !important; transform: none !important;">
         <div class="container">
           <div class="section-head">
@@ -882,6 +906,29 @@
   <button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo">
     ↑
   </button>
+
+  <!-- Floating Action Buttons -->
+  <div class="fab-group" id="fab-group">
+    <button class="fab fab--pdf" id="fab-pdf" aria-label="Exportar currículo em PDF" title="Exportar currículo em PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="fab-icon" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
+        <polyline points="14 2 14 8 20 8" />
+        <line x1="12" y1="12" x2="12" y2="18" />
+        <polyline points="9 15 12 18 15 15" />
+      </svg>
+      <span class="fab-label">Currículo PDF</span>
+    </button>
+
+    <a class="fab fab--whatsapp" id="fab-whatsapp"
+      href="https://wa.me/5561992866000?text=Ol%C3%A1%20Pedro%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!"
+      target="_blank" rel="noreferrer" aria-label="Contato via WhatsApp" title="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="fab-icon" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      <span class="fab-label">WhatsApp</span>
+    </a>
+  </div>
 </body>
 
 </html>
