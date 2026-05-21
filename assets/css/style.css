@@ -1928,6 +1928,114 @@ body.light-theme .fab--whatsapp {
   pointer-events: none;
 }
 
+/* Skill level badges */
+.skill-level {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.skill-level--comfort {
+  color: var(--green);
+  background: rgba(57, 255, 138, 0.1);
+  border-color: rgba(57, 255, 138, 0.3);
+}
+
+.skill-level--familiar {
+  color: var(--cyan);
+  background: rgba(0, 200, 255, 0.1);
+  border-color: rgba(0, 200, 255, 0.3);
+}
+
+.skill-level--learning {
+  color: var(--orange);
+  background: rgba(255, 149, 0, 0.1);
+  border-color: rgba(255, 149, 0, 0.3);
+}
+
+body.light-theme .skill-level--comfort {
+  color: var(--green);
+  background: rgba(31, 157, 85, 0.1);
+  border-color: rgba(31, 157, 85, 0.3);
+}
+
+body.light-theme .skill-level--familiar {
+  color: var(--cyan);
+  background: rgba(0, 119, 204, 0.1);
+  border-color: rgba(0, 119, 204, 0.3);
+}
+
+body.light-theme .skill-level--learning {
+  color: var(--orange);
+  background: rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* Project terminal preview */
+.proj-preview {
+  margin: 0.8rem 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.proj-preview-bar {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.proj-preview-bar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.proj-preview-bar span:nth-child(1) { background: #ff5f57; }
+.proj-preview-bar span:nth-child(2) { background: #ffbd2e; }
+.proj-preview-bar span:nth-child(3) { background: #28ca41; }
+
+.proj-preview-code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  color: #c9d1d9;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.pp-comment { color: #6a9955; }
+.pp-key     { color: var(--cyan); font-weight: 600; }
+.pp-string  { color: #ce9178; }
+.pp-agent   { color: var(--green); font-weight: 600; }
+.pp-arrow   { color: var(--muted); }
+
+body.light-theme .proj-preview {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .proj-preview-bar {
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .proj-preview-code { color: #24292e; }
+body.light-theme .pp-comment { color: #6a737d; }
+body.light-theme .pp-key     { color: var(--cyan); }
+body.light-theme .pp-string  { color: #e36209; }
+body.light-theme .pp-agent   { color: var(--green); }
+
 @media (max-width: 900px) {
   .projects-grid {
     grid-template-columns: 1fr;
