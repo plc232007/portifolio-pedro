@@ -1,133 +1,106 @@
-# 🚀 Portfólio Modernizado - Documentação Completa
+# Portfólio — camada criativa 3D
 
-## ✨ Resumo das Melhorias
+Documento técnico do que foi adicionado sobre a base original.
+Nenhum conteúdo do portfólio foi removido — só ganhou forma nova.
 
-Seu portfólio foi completamente modernizado com as tecnologias mais avançadas de animação e interatividade web. Todas as informações originais foram mantidas e aprimoradas com efeitos visuais profissionais.
+## Arquivos
 
-## 🎯 Tecnologias Implementadas
+| Arquivo | Papel |
+|---|---|
+| `assets/js/interactions.js` | Boot, HUD, radar, esfera de tecnologias, reveal, magnetismo |
+| `assets/js/hero-core.js` | **Parado** — núcleo 3D do hero (Three.js), removido da página |
+| `assets/css/enhance.css` | Toda a camada visual nova (carrega depois de `style.css`) |
+| `assets/js/script.js` | Base original — tema, matrix rain, cursor, tilt, FABs |
+| `assets/css/style.css` | Base original — intocada |
 
-### 1. GSAP 3.12.5 + ScrollTrigger
-- Animações profissionais em todos os elementos
-- Scroll-based animations coordenadas
-- Stagger effects para entrada sequencial
-- Easing personalizado para naturalidade
+## 1. Núcleo 3D do hero — removido
 
-### 2. Particles.js 2.0.0
-- Partículas interativas no background
-- Responde a movimento do mouse e cliques
-- Adaptação automática ao tema claro/escuro
-- Performance otimizada
+Existiu um núcleo neural em WebGL atrás da foto de perfil. Foi retirado a
+pedido: o fundo competia com a foto. O módulo continua em
+`assets/js/hero-core.js`, sem ser carregado pelo HTML — se voltar, basta
+recriar a `<div id="hero-3d">`, reestilizá-la e reincluir Three.js + o script.
+O hero hoje é o card de perfil sozinho, com o terminal digitando comandos ao
+lado.
 
-### 3. Vanilla Tilt 1.8.1
-- Efeito 3D em todos os cards
-- Glare effect (brilho) realista
-- Perspectiva com profundidade
-- Configurações personalizadas por elemento
+## 2. Esfera 3D de tecnologias (skills)
 
-### 4. Cursor Customizado
-- Ponto central luminoso
-- Outline que segue suavemente
-- Efeito hover em elementos interativos
-- Desabilitado em dispositivos touch
+Substituiu a lista de tags. Cada tecnologia é um `<span>` real projetado em
+esfera por distribuição de Fibonacci, com perspectiva, profundidade de campo
+(blur no fundo) e `z-index` por profundidade. Arrastável, com auto-rotação e
+inércia. São 29 nós — elementos de texto reais, portanto legíveis para busca e
+leitores de tela. Legenda por cor: domínio principal / stack / IA.
 
-## 🎨 Melhorias Visuais
+Ao lado da esfera fica o **índice textual** (`.tech-index`): a mesma stack em
+formato escaneável, agrupada em Linguagens / Frameworks / Dados & infra /
+Produto. É a versão que um recrutador lê de relance.
 
-### Glassmorphism Avançado
-- Backdrop blur 16-20px
-- Saturação 180%
-- Bordas com gradientes animados
-- Sombras profundas e realistas
+## 2b. Radar de competências (Hard Skills)
 
-### Gradientes Animados
-- Background com movimento (15s loop)
-- Botões com gradiente fluindo (3s loop)
-- Bordas com brilho rotativo
-- Múltiplas camadas de cor
+Substituiu as barras de progresso. SVG com 8 eixos — Back-end, PHP/Laravel,
+Node.js, React/Next, Front-end, Linguagem C, Git e IA aplicada — com o polígono
+se abrindo a partir do centro na entrada. Vértices coloridos por nível
+(confortável / familiarizado / em aprendizado); ao focar um ponto com o mouse ou
+o teclado, o nome completo e o percentual aparecem no leitor abaixo. Competências
+de processo em evolução ficam na faixa final do card.
 
-### Efeitos de Hover
-- Transformações 3D (translateY + scale)
-- Sombras dinâmicas com glow
-- Brilho seguindo o mouse
-- Transições cubic-bezier
+Os dados vivem no HTML (`data-name`, `data-level`, `data-value`) e as
+coordenadas foram calculadas na geração — para mexer nos valores, recalcule os
+`points` dos polígonos.
 
-### Animações CSS
-- pulse, dotPulse, gradientShift
-- terminalScan, rotate, lineShine
-- gradientFlow, borderGlow
-- bracketPulse, fadeSlideDown
+## 3. Revelação por scroll — reescrita
 
-## 📋 Conteúdo Preservado
+O sistema antigo dependia do GSAP: se ele falhasse, seções ficavam presas em
+`opacity: 0` (por isso existiam os `style="opacity:1 !important"` no HTML).
 
-### ✅ Todas as Seções Mantidas
-- Hero com terminal interativo
-- Sobre mim com fun cards
-- Habilidades (soft, hard, stack)
-- Experiência profissional (timeline)
-- Formação e certificações
-- Projetos (5 projetos completos)
-- Contato com links
+Agora: `IntersectionObserver` + CSS. O CSS só esconde quando o JS confirma que
+sabe revelar (`html.js-reveal`), há timeout de segurança de 6s, e sem JS tudo
+aparece normalmente. As barras de habilidade preenchem junto com o card.
 
-### ✅ Todos os Projetos
-1. Portfólio Pessoal
-2. Task Manager API
-3. FactoryFlow AI
-4. Portal do Aluno — Catequese IC
-5. PromptLab AI
+## 3b. Fundo — malha técnica
 
-### ✅ Todas as Informações
-- Dados pessoais completos
-- Links para GitHub, LinkedIn, Email
-- Currículo para download
-- Experiências profissionais detalhadas
-- Certificações e formação acadêmica
+O fundo antigo empilhava quatro camadas decorativas: matrix rain em canvas
+(katakana caindo), quatro orbs coloridos com parallax e tint por seção,
+scanlines do `style.css` e outra camada de scanlines do `enhance.css`. Ficou
+enfeitado demais.
 
-## 🚀 Como Usar
+Hoje são duas camadas, ambas em CSS puro:
 
-1. Abra `index.html` em um navegador moderno
-2. Todas as bibliotecas carregam via CDN
-3. Funciona offline após primeiro carregamento
-4. Compatível com Chrome, Firefox, Safari, Edge
+- `.bg-grid` — duas grades sobrepostas (fina a 44px, mestra a 220px) como papel
+  milimetrado de projeto, com máscara radial dissolvendo as bordas. Desliza a
+  4% da velocidade do scroll, o suficiente para dar profundidade sem chamar
+  atenção;
+- `.bg-veil` — véu radial estático no topo e no rodapé.
 
-## 📱 Responsividade
+O grão sutil de `body::before` (do `style.css`) permaneceu. As scanlines de
+`body::after` foram desligadas pelo `enhance.css`. Sem canvas, sem
+`requestAnimationFrame` — o fundo passou a custar praticamente zero e troca de
+tema apenas pelas variáveis `--grid-fine`, `--grid-major` e `--veil-*`.
 
-- Breakpoint 900px: layout em coluna
-- Breakpoint 600px: ajustes mobile
-- Cursor desabilitado em touch
-- Navegação adaptativa
-- Fontes escaláveis
+## 4. Demais adições
 
-## 🎭 Temas
+- **Boot screen** com sequência de inicialização, pulável (clique/ESC) e com
+  failsafe duplo — timeout no JS e animação de fallback no CSS.
+- **HUD**: barra de progresso de scroll e navegação lateral em pontos com rótulo.
+- **Botões magnéticos** que atraem para o cursor (desligados em toque).
+- **Cards de projeto** com profundidade real: `translateZ` nos elementos internos
+  acompanhando o tilt, faixa holográfica e spotlight seguindo o cursor.
+- **Fun cards** viram no eixo Y revelando texto no verso (acessível por teclado).
+- **Títulos de seção** com índice numerado e efeito de decodificação (scramble).
+- **Terminal do hero** digitando comandos em rotação.
+- **Contadores** animados nas estatísticas.
+- **Textura global**: grão + varredura sutil.
 
-### Tema Escuro (Padrão)
-- Background: #050b14
-- Cyan: #00c8ff, Green: #39ff8a, Orange: #ff9500
+## Acessibilidade e performance
 
-### Tema Claro
-- Background: #f4f8fc
-- Cyan: #0077cc, Green: #1f9d55, Orange: #d97706
+- `prefers-reduced-motion` desliga scramble, magnetismo, digitação, rotação
+  automática da esfera e o loop 3D.
+- Ponteiro grosso (toque) desliga magnetismo e spotlight.
+- Loops 3D e da esfera pausam fora da viewport.
+- Nada do conteúdo depende de JS para ficar visível.
 
-## 📊 Métricas
+## Rodando local
 
-- 50+ animações CSS personalizadas
-- 20+ transições GSAP coordenadas
-- 15+ efeitos de hover únicos
-- 10+ gradientes animados
-- Performance mantida em 60fps
-
-## 🌟 Destaques
-
-1. Cursor customizado com delay suave
-2. Partículas que respondem ao mouse
-3. Cards 3D com tilt realista
-4. Animações GSAP profissionais
-5. Glassmorphism moderno
-6. Gradientes animados
-7. Brilho seguindo o mouse
-8. Timeline com dots pulsantes
-9. Avatar com transição de imagens
-10. Terminal com scan line
-
----
-
-**Desenvolvido por Pedro Leite Campos**
-*Modernizado com as melhores tecnologias web - 2025*
+```bash
+python3 -m http.server 8000
+# ou, no Windows: start.bat
+```

@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Portfólio de Pedro Leite Campos — Ciência da Computação, Fullstack Dev & Análise de Requisitos." />
+    content="Portfólio de Pedro Leite Campos — Desenvolvedor Fullstack: PHP, Laravel, Node.js, React, Python e linguagem C." />
   <title>Pedro Leite Campos | Portfólio Fullstack</title>
 
   <!-- Open Graph / LinkedIn / WhatsApp -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Pedro Leite Campos | Portfólio Fullstack" />
-  <meta property="og:description" content="Desenvolvedor Fullstack e Analista de Requisitos — Python, FastAPI, JavaScript, IA generativa. Veja meus projetos e entre em contato." />
+  <meta property="og:description" content="Desenvolvedor Fullstack e Analista de Requisitos — PHP, Laravel, Node.js, React, Python e IA generativa. Veja meus projetos e entre em contato." />
   <meta property="og:url" content="https://plc232007.github.io/portifolio-pedro/" />
   <meta property="og:image" content="https://plc232007.github.io/portifolio-pedro/assets/img/pedro-normal.png" />
   <meta property="og:locale" content="pt_BR" />
@@ -19,7 +19,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pedro Leite Campos | Portfólio Fullstack" />
-  <meta name="twitter:description" content="Desenvolvedor Fullstack e Analista de Requisitos — Python, FastAPI, JavaScript, IA generativa." />
+  <meta name="twitter:description" content="Desenvolvedor Fullstack e Analista de Requisitos — PHP, Laravel, Node.js, React, Python e IA generativa." />
   <meta name="twitter:image" content="https://plc232007.github.io/portifolio-pedro/assets/img/pedro-normal.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,6 +29,7 @@
     rel="stylesheet" />
 
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <link rel="stylesheet" href="./assets/css/enhance.css" />
 
   <!-- GSAP para animações profissionais -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -41,26 +42,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
   <script src="./assets/js/script.js" defer></script>
+  <script src="./assets/js/interactions.js" defer></script>
 </head>
 
-<body>
+<body class="is-booting">
+  <!-- Boot screen -->
+  <div class="boot" id="boot" role="status" aria-label="Carregando portfólio">
+    <div class="boot-panel">
+      <div class="boot-logo">{ <span>PLC</span> }</div>
+      <div class="boot-sub">system · portfolio · v2</div>
+
+      <div class="boot-line"><i>[ok]</i> montando runtime <b>webgl</b></div>
+      <div class="boot-line"><i>[ok]</i> carregando <b>núcleo neural 3d</b></div>
+      <div class="boot-line"><i>[ok]</i> indexando <b>stack</b> e projetos</div>
+      <div class="boot-line"><i>[ok]</i> calibrando <b>interações</b></div>
+      <div class="boot-line"><i>[ok]</i> pedro.leite.campos <b>online</b></div>
+
+      <div class="boot-bar"><span class="boot-bar-fill"></span></div>
+      <div class="boot-skip">clique ou pressione ESC para entrar</div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <nav class="section-nav" id="section-nav" aria-label="Navegação por seções"></nav>
+
   <!-- Cursor customizado -->
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
 
-  <!-- Partículas de fundo -->
-  <div id="particles-js"></div>
-
-  <!-- Gradiente animado de fundo -->
-  <div class="animated-gradient"></div>
-
-  <!-- Orbs de gradiente parallax -->
-  <div class="bg-orbs" aria-hidden="true">
-    <div class="bg-orb bg-orb--1"><span class="bg-orb-inner"></span></div>
-    <div class="bg-orb bg-orb--2"><span class="bg-orb-inner"></span></div>
-    <div class="bg-orb bg-orb--3"><span class="bg-orb-inner"></span></div>
-    <div class="bg-orb bg-orb--4"><span class="bg-orb-inner"></span></div>
-  </div>
+  <!-- Fundo: malha técnica + véu de profundidade -->
+  <div class="bg-grid" id="bg-grid" aria-hidden="true"></div>
+  <div class="bg-veil" aria-hidden="true"></div>
 
   <div class="wrap">
     <header class="header">
@@ -132,6 +145,11 @@
           </ul>
         </nav>
 
+        <div class="nav-status" title="Fuso de Brasília">
+          <span class="nav-status-dot" aria-hidden="true"></span>
+          <span class="nav-status-text">BSB <b id="status-clock">--:--</b></span>
+        </div>
+
         <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
           <span id="theme-icon">🌙</span>
         </button>
@@ -140,7 +158,7 @@
 
     <main>
       <!-- ========== HERO ========== -->
-      <section class="hero" id="inicio">
+      <section class="hero" id="inicio" data-nav-label="Início">
         <div class="container hero-grid">
           <div>
             <div class="hero-badge">
@@ -160,17 +178,23 @@
             </p>
 
             <div class="hero-terminal">
-              <div>
+              <div class="typed-wrap">
                 <span class="prompt">pedro@portfolio:~$</span>
-                cat <span class="arg">perfil.json</span>
+                <span id="typed-cmd">cat perfil.json</span><span class="typed-caret"></span>
               </div>
 
               <div class="terminal-output">
                 <span class="terminal-key">"stack"</span>: [
-                <span class="terminal-value-orange">"JS"</span>,
-                <span class="terminal-value-orange">"TS"</span>,
-                <span class="terminal-value-orange">"Python"</span>,
-                <span class="terminal-value-orange">"Flask"</span>
+                <span class="terminal-value-orange">"PHP"</span>,
+                <span class="terminal-value-orange">"Laravel"</span>,
+                <span class="terminal-value-orange">"Node"</span>,
+                <span class="terminal-value-orange">"React"</span>,
+                <span class="terminal-value-orange">"Python"</span>
+                ],<br />
+                <span class="terminal-key">"base"</span>: [
+                <span class="terminal-value-orange">"C"</span>,
+                <span class="terminal-value-orange">"SQL"</span>,
+                <span class="terminal-value-orange">"Git"</span>
                 ],<br />
                 <span class="terminal-key">"cargo"</span>:
                 <span class="terminal-value-green">"Estagiário Dev @ Engesoftware"</span>,<br />
@@ -185,11 +209,11 @@
             </div>
 
             <div class="cta-group">
-              <a class="btn btn-primary" href="#projetos">
+              <a class="btn btn-primary" href="#projetos" data-magnetic="0.35">
                 Ver projetos
               </a>
 
-              <a class="btn btn-ghost" href="./assets/docs/curriculo-pedro-leite-campos.pdf"
+              <a class="btn btn-ghost" data-magnetic="0.28" href="./assets/docs/curriculo-pedro-leite-campos.pdf"
                 download="Pedro-Leite-Campos-Curriculo.pdf">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path d="M13 2H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7l-3-5z"></path>
@@ -200,14 +224,14 @@
                 Baixar currículo
               </a>
 
-              <a class="btn btn-ghost" href="mailto:pleitecampos@gmail.com">
+              <a class="btn btn-ghost" data-magnetic="0.28" href="mailto:pleitecampos@gmail.com">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm2 0l6 5 6-5"></path>
                 </svg>
                 Entrar em contato
               </a>
 
-              <a class="btn btn-ghost" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
+              <a class="btn btn-ghost" data-magnetic="0.28" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path fill-rule="evenodd"
                     d="M10 0C4.5 0 0 4.5 0 10c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7C4.7 18 4.1 16 4.1 16c-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 015 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7.6.7.8 1.6.8 2.7 0 3.8-2.3 4.7-4.5 4.9.4.3.7 1 .7 1.9V19.5c0 .3.2.6.7.5C17.1 18.2 20 14.4 20 10c0-5.5-4.5-10-10-10z">
@@ -239,11 +263,11 @@
 
             <div class="profile-stats">
               <div class="stat-item">
-                <div class="stat-num">2+</div>
+                <div class="stat-num" data-count="2" data-count-suffix="+">2+</div>
                 <div class="stat-lbl">Estágios</div>
               </div>
               <div class="stat-item">
-                <div class="stat-num">7</div>
+                <div class="stat-num" data-count="7">7</div>
                 <div class="stat-lbl">Certs.</div>
               </div>
               <div class="stat-item">
@@ -256,10 +280,10 @@
       </section>
 
       <!-- ========== SOBRE ========== -->
-      <section class="section reveal" id="sobre" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="sobre" data-nav-label="Sobre">
         <div class="container">
           <div class="section-head">
-            <h3>Sobre mim</h3>
+            <h3><span class="section-index">01</span> <span data-scramble>Sobre mim</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">whoami</span>
           </div>
@@ -278,28 +302,57 @@
             </div>
 
             <div class="about-fun">
-              <div class="fun-card">
-                <span class="icon-big">🧠</span>
-                <span class="fun-lbl">Raciocínio</span>
-                <span class="fun-val">Lógico</span>
+              <div class="fun-card" role="button" aria-label="Raciocínio: Lógico">
+                <div class="fun-inner">
+                  <div class="fun-face fun-face--front">
+                    <span class="icon-big">🧠</span>
+                    <span class="fun-lbl">Raciocínio</span>
+                    <span class="fun-val">Lógico</span>
+                  </div>
+                  <div class="fun-face fun-face--back">
+                    <span class="fun-back-tag">modus operandi</span>
+                    <p>Quebro o problema em partes menores, mapeio as dependências e só então escrevo a primeira linha.</p>
+                  </div>
+                </div>
               </div>
-
-              <div class="fun-card">
-                <span class="icon-big">🚀</span>
-                <span class="fun-lbl">Perfil</span>
-                <span class="fun-val">Builder</span>
+              <div class="fun-card" role="button" aria-label="Perfil: Builder">
+                <div class="fun-inner">
+                  <div class="fun-face fun-face--front">
+                    <span class="icon-big">🚀</span>
+                    <span class="fun-lbl">Perfil</span>
+                    <span class="fun-val">Builder</span>
+                  </div>
+                  <div class="fun-face fun-face--back">
+                    <span class="fun-back-tag">modus operandi</span>
+                    <p>Prefiro protótipo rodando a slide bonito. Entregar cedo, medir e iterar.</p>
+                  </div>
+                </div>
               </div>
-
-              <div class="fun-card">
-                <span class="icon-big">🗺️</span>
-                <span class="fun-lbl">Idioma</span>
-                <span class="fun-val">PT + EN</span>
+              <div class="fun-card" role="button" aria-label="Idioma: PT + EN">
+                <div class="fun-inner">
+                  <div class="fun-face fun-face--front">
+                    <span class="icon-big">🗺️</span>
+                    <span class="fun-lbl">Idioma</span>
+                    <span class="fun-val">PT + EN</span>
+                  </div>
+                  <div class="fun-face fun-face--back">
+                    <span class="fun-back-tag">comunicação</span>
+                    <p>Português nativo e inglês intermediário — leio documentação técnica e specs sem tradutor.</p>
+                  </div>
+                </div>
               </div>
-
-              <div class="fun-card">
-                <span class="icon-big">⚡</span>
-                <span class="fun-lbl">Modo</span>
-                <span class="fun-val">Full-Stack</span>
+              <div class="fun-card" role="button" aria-label="Modo: Full-Stack">
+                <div class="fun-inner">
+                  <div class="fun-face fun-face--front">
+                    <span class="icon-big">⚡</span>
+                    <span class="fun-lbl">Modo</span>
+                    <span class="fun-val">Full-Stack</span>
+                  </div>
+                  <div class="fun-face fun-face--back">
+                    <span class="fun-back-tag">stack</span>
+                    <p>Do endpoint em Python ao componente na tela: acompanho a feature de ponta a ponta.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -307,10 +360,10 @@
       </section>
 
       <!-- ========== HABILIDADES ========== -->
-      <section class="section reveal" id="habilidades" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="habilidades" data-nav-label="Skills">
         <div class="container">
           <div class="section-head">
-            <h3>Habilidades</h3>
+            <h3><span class="section-index">02</span> <span data-scramble>Habilidades</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">skills.json</span>
           </div>
@@ -336,6 +389,32 @@
                 <li>Comunicação técnica clara</li>
                 <li>Resiliência &amp; Proatividade</li>
               </ul>
+
+              <div class="flow">
+                <span class="flow-label">// como eu trabalho</span>
+                <ol class="flow-steps">
+                  <li>
+                    <span class="flow-num">01</span>
+                    <span class="flow-title">Entender</span>
+                    <span class="flow-desc">Escuto o problema antes de propor solução</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">02</span>
+                    <span class="flow-title">Mapear</span>
+                    <span class="flow-desc">Traduzo em requisitos e critérios claros</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">03</span>
+                    <span class="flow-title">Construir</span>
+                    <span class="flow-desc">Entrego em partes pequenas e versionadas</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">04</span>
+                    <span class="flow-title">Iterar</span>
+                    <span class="flow-desc">Meço o resultado e ajusto o que não serviu</span>
+                  </li>
+                </ol>
+              </div>
             </div>
 
             <!-- Hard Skills — ordem decrescente -->
@@ -350,48 +429,65 @@
                 <h4>Hard Skills</h4>
               </div>
 
-              <div class="bar-row">
-                <div class="bar-item">
-                  <label><span>Back-end (Python/Flask)</span><span class="skill-level skill-level--comfort">Confortável</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="90"></div>
-                  </div>
+              <div class="radar-wrap">
+                <svg class="radar" viewBox="0 0 340 272" role="img"
+                  aria-label="Radar de competências técnicas: Back-end · Python, Flask e Django 90 por cento, PHP e Laravel 88 por cento, Node.js e APIs REST 85 por cento, React e Next.js 78 por cento, Front-end · JS, TS, HTML e CSS 82 por cento, Linguagem C · ponteiros e arquivos 75 por cento, Git e Versionamento 80 por cento, Vibe Coding e IA aplicada 85 por cento">
+                  <polygon class="radar-grid" points="170.0,112.0 184.1,117.9 190.0,132.0 184.1,146.1 170.0,152.0 155.9,146.1 150.0,132.0 155.9,117.9" />
+                  <polygon class="radar-grid" points="170.0,92.0 198.3,103.7 210.0,132.0 198.3,160.3 170.0,172.0 141.7,160.3 130.0,132.0 141.7,103.7" />
+                  <polygon class="radar-grid" points="170.0,72.0 212.4,89.6 230.0,132.0 212.4,174.4 170.0,192.0 127.6,174.4 110.0,132.0 127.6,89.6" />
+                  <polygon class="radar-grid" points="170.0,52.0 226.6,75.4 250.0,132.0 226.6,188.6 170.0,212.0 113.4,188.6 90.0,132.0 113.4,75.4" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="170.0" y2="52.0" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="226.6" y2="75.4" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="250.0" y2="132.0" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="226.6" y2="188.6" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="170.0" y2="212.0" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="113.4" y2="188.6" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="90.0" y2="132.0" />
+                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="113.4" y2="75.4" />
+                  <g class="radar-shape">
+                    <polygon class="radar-area" points="170.0,60.0 219.8,82.2 238.0,132.0 214.1,176.1 170.0,197.6 127.6,174.4 106.0,132.0 121.9,83.9" />
+                    <circle class="radar-vertex radar-vertex--comfort" data-i="0" cx="170.0" cy="60.0" r="4" />
+                    <circle class="radar-vertex radar-vertex--comfort" data-i="1" cx="219.8" cy="82.2" r="4" />
+                    <circle class="radar-vertex radar-vertex--comfort" data-i="2" cx="238.0" cy="132.0" r="4" />
+                    <circle class="radar-vertex radar-vertex--familiar" data-i="3" cx="214.1" cy="176.1" r="4" />
+                    <circle class="radar-vertex radar-vertex--familiar" data-i="4" cx="170.0" cy="197.6" r="4" />
+                    <circle class="radar-vertex radar-vertex--familiar" data-i="5" cx="127.6" cy="174.4" r="4" />
+                    <circle class="radar-vertex radar-vertex--familiar" data-i="6" cx="106.0" cy="132.0" r="4" />
+                    <circle class="radar-vertex radar-vertex--comfort" data-i="7" cx="121.9" cy="83.9" r="4" />
+                  </g>
+                  <text class="radar-label" data-i="0" x="170.0" y="19.0" text-anchor="middle">Back-end</text>
+                  <text class="radar-label" data-i="1" x="243.5" y="62.5" text-anchor="start">PHP/Laravel</text>
+                  <text class="radar-label" data-i="2" x="274.0" y="136.0" text-anchor="start">Node.js</text>
+                  <text class="radar-label" data-i="3" x="243.5" y="209.5" text-anchor="start">React/Next</text>
+                  <text class="radar-label" data-i="4" x="170.0" y="251.0" text-anchor="middle">Front-end</text>
+                  <text class="radar-label" data-i="5" x="96.5" y="209.5" text-anchor="end">Linguagem C</text>
+                  <text class="radar-label" data-i="6" x="66.0" y="136.0" text-anchor="end">Git</text>
+                  <text class="radar-label" data-i="7" x="96.5" y="62.5" text-anchor="end">IA aplicada</text>
+                  <circle class="radar-hit" data-i="0" data-name="Back-end · Python, Flask &amp; Django" data-level="Confortável" data-value="90" cx="170.0" cy="60.0" r="14" />
+                  <circle class="radar-hit" data-i="1" data-name="PHP &amp; Laravel" data-level="Confortável" data-value="88" cx="219.8" cy="82.2" r="14" />
+                  <circle class="radar-hit" data-i="2" data-name="Node.js &amp; APIs REST" data-level="Confortável" data-value="85" cx="238.0" cy="132.0" r="14" />
+                  <circle class="radar-hit" data-i="3" data-name="React &amp; Next.js" data-level="Familiarizado" data-value="78" cx="214.1" cy="176.1" r="14" />
+                  <circle class="radar-hit" data-i="4" data-name="Front-end · JS, TS, HTML &amp; CSS" data-level="Familiarizado" data-value="82" cx="170.0" cy="197.6" r="14" />
+                  <circle class="radar-hit" data-i="5" data-name="Linguagem C · ponteiros e arquivos" data-level="Familiarizado" data-value="75" cx="127.6" cy="174.4" r="14" />
+                  <circle class="radar-hit" data-i="6" data-name="Git &amp; Versionamento" data-level="Familiarizado" data-value="80" cx="106.0" cy="132.0" r="14" />
+                  <circle class="radar-hit" data-i="7" data-name="Vibe Coding &amp; IA aplicada" data-level="Confortável" data-value="85" cx="121.9" cy="83.9" r="14" />
+                </svg>
+
+                <output class="radar-readout" id="radar-readout">
+                  <span class="radar-readout-name">Passe o cursor nos pontos</span>
+                  <span class="radar-readout-lvl">8 competências mapeadas</span>
+                </output>
+
+                <div class="radar-legend">
+                  <span><i class="lvl-comfort"></i> Confortável</span>
+                  <span><i class="lvl-familiar"></i> Familiarizado</span>
+                  <span><i class="lvl-learning"></i> Em aprendizado</span>
                 </div>
 
-                <div class="bar-item">
-                  <label><span>Vibe Coding &amp; IA aplicada</span><span class="skill-level skill-level--comfort">Confortável</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill bar-fill--ai" data-width="85"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <label><span>Git &amp; Versionamento</span><span class="skill-level skill-level--familiar">Familiarizado</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="80"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <label><span>Front-end (JS/TS/HTML/CSS)</span><span class="skill-level skill-level--familiar">Familiarizado</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="78"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <label><span>Prototipação (Figma)</span><span class="skill-level skill-level--learning">Em aprendizado</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="75"></div>
-                  </div>
-                </div>
-
-                <div class="bar-item">
-                  <label><span>Análise de Requisitos</span><span class="skill-level skill-level--learning">Em aprendizado</span></label>
-                  <div class="bar-track">
-                    <div class="bar-fill" data-width="70"></div>
-                  </div>
-                </div>
+                <p class="radar-extra">
+                  <i class="lvl-learning"></i> Em aprendizado:
+                  Análise de Requisitos · Prototipação em Figma · AWS
+                </p>
               </div>
             </div>
 
@@ -410,40 +506,66 @@
                 <h4>Ferramentas &amp; Stack</h4>
               </div>
 
-              <div class="tools-split">
-                <div class="tools-group">
-                  <span class="tools-group-label">Linguagens &amp; Tecnologias</span>
-                  <ul class="tags">
-                    <li>JavaScript</li>
-                    <li>TypeScript</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>Python</li>
-                    <li>Flask</li>
-                    <li>Django</li>
-                    <li>React</li>
-                    <li>Pandas</li>
-                    <li>SQL</li>
-                    <li>AWS</li>
-                    <li>APIs REST</li>
-                    <li>Git</li>
-                    <li>Jira</li>
-                    <li>WordPress</li>
-                    <li>Figma</li>
-                    <li>Kanban</li>
-                  </ul>
+              <div class="tech-sphere-wrap">
+                <div class="tech-sphere" id="tech-sphere" role="img"
+                  aria-label="Esfera interativa com as tecnologias que utilizo: Python, JavaScript, PHP, Laravel, Node.js, Flask, TypeScript, React, Next.js, HTML5, CSS3, Tailwind, Django, Vite, Supabase, PostgreSQL, Linguagem C, Pandas, AWS, APIs REST, Git, Jira, WordPress, Figma, Vercel, Claude Code, Codex, Cursor, GitHub Copilot">
+                    <span class="tech-node tech-node--core">Python</span>
+                    <span class="tech-node tech-node--core">JavaScript</span>
+                    <span class="tech-node tech-node--core">PHP</span>
+                    <span class="tech-node tech-node--core">Laravel</span>
+                    <span class="tech-node tech-node--core">Node.js</span>
+                    <span class="tech-node tech-node--core">Flask</span>
+                    <span class="tech-node">TypeScript</span>
+                    <span class="tech-node">React</span>
+                    <span class="tech-node">Next.js</span>
+                    <span class="tech-node">HTML5</span>
+                    <span class="tech-node">CSS3</span>
+                    <span class="tech-node">Tailwind</span>
+                    <span class="tech-node">Django</span>
+                    <span class="tech-node">Vite</span>
+                    <span class="tech-node">Supabase</span>
+                    <span class="tech-node">PostgreSQL</span>
+                    <span class="tech-node">Linguagem C</span>
+                    <span class="tech-node">Pandas</span>
+                    <span class="tech-node">AWS</span>
+                    <span class="tech-node">APIs REST</span>
+                    <span class="tech-node">Git</span>
+                    <span class="tech-node">Jira</span>
+                    <span class="tech-node">WordPress</span>
+                    <span class="tech-node">Figma</span>
+                    <span class="tech-node">Vercel</span>
+                    <span class="tech-node tech-node--ai">Claude Code</span>
+                    <span class="tech-node tech-node--ai">Codex</span>
+                    <span class="tech-node tech-node--ai">Cursor</span>
+                    <span class="tech-node tech-node--ai">GitHub Copilot</span>
                 </div>
 
-                <div class="tools-divider"></div>
+                <div class="tech-legend">
+                  <span class="tech-legend-title">Uma stack, três camadas</span>
+                  <p>
+                    Arraste a esfera para explorar. Cada nó é uma tecnologia que já usei em projeto real,
+                    estágio ou estudo — do back-end em Python ao fluxo de trabalho assistido por IA.
+                  </p>
 
-                <div class="tools-group">
-                  <span class="tools-group-label tools-group-label--ai">&#10022; IA &amp; Vibe Coding</span>
-                  <ul class="tags">
-                    <li class="tag--ai">Claude Code</li>
-                    <li class="tag--ai">Codex</li>
-                    <li class="tag--ai">Cursor</li>
-                    <li class="tag--ai">GitHub Copilot</li>
-                  </ul>
+                  <div class="tech-legend-keys">
+                    <span><i class="key-core"></i> Domínio principal</span>
+                    <span><i class="key-stack"></i> Ferramentas &amp; stack</span>
+                    <span><i class="key-ai"></i> IA &amp; Vibe Coding</span>
+                  </div>
+
+                  <dl class="tech-index">
+                    <dt>Linguagens</dt>
+                    <dd>Python · JavaScript · TypeScript · PHP · Linguagem C · SQL</dd>
+
+                    <dt>Frameworks</dt>
+                    <dd>Laravel · Node.js · React · Next.js · Django · Flask</dd>
+
+                    <dt>Dados &amp; infra</dt>
+                    <dd>PostgreSQL · Supabase · AWS · Vercel · Git · APIs REST</dd>
+
+                    <dt>Produto</dt>
+                    <dd>Figma · Jira · Kanban · WordPress</dd>
+                  </dl>
                 </div>
               </div>
             </div>
@@ -452,10 +574,10 @@
       </section>
 
       <!-- ========== EXPERIÊNCIA ========== -->
-      <section class="section reveal" id="experiencia" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="experiencia" data-nav-label="Experiência">
         <div class="container">
           <div class="section-head">
-            <h3>Experiência Profissional</h3>
+            <h3><span class="section-index">03</span> <span data-scramble>Experiência Profissional</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">git log</span>
           </div>
@@ -505,10 +627,10 @@
       </section>
 
       <!-- ========== FORMAÇÃO & CERTIFICAÇÕES ========== -->
-      <section class="section reveal" id="formacao" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="formacao" data-nav-label="Formação">
         <div class="container">
           <div class="section-head">
-            <h3>Formação, Idiomas &amp; Certificações</h3>
+            <h3><span class="section-index">04</span> <span data-scramble>Formação, Idiomas &amp; Certificações</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">README.md</span>
           </div>
@@ -600,10 +722,10 @@
       </section>
 
       <!-- ========== PROJETOS ========== -->
-      <section class="section reveal" id="projetos" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="projetos" data-nav-label="Projetos">
         <div class="container">
           <div class="section-head">
-            <h3>Projetos</h3>
+            <h3><span class="section-index">05</span> <span data-scramble>Projetos</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">builds</span>
           </div>
@@ -618,7 +740,7 @@
           </div>
 
           <div class="projects-grid">
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">🌐</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -657,7 +779,7 @@
               </div>
             </article>
 
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">🗂️</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -710,7 +832,7 @@
               </div>
             </article>
 
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">🤖</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -763,7 +885,7 @@
               </div>
             </article>
 
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">⛪</span>
                 <span class="proj-status proj-status-live">Publicado</span>
@@ -809,7 +931,113 @@
               </div>
             </article>
 
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
+                <span class="proj-icon">📊</span>
+                <span class="proj-status proj-status-idea">Em evolução</span>
+              </div>
+
+              <h4>Anime Finance</h4>
+              <p class="proj-description">
+                Aplicação fullstack de finanças pessoais com temática anime: lançamento de transações, metas de
+                economia, dashboards com gráficos e um módulo de IA que analisa os hábitos de gasto e sugere ajustes.
+                Backend em Django REST com autenticação JWT e frontend React consumindo a API.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># apps do backend</span>
+<span class="pp-key">users</span>      <span class="pp-arrow">→</span> cadastro + <span class="pp-string">JWT</span>
+<span class="pp-key">transactions</span> <span class="pp-arrow">→</span> receitas, gastos, categorias
+<span class="pp-key">goals</span>      <span class="pp-arrow">→</span> metas e progresso
+<span class="pp-key">ai</span>         <span class="pp-arrow">→</span> análise de hábitos via LLM</pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Exercitar uma arquitetura fullstack completa — API versionada,
+                    autenticação, testes e frontend desacoplado</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Modelagem do domínio, API em Django REST, integração com LLM,
+                    testes com pytest e construção da interface em React</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Django</span>
+                <span class="tech-pill">Django REST</span>
+                <span class="tech-pill">JWT</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">Recharts</span>
+                <span class="tech-pill">pytest</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/anime-finance" target="_blank"
+                  rel="noreferrer">GitHub</a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
+                <span class="proj-icon">🧮</span>
+                <span class="proj-status proj-status-live">Contínuo</span>
+              </div>
+
+              <h4>Fundamentos em Linguagem C</h4>
+              <p class="proj-description">
+                Repositórios de estudo e das aulas de APC II, onde trabalho os fundamentos que a web esconde:
+                ponteiros, aritmética de ponteiros, alocação de memória, manipulação de arquivos e estruturas de
+                dados implementadas do zero.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment">/* aritmética de ponteiros */</span>
+<span class="pp-key">int</span> v[] = {10, 20, 30};
+<span class="pp-key">int</span> *p = v;
+
+printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment">// 30</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Firmar a base de computação — memória, ponteiros e complexidade —
+                    que sustenta qualquer linguagem de alto nível</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Implementação dos exercícios, organização por tópico e
+                    documentação do progresso</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Linguagem C</span>
+                <span class="tech-pill">Ponteiros</span>
+                <span class="tech-pill">Estruturas de Dados</span>
+                <span class="tech-pill">Arquivos</span>
+                <span class="tech-pill">Algoritmos</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/c-learning" target="_blank"
+                  rel="noreferrer">c-learning</a>
+                <a class="proj-link" href="https://github.com/plc232007/aulas-c" target="_blank"
+                  rel="noreferrer">aulas-c</a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">🧪</span>
                 <span class="proj-status proj-status-idea">Em evolução</span>
@@ -861,7 +1089,136 @@
             </div>
           </div>
           <div class="projects-grid">
-            <article class="proj-card">
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
+                <span class="proj-icon">📚</span>
+                <span class="proj-status proj-status-live">Em produção</span>
+              </div>
+
+              <h4>App dos Catequistas — Paróquia São José</h4>
+              <p class="proj-description">
+                Plataforma web usada por cerca de 70 catequistas: biblioteca de materiais de formação, mural de avisos,
+                calendário de encontros e painel administrativo para a coordenação publicar conteúdo. Autenticação e
+                permissões controladas por Row Level Security no banco.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Substituir grupos de WhatsApp e pastas soltas por um lugar único,
+                    organizado e com controle de acesso</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — modelagem no Postgres, políticas de
+                    segurança, SPA em React, painel admin e deploy</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">React Router</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/app-catequese" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://app-catequese-taupe.vercel.app" target="_blank"
+                  rel="noreferrer">Ver app</a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
+                <span class="proj-icon">💰</span>
+                <span class="proj-status proj-status-idea">Em evolução</span>
+              </div>
+
+              <h4>Organizador de Contas</h4>
+              <p class="proj-description">
+                Sistema de finanças pessoais construído em Next.js: registro de gastos e receitas, contas a pagar com
+                vencimento, compras parceladas e resumo do mês. Cada pessoa tem sua própria conta e enxerga apenas os
+                próprios dados. Instalável como PWA no celular.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Resolver o controle financeiro da família sem depender de planilha,
+                    com isolamento real de dados por usuário</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — App Router, migrations SQL, Row Level
+                    Security, design system com shadcn/ui e configuração de PWA</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Next.js 16</span>
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">shadcn/ui</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">Zod</span>
+                <span class="tech-pill">PWA</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/organizador-contas" target="_blank"
+                  rel="noreferrer">GitHub</a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
+                <span class="proj-icon">🏢</span>
+                <span class="proj-status proj-status-live">Publicado</span>
+              </div>
+
+              <h4>Leite Campos Consultoria</h4>
+              <p class="proj-description">
+                Site institucional da consultoria da família, apresentando os serviços, a proposta de valor e os
+                canais de contato. Página leve, responsiva e sem dependências, publicada em GitHub Pages.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Dar presença digital à empresa e centralizar a captação de
+                    contatos</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Concepção, design, desenvolvimento front-end e publicação</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">GitHub Pages</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/leite-campos" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://plc232007.github.io/leite-campos/" target="_blank"
+                  rel="noreferrer">Ver site</a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
               <div class="proj-top">
                 <span class="proj-icon">🛍️</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -908,10 +1265,10 @@
       </section>
 
       <!-- ========== CONTATO ========== -->
-      <section class="section reveal" id="contato" style="opacity: 1 !important; transform: none !important;">
+      <section class="section reveal" id="contato" data-nav-label="Contato">
         <div class="container">
           <div class="section-head">
-            <h3>Contato</h3>
+            <h3><span class="section-index">06</span> <span data-scramble>Contato</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">ping me</span>
           </div>

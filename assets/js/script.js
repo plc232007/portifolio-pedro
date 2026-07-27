@@ -4,7 +4,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
   initThemeToggle();
-  initCodeBackground();
   initCustomCursor();
   
   // Garantir que o conteúdo seja visível mesmo se GSAP falhar
@@ -63,109 +62,9 @@ function initThemeToggle() {
     themeIcon.textContent = isLight ? "☀️" : "🌙";
 
     localStorage.setItem("theme", isLight ? "light" : "dark");
-    
-    // Reinicializar fundo com nova cor
-    initCodeBackground();
+    // O fundo agora é só CSS — troca de tema com as variáveis, sem repintar nada
   });
 }
-
-// ============================================
-// MATRIX RAIN (Canvas)
-// ============================================
-let _codeAnimId = null;
-
-function initCodeBackground() {
-  if (_codeAnimId) {
-    cancelAnimationFrame(_codeAnimId);
-    _codeAnimId = null;
-  }
-
-  const container = document.getElementById('particles-js');
-  if (!container) return;
-
-  let canvas = container.querySelector('canvas.code-bg-canvas');
-  if (!canvas) {
-    canvas = document.createElement('canvas');
-    canvas.className = 'code-bg-canvas';
-    canvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;';
-    container.innerHTML = '';
-    container.appendChild(canvas);
-  }
-
-  const ctx = canvas.getContext('2d');
-  const isLight = document.body.classList.contains('light-theme');
-
-  // Caracteres: katakana + binário + símbolos de código
-  const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0101{}()<>=/*#&@!?$%';
-
-  const fontSize = 14;
-  let cols, drops, glowDrops;
-
-  function resize() {
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-    cols = Math.floor(canvas.width / fontSize);
-    drops = Array.from({ length: cols }, () => Math.random() * -canvas.height / fontSize);
-    // Algumas colunas têm brilho extra (cabeça da gota)
-    glowDrops = new Set(
-      Array.from({ length: Math.floor(cols * 0.3) }, () => Math.floor(Math.random() * cols))
-    );
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Cores base
-  const colorMain   = isLight ? 'rgba(0,119,204,'  : 'rgba(0,200,255,';
-  const colorBright  = isLight ? 'rgba(0,150,220,0.6)' : 'rgba(160,240,255,0.7)';
-  const colorFade    = isLight ? 'rgba(244,248,252,' : 'rgba(5,11,20,';
-  const fadeAlpha    = isLight ? '0.25)' : '0.20)';
-
-  function draw() {
-    // Rastro de desvanecimento — efeito clássico de caudas
-    ctx.fillStyle = colorFade + fadeAlpha;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.font = `${fontSize}px 'Fira Code', monospace`;
-
-    for (let i = 0; i < cols; i++) {
-      const char = chars[Math.floor(Math.random() * chars.length)];
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-
-      const isGlow = glowDrops.has(i);
-
-      if (isGlow) {
-        // Cabeça da gota: sutil com glow leve
-        ctx.shadowColor = isLight ? '#0077cc' : '#00c8ff';
-        ctx.shadowBlur = 8;
-        ctx.fillStyle = colorBright;
-        ctx.fillText(char, x, y);
-        ctx.shadowBlur = 0;
-      } else {
-        // Corpo da gota: opacidade bem reduzida
-        const depthAlpha = Math.min(0.30, 0.05 + (drops[i] % 20) / 20 * 0.25);
-        ctx.fillStyle = colorMain + depthAlpha + ')';
-        ctx.fillText(char, x, y);
-      }
-
-      // Reinicia a coluna ao sair da tela, com offset aleatório
-      if (y > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-        // Aleatoriamente adiciona/remove brilho extra
-        if (Math.random() > 0.6) glowDrops.add(i);
-        else glowDrops.delete(i);
-      }
-
-      drops[i] += 0.12 + Math.random() * 0.10;
-    }
-
-    _codeAnimId = requestAnimationFrame(draw);
-  }
-
-  draw();
-}
-
 
 // ============================================
 // CURSOR CUSTOMIZADO
@@ -225,70 +124,6 @@ function initCustomCursor() {
 }
 
 // ============================================
-// ORBS DE FUNDO — parallax + tint por seção
-// ============================================
-function initBackgroundOrbs() {
-  const orbs = document.querySelectorAll('.bg-orb');
-  if (!orbs.length) return;
-
-  // Parallax: cada orb se move em velocidade/direção diferente conforme o scroll
-  const config = [
-    { y: 40,  x:  6 },
-    { y: -55, x: -8 },
-    { y: 30,  x:  10 },
-    { y: -65, x: -5 }
-  ];
-
-  orbs.forEach((orb, i) => {
-    const c = config[i] || { y: 30, x: 0 };
-    gsap.to(orb, {
-      yPercent: c.y,
-      xPercent: c.x,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.body,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1.2
-      }
-    });
-  });
-
-  // Tint sutil — hue-rotate diferente por seção (apenas no tema escuro)
-  const sectionHues = {
-    inicio:      0,
-    sobre:      -8,
-    habilidades: 12,
-    experiencia: 28,
-    formacao:   -22,
-    projetos:    18,
-    contato:     0
-  };
-
-  const orbsContainer = document.querySelector('.bg-orbs');
-  if (!orbsContainer) return;
-
-  Object.entries(sectionHues).forEach(([id, hue]) => {
-    const section = document.getElementById(id);
-    if (!section) return;
-
-    ScrollTrigger.create({
-      trigger: section,
-      start: 'top 55%',
-      end: 'bottom 45%',
-      onToggle: ({ isActive }) => {
-        if (!isActive) return;
-        gsap.to(orbsContainer, {
-          '--orb-hue': hue + 'deg',
-          duration: 1.4,
-          ease: 'power2.inOut'
-        });
-      }
-    });
-  });
-}
-
-// ============================================
 // ANIMAÇÕES COM GSAP
 // ============================================
 function initGSAPAnimations() {
@@ -298,9 +133,6 @@ function initGSAPAnimations() {
   }
   
   gsap.registerPlugin(ScrollTrigger);
-
-  // Parallax dos orbs de gradiente + tint sutil por seção
-  initBackgroundOrbs();
 
   // Animação do Hero
   gsap.from('.hero-badge', {
@@ -359,99 +191,9 @@ function initGSAPAnimations() {
     ease: 'power3.out'
   });
 
-  // Animação das seções com ScrollTrigger (sem afetar visibilidade inicial)
-  gsap.utils.toArray('.section').forEach((section, index) => {
-    gsap.from(section.children, {
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 80%',
-        toggleActions: 'play none none none'
-      },
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power3.out'
-    });
-  });
-
-  // Animação dos cards de habilidades
-  gsap.utils.toArray('.skill-card').forEach((card, index) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-      },
-      opacity: 0,
-      y: 50,
-      scale: 0.9,
-      duration: 0.8,
-      delay: index * 0.1,
-      ease: 'back.out(1.7)'
-    });
-  });
-
-  // Animação das barras de progresso
-  gsap.utils.toArray('.bar-fill').forEach(bar => {
-    const width = bar.dataset.width;
-    
-    gsap.to(bar, {
-      scrollTrigger: {
-        trigger: bar,
-        start: 'top 85%',
-      },
-      width: `${width}%`,
-      duration: 1.5,
-      ease: 'power2.out'
-    });
-  });
-
-  // Animação dos projetos
-  gsap.utils.toArray('.proj-card').forEach((card, index) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-      },
-      opacity: 0,
-      y: 60,
-      rotationX: -15,
-      duration: 1,
-      delay: index * 0.15,
-      ease: 'power3.out'
-    });
-  });
-
-  // Animação da timeline de experiência
-  gsap.utils.toArray('.tl-entry').forEach((entry, index) => {
-    gsap.from(entry, {
-      scrollTrigger: {
-        trigger: entry,
-        start: 'top 85%',
-      },
-      opacity: 0,
-      x: -50,
-      duration: 0.8,
-      delay: index * 0.2,
-      ease: 'power2.out'
-    });
-  });
-
-  // Animação dos fun cards
-  gsap.utils.toArray('.fun-card').forEach((card, index) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 85%',
-      },
-      opacity: 0,
-      scale: 0.8,
-      rotation: -5,
-      duration: 0.6,
-      delay: index * 0.1,
-      ease: 'back.out(2)'
-    });
-  });
+  /* As revelações por scroll (seções, cards, barras de skill e timeline)
+     são tratadas em interactions.js com IntersectionObserver + CSS.
+     Assim o conteúdo nunca fica preso em opacity:0 se o GSAP falhar. */
 }
 
 // ============================================
@@ -463,22 +205,26 @@ function initVanillaTilt() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  // Aplicar tilt nos cards
-  VanillaTilt.init(document.querySelectorAll('.skill-card, .proj-card, .fun-card, .profile-card'), {
-    max: 8,
-    speed: 400,
+  // Inclinação discreta: o suficiente para dar volume, longe do exagero.
+  // A profundidade vem do translateZ dos elementos internos (enhance.css).
+  VanillaTilt.init(document.querySelectorAll('.proj-card'), {
+    max: 3.5,
+    speed: 900,
     glare: true,
-    'max-glare': 0.3,
-    scale: 1.02
+    'max-glare': 0.1,
+    scale: 1,
+    perspective: 1400
   });
 
-  // Tilt mais suave para cards de experiência
-  VanillaTilt.init(document.querySelectorAll('.exp-card, .edu-card'), {
-    max: 5,
-    speed: 400,
-    glare: true,
-    'max-glare': 0.2
+  VanillaTilt.init(document.querySelectorAll('.skill-card, .exp-card, .edu-card'), {
+    max: 2.5,
+    speed: 900,
+    glare: false,
+    scale: 1,
+    perspective: 1600
   });
+
+  // O card de perfil fica parado — a foto não deve balançar
 }
 
 // ============================================

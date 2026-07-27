@@ -1,0 +1,1287 @@
+/* ============================================================
+   ENHANCE.CSS — camada criativa
+   Carregado DEPOIS de style.css. Contém: boot screen, HUD de
+   scroll, radar de competências, esfera 3D de tecnologias, cards
+   com profundidade e o acabamento geral "tech".
+   ============================================================ */
+
+:root {
+  --glass: rgba(11, 22, 42, 0.55);
+  --glass-line: rgba(0, 200, 255, 0.14);
+  --hud: rgba(0, 200, 255, 0.9);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+body.light-theme {
+  --glass: rgba(255, 255, 255, 0.6);
+  --glass-line: rgba(0, 102, 204, 0.16);
+  --hud: rgba(0, 119, 204, 0.9);
+}
+
+/* ============================================================
+   0. REVELAÇÃO POR SCROLL
+   Só esconde quando o JS confirma que sabe revelar (html.js-reveal).
+   ============================================================ */
+html.js-reveal .reveal-item {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s var(--ease-out) var(--reveal-delay, 0ms),
+    transform 0.75s var(--ease-out) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.js-reveal .reveal-item.is-in {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Cards entram com um leve giro 3D */
+html.js-reveal .proj-card.reveal-item,
+html.js-reveal .skill-card.reveal-item {
+  transform: perspective(1200px) rotateX(-4deg) translateY(30px);
+}
+
+html.js-reveal .tl-entry.reveal-item {
+  transform: translateX(-24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   1. BOOT SCREEN
+   ============================================================ */
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 12000;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  transition: opacity 0.7s var(--ease-out), visibility 0.7s;
+  /* Failsafe puro em CSS: se o JS falhar, a tela sai sozinha */
+  animation: bootFailsafe 0.6s ease 6s forwards;
+}
+
+@keyframes bootFailsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.boot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(0, 200, 255, 0.14), transparent 62%);
+  pointer-events: none;
+}
+
+.boot.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.boot-panel {
+  position: relative;
+  z-index: 1;
+  width: min(460px, 86vw);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+}
+
+.boot-logo {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.boot-logo span {
+  color: var(--cyan);
+}
+
+.boot-sub {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.6rem;
+}
+
+.boot-line {
+  color: var(--muted);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  line-height: 1.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boot-line.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.boot-line b {
+  color: var(--green);
+  font-weight: 400;
+}
+
+.boot-line i {
+  color: var(--cyan);
+  font-style: normal;
+}
+
+.boot-bar {
+  margin-top: 1.4rem;
+  height: 2px;
+  background: var(--glass-line);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.boot-bar-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  transition: width 0.3s var(--ease-out);
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.boot-skip {
+  margin-top: 0.9rem;
+  font-size: 0.66rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+/* ============================================================
+   2. HUD — progresso de scroll + navegação lateral
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--cyan), var(--green) 55%, var(--orange));
+  z-index: 9000;
+  box-shadow: 0 0 14px rgba(0, 200, 255, 0.6);
+  will-change: transform;
+}
+
+.section-nav {
+  position: fixed;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: flex-end;
+}
+
+.section-dot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.section-dot-mark {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border-h);
+  background: transparent;
+  transition: all 0.4s var(--ease-out);
+  flex: none;
+}
+
+.section-dot-label {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: all 0.35s var(--ease-out);
+  white-space: nowrap;
+  order: -1;
+}
+
+.section-dot:hover .section-dot-label,
+.section-dot.is-active .section-dot-label {
+  opacity: 1;
+  transform: none;
+  color: var(--cyan);
+}
+
+.section-dot:hover .section-dot-mark {
+  border-color: var(--cyan);
+  transform: scale(1.3);
+}
+
+.section-dot.is-active .section-dot-mark {
+  background: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  transform: scale(1.35);
+}
+
+@media (max-width: 1180px) {
+  .section-nav {
+    display: none;
+  }
+}
+
+/* ============================================================
+   3. HERO
+   O núcleo 3D que ficava atrás da foto foi retirado a pedido.
+   O módulo continua parado em assets/js/hero-core.js — se um dia
+   ele voltar, é só recriar a <div id="hero-3d"> e reestilizar aqui.
+   ============================================================ */
+
+/* Nome do hero com gradiente animado */
+.hero-name span {
+  background: linear-gradient(100deg, var(--cyan), var(--cyan2) 40%, var(--green) 70%, var(--cyan));
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameFlow 8s linear infinite;
+}
+
+@keyframes nameFlow {
+  to {
+    background-position: 260% 0;
+  }
+}
+
+/* Terminal do hero — comando digitado */
+.typed-wrap {
+  color: var(--cyan2);
+}
+
+#typed-cmd {
+  color: var(--orange);
+}
+
+.typed-caret {
+  display: inline-block;
+  width: 7px;
+  height: 1em;
+  background: var(--cyan);
+  vertical-align: -0.15em;
+  margin-left: 1px;
+  animation: blink 1.1s step-end infinite;
+}
+
+/* ============================================================
+   4. BOTÕES MAGNÉTICOS
+   ============================================================ */
+[data-magnetic] {
+  transform: translate3d(var(--mag-x, 0), var(--mag-y, 0), 0);
+  will-change: transform;
+}
+
+.btn[data-magnetic]:hover {
+  transform: translate3d(var(--mag-x, 0), var(--mag-y, 0), 0) scale(1.03);
+}
+
+/* Brilho de varredura nos botões primários */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  animation: btnSweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes btnSweep {
+  0%,
+  60% {
+    left: -60%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+/* ============================================================
+   4a. PIPELINE "COMO EU TRABALHO" (Soft Skills)
+   ============================================================ */
+.flow {
+  margin-top: 1.3rem;
+  padding-top: 1.1rem;
+  border-top: 1px dashed var(--border);
+}
+
+.flow-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  opacity: 0.8;
+  margin-bottom: 0.9rem;
+}
+
+.flow-steps {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+}
+
+/* Trilho + pacote de luz percorrendo o pipeline */
+.flow-steps::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 10px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--cyan), rgba(0, 200, 255, 0.15));
+}
+
+.flow-steps::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  animation: flowPacket 4.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes flowPacket {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+
+.flow-steps li {
+  position: relative;
+  padding: 0 0 0.85rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.5rem;
+  align-items: baseline;
+}
+
+.flow-steps li:last-child {
+  padding-bottom: 0;
+}
+
+/* Nó no trilho */
+.flow-steps li::before {
+  content: "";
+  position: absolute;
+  left: -1.6rem;
+  top: 0.45rem;
+  width: 7px;
+  height: 7px;
+  margin-left: 3px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--cyan);
+  transition: all 0.3s var(--ease-out);
+}
+
+.flow-steps li:hover::before {
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+.flow-num {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.flow-title {
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.flow-desc {
+  grid-column: 2;
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   4b. RADAR DE COMPETÊNCIAS (Hard Skills)
+   ============================================================ */
+.radar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radar {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  overflow: visible;
+}
+
+.radar-grid {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 1;
+}
+
+.radar-grid:last-of-type {
+  stroke: var(--border-h);
+  stroke-opacity: 0.55;
+}
+
+.radar-spoke {
+  stroke: var(--border);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+
+.radar-shape {
+  transform-box: view-box;
+  transform-origin: 170px 132px;
+  transform: scale(0.05);
+  opacity: 0;
+  transition: transform 1.1s var(--ease-out) 0.15s, opacity 0.7s ease 0.15s;
+}
+
+.skill-card.is-in .radar-shape,
+html:not(.js-reveal) .radar-shape {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.radar-area {
+  fill: rgba(0, 200, 255, 0.16);
+  stroke: var(--cyan);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.45));
+}
+
+body.light-theme .radar-area {
+  fill: rgba(0, 119, 204, 0.14);
+  filter: none;
+}
+
+.radar-vertex {
+  stroke: var(--bg);
+  stroke-width: 1.5;
+  transition: r 0.3s var(--ease-out), opacity 0.3s ease;
+}
+
+.radar-vertex--comfort {
+  fill: var(--green);
+}
+.radar-vertex--familiar {
+  fill: var(--cyan);
+}
+.radar-vertex--learning {
+  fill: var(--orange);
+}
+
+.radar-vertex.is-active {
+  r: 7;
+}
+
+.radar-label {
+  fill: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: fill 0.25s ease;
+}
+
+.radar-label.is-active {
+  fill: var(--cyan);
+}
+
+.radar-hit {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.radar-readout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  text-align: center;
+  min-height: 2.6rem;
+}
+
+.radar-readout-name {
+  font-family: var(--display);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.radar-readout-lvl {
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.radar-readout.is-live .radar-readout-lvl {
+  color: var(--cyan);
+}
+
+.radar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1rem;
+  font-size: 0.64rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.radar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.radar-legend i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.lvl-comfort {
+  background: var(--green);
+  box-shadow: 0 0 7px var(--green);
+}
+.lvl-familiar {
+  background: var(--cyan);
+  box-shadow: 0 0 7px var(--cyan);
+}
+.lvl-learning {
+  background: var(--orange);
+  box-shadow: 0 0 7px var(--orange);
+}
+
+.radar-extra {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-top: 0.6rem;
+  margin-top: 0.2rem;
+  border-top: 1px dashed var(--border);
+  width: 100%;
+}
+
+.radar-extra i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+  flex: none;
+}
+
+/* ============================================================
+   5. ESFERA 3D DE TECNOLOGIAS
+   ============================================================ */
+.tech-sphere-wrap {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tech-sphere {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  max-height: 480px;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.tech-sphere.is-dragging {
+  cursor: grabbing;
+}
+
+@keyframes hintSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tech-sphere::before {
+  content: "";
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.12), transparent 68%);
+  pointer-events: none;
+}
+
+.tech-sphere::after {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  border: 1px dashed var(--glass-line);
+  animation: hintSpin 40s linear infinite;
+  pointer-events: none;
+}
+
+.tech-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.01em;
+  padding: 0.2rem 0.52rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text);
+  backdrop-filter: blur(6px);
+  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform, opacity;
+}
+
+.tech-node:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  box-shadow: 0 0 18px rgba(0, 200, 255, 0.35);
+}
+
+.tech-node--ai {
+  color: var(--orange);
+  border-color: rgba(255, 149, 0, 0.4);
+}
+
+.tech-node--ai:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+  box-shadow: 0 0 18px rgba(255, 149, 0, 0.35);
+}
+
+.tech-node--core {
+  color: var(--green);
+  border-color: rgba(57, 255, 138, 0.4);
+  font-weight: 600;
+}
+
+.tech-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.tech-legend-title {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tech-legend p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.tech-legend-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.tech-legend-keys span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tech-legend-keys i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.key-core {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+.key-stack {
+  background: var(--cyan);
+  box-shadow: 0 0 8px var(--cyan);
+}
+.key-ai {
+  background: var(--orange);
+  box-shadow: 0 0 8px var(--orange);
+}
+
+/* Índice textual — versão escaneável (e acessível) da esfera */
+.tech-index {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem 0.9rem;
+  margin-top: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px dashed var(--border);
+  font-size: 0.72rem;
+}
+
+.tech-index dt {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+  padding-top: 0.1rem;
+}
+
+.tech-index dd {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 620px) {
+  .tech-index {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+  .tech-index dd {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .tech-sphere-wrap {
+    grid-template-columns: 1fr;
+  }
+  .tech-sphere {
+    max-height: 320px;
+  }
+  .tech-node {
+    font-size: 0.62rem;
+    padding: 0.18rem 0.45rem;
+  }
+}
+
+/* ============================================================
+   6. FUN CARDS COM VIRADA 3D
+   ============================================================ */
+.about-fun {
+  perspective: 1000px;
+}
+
+.fun-card {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  backdrop-filter: none !important;
+  transform-style: preserve-3d;
+  min-height: 118px;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+
+.fun-card::before {
+  display: none;
+}
+
+.fun-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.fun-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 118px;
+  transform-style: preserve-3d;
+  transition: transform 0.75s var(--ease-io);
+}
+
+.fun-card:hover .fun-inner,
+.fun-card:focus-visible .fun-inner,
+.fun-card.is-flipped .fun-inner {
+  transform: rotateY(180deg);
+}
+
+.fun-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  backdrop-filter: blur(16px) saturate(180%);
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.3rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.fun-card:hover .fun-face {
+  border-color: var(--cyan);
+  box-shadow: 0 16px 44px rgba(0, 200, 255, 0.16);
+}
+
+.fun-face--back {
+  transform: rotateY(180deg);
+  background: linear-gradient(150deg, rgba(0, 200, 255, 0.14), rgba(57, 255, 138, 0.07)), var(--surface);
+}
+
+.fun-face--back p {
+  font-size: 0.72rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.fun-face--back .fun-back-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+/* ============================================================
+   7. CARDS DE PROJETO — profundidade + holografia
+   ============================================================ */
+.proj-card {
+  transform-style: preserve-3d;
+}
+
+.proj-card > * {
+  transition: transform 0.5s var(--ease-out);
+}
+
+/* Hover mais contido — o salto original era grande demais */
+.proj-card:hover {
+  transform: translateY(-4px);
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+}
+
+.proj-card:hover .proj-top {
+  transform: translateZ(16px);
+}
+
+.proj-card:hover h4 {
+  transform: translateZ(12px);
+}
+
+.proj-card:hover .proj-techs {
+  transform: translateZ(7px);
+}
+
+.proj-card:hover .proj-links {
+  transform: translateZ(9px);
+}
+
+/* Faixa holográfica que atravessa o card */
+.proj-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(0, 200, 255, 0.1) 45%,
+    rgba(57, 255, 138, 0.12) 52%,
+    rgba(255, 149, 0, 0.08) 58%,
+    transparent 72%
+  );
+  background-size: 240% 240%;
+  background-position: 100% 0;
+  opacity: 0;
+  transition: opacity 0.4s ease, background-position 0.9s var(--ease-out);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.proj-card:hover::after {
+  opacity: 1;
+  background-position: 0 100%;
+}
+
+/* Cantos de "mira" tipo HUD */
+.proj-card .proj-top::before {
+  content: "";
+  position: absolute;
+  top: -0.35rem;
+  left: -0.35rem;
+  width: 14px;
+  height: 14px;
+  border-top: 1px solid var(--cyan);
+  border-left: 1px solid var(--cyan);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-out);
+  transform: translate(6px, 6px);
+}
+
+.proj-card:hover .proj-top::before {
+  opacity: 0.8;
+  transform: none;
+}
+
+/* Spotlight — segue o cursor dentro do card */
+.proj-card[data-spotlight]::before {
+  background: radial-gradient(
+    circle at var(--sx, 50%) var(--sy, 50%),
+    rgba(0, 200, 255, 0.18),
+    transparent 55%
+  );
+}
+
+/* ============================================================
+   8. SEÇÕES — cabeçalho com índice e linha animada
+   ============================================================ */
+.section-head {
+  position: relative;
+}
+
+.section-index {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--cyan);
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+  margin-right: 0.15rem;
+}
+
+.section-head h3 {
+  position: relative;
+}
+
+/* ============================================================
+   9. TIMELINE — nós com pulso e conexão viva
+   ============================================================ */
+.tl-dot {
+  position: relative;
+}
+
+.tl-dot::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--cyan);
+  opacity: 0;
+  animation: tlPing 2.6s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes tlPing {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   10. FUNDO — malha técnica
+   Substituiu matrix rain + orbs coloridos + scanlines duplicadas.
+   Duas grades sobrepostas (fina e mestra), como papel milimetrado
+   de projeto, com um véu radial para dar profundidade.
+   ============================================================ */
+:root {
+  --grid-fine: rgba(0, 200, 255, 0.07);
+  --grid-major: rgba(0, 200, 255, 0.15);
+  --veil-top: rgba(0, 200, 255, 0.09);
+  --veil-bottom: rgba(0, 255, 224, 0.045);
+}
+
+body.light-theme {
+  --grid-fine: rgba(0, 90, 160, 0.08);
+  --grid-major: rgba(0, 90, 160, 0.16);
+  --veil-top: rgba(0, 119, 204, 0.08);
+  --veil-bottom: rgba(0, 119, 204, 0.04);
+}
+
+.bg-grid {
+  position: fixed;
+  /* Folga para o deslocamento no scroll não revelar a borda */
+  inset: -14% -4%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px);
+  background-size: 44px 44px, 44px 44px, 220px 220px, 220px 220px;
+  transform: translate3d(0, var(--grid-shift, 0px), 0);
+  will-change: transform;
+  -webkit-mask-image: radial-gradient(
+    ellipse 88% 66% at 50% 38%,
+    #000 12%,
+    rgba(0, 0, 0, 0.55) 55%,
+    transparent 88%
+  );
+  mask-image: radial-gradient(
+    ellipse 88% 66% at 50% 38%,
+    #000 12%,
+    rgba(0, 0, 0, 0.55) 55%,
+    transparent 88%
+  );
+}
+
+.bg-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(130% 70% at 50% -12%, var(--veil-top), transparent 62%),
+    radial-gradient(110% 55% at 50% 112%, var(--veil-bottom), transparent 62%);
+}
+
+/* A base já traz um scanline em body::after — sobra de enfeite, sai daqui */
+body::after {
+  background: none;
+}
+
+/* ============================================================
+   11. CURSOR — anel com resposta mais viva
+   ============================================================ */
+.cursor-outline {
+  transition: opacity 0.3s ease, transform 0.25s var(--ease-out), border-color 0.25s ease,
+    width 0.25s var(--ease-out), height 0.25s var(--ease-out);
+}
+
+.cursor-outline.hover {
+  border-color: var(--green);
+  background: rgba(57, 255, 138, 0.06);
+}
+
+.cursor-dot {
+  transition: opacity 0.3s ease, transform 0.2s var(--ease-out);
+}
+
+/* ============================================================
+   12. HEADER — vidro mais definido no scroll
+   ============================================================ */
+.header.scrolled {
+  backdrop-filter: blur(18px) saturate(180%);
+}
+
+.nav-links a {
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan), var(--green));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================================================
+   12b. CHIP DE STATUS NO HEADER
+   ============================================================ */
+.nav-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  background: var(--glass);
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.nav-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse 2s ease-in-out infinite;
+  flex: none;
+}
+
+.nav-status-text b {
+  color: var(--cyan);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1080px) {
+  .nav-status {
+    display: none;
+  }
+}
+
+/* ============================================================
+   12c. PACOTE DE DADOS PERCORRENDO A TIMELINE
+   ============================================================ */
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan), 0 0 22px rgba(0, 200, 255, 0.6);
+  animation: tlPacket 5.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes tlPacket {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  12%,
+  82% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* LED de status nos cards de projeto */
+.proj-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+}
+
+.proj-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+  animation: pulse 2.4s ease-in-out infinite;
+  flex: none;
+}
+
+/* ============================================================
+   13. STATS — números com brilho
+   ============================================================ */
+.stat-num {
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 18px rgba(0, 200, 255, 0.35);
+}
+
+/* ============================================================
+   14. REDUÇÃO DE MOVIMENTO
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-name span,
+  .btn-primary::after,
+  .tech-sphere::after,
+  .tl-dot::after {
+    animation: none !important;
+  }
+
+  .fun-card:hover .fun-inner,
+  .fun-card.is-flipped .fun-inner {
+    transition: none;
+  }
+}
