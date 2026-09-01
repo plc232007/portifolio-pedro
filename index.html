@@ -834,6 +834,61 @@
 
             <article class="proj-card" data-spotlight>
               <div class="proj-top">
+                <span class="proj-icon">🍔</span>
+                <span class="proj-status proj-status-live">Publicado</span>
+              </div>
+
+              <h4>Sabor Express</h4>
+              <p class="proj-description">
+                Gerenciador de restaurantes em Python com duas interfaces sobre a mesma camada de regras: um menu no
+                terminal e uma aplicação web em Flask. Cadastro com validação de campo vazio e nome duplicado, filtro
+                por categoria, busca por nome e ativação/desativação de estabelecimentos.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># uma lógica, duas interfaces</span>
+<span class="pp-key">restaurantes.py</span> <span class="pp-arrow">→</span> regras + dados
+   <span class="pp-arrow">├──</span> <span class="pp-key">app.py</span> <span class="pp-arrow">→</span> <span class="pp-string">menu no terminal</span>
+   <span class="pp-arrow">└──</span> <span class="pp-key">web.py</span> <span class="pp-arrow">→</span> <span class="pp-string">rotas Flask</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Tirar as regras de dentro da interface, de forma que terminal e web
+                    nunca divirjam de comportamento</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Refatoração da lógica em módulo próprio, construção da interface web
+                    em Flask e deploy serverless</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">Jinja2</span>
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/sabor-express" target="_blank"
+                  rel="noreferrer">
+                  GitHub
+                </a>
+                <a class="proj-link" href="https://sabor-express-eight.vercel.app/" target="_blank" rel="noreferrer">
+                  Ver site
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card" data-spotlight>
+              <div class="proj-top">
                 <span class="proj-icon">🤖</span>
                 <span class="proj-status proj-status-live">Concluído</span>
               </div>
@@ -1345,7 +1400,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
                   pleitecampos@gmail.com
                 </a>
 
-                <a class="contact-link" href="https://www.linkedin.com/in/pedro-campos-1473a5345/" target="_blank"
+                <a class="contact-link" href="https://www.linkedin.com/in/pedro-leite-campos" target="_blank"
                   rel="noreferrer">
                   <span class="contact-link-icon">in</span>
                   LinkedIn — pedro-campos-1473a5345
