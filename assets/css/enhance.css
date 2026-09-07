@@ -645,93 +645,13 @@ body.light-theme .radar-area {
 }
 
 /* ============================================================
-   5. ESFERA 3D DE TECNOLOGIAS
+   5. STACK — PLACA E ÍNDICE
    ============================================================ */
 .tech-sphere-wrap {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 2rem;
   align-items: center;
-}
-
-.tech-sphere {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  max-height: 480px;
-  cursor: grab;
-  touch-action: pan-y;
-  user-select: none;
-}
-
-.tech-sphere.is-dragging {
-  cursor: grabbing;
-}
-
-@keyframes hintSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.tech-sphere::before {
-  content: "";
-  position: absolute;
-  inset: 12%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 200, 255, 0.12), transparent 68%);
-  pointer-events: none;
-}
-
-.tech-sphere::after {
-  content: "";
-  position: absolute;
-  inset: 6%;
-  border-radius: 50%;
-  border: 1px dashed var(--glass-line);
-  animation: hintSpin 40s linear infinite;
-  pointer-events: none;
-}
-
-.tech-node {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  white-space: nowrap;
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.01em;
-  padding: 0.2rem 0.52rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--glass);
-  color: var(--text);
-  backdrop-filter: blur(6px);
-  transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform, opacity;
-}
-
-.tech-node:hover {
-  color: var(--cyan);
-  border-color: var(--cyan);
-  box-shadow: 0 0 18px rgba(0, 200, 255, 0.35);
-}
-
-.tech-node--ai {
-  color: var(--orange);
-  border-color: rgba(255, 149, 0, 0.4);
-}
-
-.tech-node--ai:hover {
-  color: var(--orange);
-  border-color: var(--orange);
-  box-shadow: 0 0 18px rgba(255, 149, 0, 0.35);
-}
-
-.tech-node--core {
-  color: var(--green);
-  border-color: rgba(57, 255, 138, 0.4);
-  font-weight: 600;
 }
 
 .tech-legend {
@@ -753,42 +673,7 @@ body.light-theme .radar-area {
   line-height: 1.8;
 }
 
-.tech-legend-keys {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1rem;
-  font-size: 0.68rem;
-  color: var(--muted);
-  letter-spacing: 0.05em;
-}
-
-.tech-legend-keys span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.tech-legend-keys i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.key-core {
-  background: var(--green);
-  box-shadow: 0 0 8px var(--green);
-}
-.key-stack {
-  background: var(--cyan);
-  box-shadow: 0 0 8px var(--cyan);
-}
-.key-ai {
-  background: var(--orange);
-  box-shadow: 0 0 8px var(--orange);
-}
-
-/* Índice textual — versão escaneável (e acessível) da esfera */
+/* Índice textual — versão escaneável (e acessível) da placa */
 .tech-index {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -828,13 +713,6 @@ body.light-theme .radar-area {
 @media (max-width: 860px) {
   .tech-sphere-wrap {
     grid-template-columns: 1fr;
-  }
-  .tech-sphere {
-    max-height: 320px;
-  }
-  .tech-node {
-    font-size: 0.62rem;
-    padding: 0.18rem 0.45rem;
   }
 }
 
@@ -1275,7 +1153,6 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   .hero-name span,
   .btn-primary::after,
-  .tech-sphere::after,
   .tl-dot::after {
     animation: none !important;
   }
