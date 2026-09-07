@@ -1,3 +1,36 @@
+# Conceito 02 — workspace interativo
+
+Implementado na branch `codex`: abertura com mesa em perspectiva CSS, monitor,
+teclado, caderno, caneca, planta e porta-retrato. A foto e as estatísticas completas
+foram movidas para Sobre. A abertura não tem mais a tela de boot nem o terminal.
+
+- `assets/css/workspace.css`: composição, objetos, responsividade e movimento reduzido.
+- `assets/js/workspace.js`: perspectiva pelo mouse, escala e seleção de projetos.
+- Monitor: alterna entre três projetos existentes e abre o card correspondente.
+- Caderno: experiência; foto: Sobre; caneca: contato.
+- Links convencionais também disponíveis abaixo da cena; sem JavaScript os objetos
+  continuam navegáveis. Sem animação automática ou dependências novas.
+- A interface desenhada dentro do monitor é ilustrativa, não uma captura do app.
+
+## Próxima etapa com Blender
+
+O MCP Blender não estava disponível durante esta implementação. Esta versão é
+um estudo navegável em CSS, não um modelo exportado do Blender. Quando conectado,
+modelar a mesa e os objetos com materiais suaves em verde, creme e grafite;
+exportar GLB otimizado e manter os links HTML como alternativa acessível.
+Capturas reais dos projetos podem substituir a representação ilustrativa do monitor.
+
+## Variação solicitada para depois
+
+Conceito 03: máquina de construir software, com módulos para requisitos, interface,
+backend e entrega. Avaliar após o workspace, em uma prévia separada, preservando
+este conceito para comparação. Ainda não implementado.
+
+---
+
+Abaixo está o histórico da camada anterior (as descrições de hero e boot foram
+substituídas pelo conceito acima).
+
 # Portfólio — camada criativa 3D
 
 Documento técnico do que foi adicionado sobre a base original.

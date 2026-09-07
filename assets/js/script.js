@@ -127,6 +127,9 @@ function initCustomCursor() {
 // ANIMAÇÕES COM GSAP
 // ============================================
 function initGSAPAnimations() {
+  // O workspace usa a entrada em CSS; evita sobrepor duas animações
+  // e deixar os links principais presos em opacity: 0.
+  if (document.querySelector('.workspace-hero')) return;
   if (typeof gsap === 'undefined') {
     console.warn('GSAP não carregado, seções permanecerão visíveis');
     return;
@@ -166,14 +169,6 @@ function initGSAPAnimations() {
     ease: 'power3.out'
   });
 
-  gsap.from('.hero-terminal', {
-    opacity: 0,
-    scale: 0.95,
-    duration: 1,
-    delay: 0.8,
-    ease: 'back.out(1.7)'
-  });
-
   gsap.from('.cta-group .btn', {
     opacity: 0,
     y: 20,
@@ -181,14 +176,6 @@ function initGSAPAnimations() {
     stagger: 0.1,
     delay: 1,
     ease: 'power2.out'
-  });
-
-  gsap.from('.profile-card', {
-    opacity: 0,
-    x: 50,
-    duration: 1,
-    delay: 0.5,
-    ease: 'power3.out'
   });
 
   /* As revelações por scroll (seções, cards, barras de skill e timeline)

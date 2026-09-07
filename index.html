@@ -30,6 +30,7 @@
 
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="./assets/css/enhance.css" />
+  <link rel="stylesheet" href="./assets/css/workspace.css" />
 
   <!-- GSAP para animações profissionais -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -43,26 +44,10 @@
 
   <script src="./assets/js/script.js" defer></script>
   <script src="./assets/js/interactions.js" defer></script>
+  <script src="./assets/js/workspace.js" defer></script>
 </head>
 
-<body class="is-booting">
-  <!-- Boot screen -->
-  <div class="boot" id="boot" role="status" aria-label="Carregando portfólio">
-    <div class="boot-panel">
-      <div class="boot-logo">{ <span>PLC</span> }</div>
-      <div class="boot-sub">system · portfolio · v2</div>
-
-      <div class="boot-line"><i>[ok]</i> montando runtime <b>webgl</b></div>
-      <div class="boot-line"><i>[ok]</i> carregando <b>núcleo neural 3d</b></div>
-      <div class="boot-line"><i>[ok]</i> indexando <b>stack</b> e projetos</div>
-      <div class="boot-line"><i>[ok]</i> calibrando <b>interações</b></div>
-      <div class="boot-line"><i>[ok]</i> pedro.leite.campos <b>online</b></div>
-
-      <div class="boot-bar"><span class="boot-bar-fill"></span></div>
-      <div class="boot-skip">clique ou pressione ESC para entrar</div>
-    </div>
-  </div>
-
+<body>
   <!-- HUD -->
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <nav class="section-nav" id="section-nav" aria-label="Navegação por seções"></nav>
@@ -158,7 +143,7 @@
 
     <main>
       <!-- ========== HERO ========== -->
-      <section class="hero" id="inicio" data-nav-label="Início">
+      <section class="hero workspace-hero" id="inicio" data-nav-label="Início">
         <div class="container hero-grid">
           <div>
             <div class="hero-badge">
@@ -166,47 +151,18 @@
               Disponível para estágio, freelance e projetos colaborativos
             </div>
 
-            <h1 class="hero-name">Pedro<br /><span>Leite</span> Campos</h1>
+            <p class="studio-eyebrow">IDEIAS ABERTAS. MÃOS NO CÓDIGO.</p>
+            <h1 class="hero-name">Pedro<br /><span>Leite Campos.</span></h1>
 
             <p class="hero-role">
               Estudante de Ciência da Computação · Desenvolvedor Fullstack em formação
             </p>
 
             <p class="hero-intro">
-              Desenvolvo soluções web com foco em organização, lógica, experiência do usuário e visão de produto —
-              transformando necessidades reais em software funcional.
+              Meu espaço para transformar ideias em software. Explore a mesa e conheça os projetos que estou construindo.
             </p>
 
-            <div class="hero-terminal">
-              <div class="typed-wrap">
-                <span class="prompt">pedro@portfolio:~$</span>
-                <span id="typed-cmd">cat perfil.json</span><span class="typed-caret"></span>
-              </div>
-
-              <div class="terminal-output">
-                <span class="terminal-key">"stack"</span>: [
-                <span class="terminal-value-orange">"PHP"</span>,
-                <span class="terminal-value-orange">"Laravel"</span>,
-                <span class="terminal-value-orange">"Node"</span>,
-                <span class="terminal-value-orange">"React"</span>,
-                <span class="terminal-value-orange">"Python"</span>
-                ],<br />
-                <span class="terminal-key">"base"</span>: [
-                <span class="terminal-value-orange">"C"</span>,
-                <span class="terminal-value-orange">"SQL"</span>,
-                <span class="terminal-value-orange">"Git"</span>
-                ],<br />
-                <span class="terminal-key">"cargo"</span>:
-                <span class="terminal-value-green">"Estagiário Dev @ Engesoftware"</span>,<br />
-                <span class="terminal-key">"foco"</span>:
-                <span class="terminal-value-green">"Fullstack + Análise de Requisitos"</span>
-              </div>
-
-              <div>
-                <span class="prompt">pedro@portfolio:~$</span>
-                <span class="cursor"></span>
-              </div>
-            </div>
+            <p class="studio-stack">FULLSTACK <span>/</span> PRODUTO <span>/</span> EXPERIMENTAÇÃO</p>
 
             <div class="cta-group">
               <a class="btn btn-primary" href="#projetos" data-magnetic="0.35">
@@ -240,6 +196,63 @@
                 GitHub
               </a>
             </div>
+          </div>
+
+          <div class="workspace" id="workspace" aria-label="Workspace interativo de Pedro">
+            <div class="workspace-heading"><span><i></i> PEDRO’S WORKSPACE</span><span>01 / EXPLORAR</span></div>
+            <div class="workspace-stage" id="workspace-stage">
+              <div class="room-halo" aria-hidden="true"></div>
+              <div class="desk-scene" id="desk-scene">
+                <div class="desk-shadow" aria-hidden="true"></div>
+                <div class="desk-leg desk-leg-left" aria-hidden="true"></div>
+                <div class="desk-leg desk-leg-right" aria-hidden="true"></div>
+                <div class="desk-surface" aria-hidden="true"></div>
+                <div class="desk-edge" aria-hidden="true"></div>
+                <div class="desk-mat" aria-hidden="true"></div>
+                <div class="monitor-foot" aria-hidden="true"></div>
+                <div class="monitor-neck" aria-hidden="true"></div>
+                <a class="desk-monitor desk-object" id="desk-monitor" href="#projetos" aria-label="Monitor: explorar projetos">
+                  <div class="monitor-screen">
+                    <div class="screen-toolbar"><span>● ● ●</span><span>pedro / projetos</span><span>↗</span></div>
+                    <div class="screen-body">
+                      <span class="screen-kicker">EM DESTAQUE / <span id="screen-number">01</span></span>
+                      <strong id="screen-title">App dos Catequistas</strong>
+                      <p id="screen-description">Uma plataforma para conectar cerca de 70 catequistas.</p>
+                      <div class="screen-visual" aria-hidden="true"><div class="screen-sidebar"><i></i><i></i><i></i></div><div class="screen-widgets"><b></b><b></b><b></b><span></span></div></div>
+                      <span class="screen-open">Conhecer projeto <span>↗</span></span>
+                    </div>
+                  </div>
+                  <span class="monitor-brand">PLC — BUILT WITH CURIOSITY</span>
+                </a>
+                <div class="desk-keyboard" aria-hidden="true"><div></div><span></span></div>
+                <div class="desk-mouse" aria-hidden="true"></div>
+                <a class="desk-notebook desk-object" href="#experiencia" aria-label="Caderno: conhecer minha trajetória"><span>NOTAS &amp;<br />PRÓXIMOS<br />PASSOS.</span><small>MINHA TRAJETÓRIA ↗</small></a>
+                <a class="desk-photo desk-object" href="#sobre" aria-label="Porta-retrato: sobre Pedro"><img src="./assets/img/pedro-normal.png" alt="" /><span>oi, sou o Pedro :)</span></a>
+                <a class="desk-cup desk-object" href="#contato" aria-label="Caneca: vamos conversar"><span>let’s<br />build.</span></a>
+                <div class="desk-plant" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+                <span class="desk-sticker" aria-hidden="true">{ plc }</span>
+              </div>
+            </div>
+            <div class="workspace-controls">
+              <p id="workspace-hint">Mova o mouse. Explore os objetos.</p>
+              <button type="button" id="workspace-next" hidden aria-label="Mostrar próximo projeto no monitor">Próximo projeto <span>→</span></button>
+            </div>
+            <nav class="workspace-shortcuts" aria-label="Explorar o workspace">
+              <a href="#projetos">01 <span>Projetos</span> ↗</a>
+              <a href="#experiencia">02 <span>Trajetória</span> ↗</a>
+              <a href="#contato">03 <span>Vamos conversar</span> ↗</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SOBRE ========== -->
+      <section class="section reveal" id="sobre" data-nav-label="Sobre">
+        <div class="container">
+          <div class="section-head">
+            <h3><span class="section-index">01</span> <span data-scramble>Sobre mim</span></h3>
+            <div class="section-line"></div>
+            <span class="section-tag">whoami</span>
           </div>
 
           <aside class="profile-card" id="profile-card">
@@ -276,17 +289,6 @@
               </div>
             </div>
           </aside>
-        </div>
-      </section>
-
-      <!-- ========== SOBRE ========== -->
-      <section class="section reveal" id="sobre" data-nav-label="Sobre">
-        <div class="container">
-          <div class="section-head">
-            <h3><span class="section-index">01</span> <span data-scramble>Sobre mim</span></h3>
-            <div class="section-line"></div>
-            <span class="section-tag">whoami</span>
-          </div>
 
           <div class="about-box">
             <div class="about-text">
