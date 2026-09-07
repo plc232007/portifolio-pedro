@@ -203,7 +203,7 @@ function initVanillaTilt() {
     perspective: 1400
   });
 
-  VanillaTilt.init(document.querySelectorAll('.skill-card, .exp-card, .edu-card'), {
+  VanillaTilt.init(document.querySelectorAll('.skill-card:not(.skill-card--wide), .exp-card, .edu-card'), {
     max: 2.5,
     speed: 900,
     glare: false,

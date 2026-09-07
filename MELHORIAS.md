@@ -1,3 +1,40 @@
+# Workspace em todo o portfólio
+
+Camada `world.css` / `world.js`, na branch `codex`:
+- Sobre: crachá com profundidade e alternância explícita entre foto e ilustração.
+- Habilidades: placa-mãe com três chips selecionáveis e links para projetos reais;
+  substitui a esfera anterior, mantendo o índice textual de tecnologias.
+- Experiência: caderno cujos capítulos usam os cargos e períodos já existentes.
+- Formação: cartucho com seletor de cursos; preserva o status Em progresso.
+- Projetos: galeria com notebook, celular ou terminal conforme o projeto escolhido;
+  usa títulos, tecnologias, descrições e links dos cards originais. Aproximar muda
+  o enquadramento. As interfaces são representações, não capturas reais.
+- Contato: terminal com comandos ajuda, email, github, projetos, sobre e limpar;
+  gera links, nunca envia mensagens ou executa código. Copiar email usa clipboard
+  quando disponível, com alternativa textual em caso de falha.
+
+Interação por mouse é desativada em toque e movimento reduzido. Controles são
+nativos (botões/selects/formulário) e operáveis por teclado. Sem JavaScript, o
+conteúdo original e links permanecem disponíveis; widgets dependentes ficam
+ocultos ou desativados. Nenhuma nova dependência ou modelo Blender foi usado.
+
+---
+
+# Workspace escolhido — acabamento escuro
+
+A versão da mesa foi escolhida e refinada na branch `codex`:
+- mesa, monitor e acessórios em grafite;
+- teclado e detalhes com iluminação verde;
+- monitor com apresentação dos projetos em estilo terminal;
+- fundo quase preto e grade discreta;
+- tema claro preservado, com os equipamentos ainda escuros.
+
+As interações e os três projetos destacados foram mantidos. O terminal é uma
+composição visual ilustrativa; nomes e links continuam ligados aos projetos reais.
+A cena continua em CSS, sem modelo Blender ou dependências adicionais.
+
+---
+
 # Conceito 02 — workspace interativo
 
 Implementado na branch `codex`: abertura com mesa em perspectiva CSS, monitor,
@@ -10,7 +47,7 @@ foram movidas para Sobre. A abertura não tem mais a tela de boot nem o terminal
 - Caderno: experiência; foto: Sobre; caneca: contato.
 - Links convencionais também disponíveis abaixo da cena; sem JavaScript os objetos
   continuam navegáveis. Sem animação automática ou dependências novas.
-- A interface desenhada dentro do monitor é ilustrativa, não uma captura do app.
+- O terminal desenhado dentro do monitor é ilustrativo, não uma captura do app.
 
 ## Próxima etapa com Blender
 

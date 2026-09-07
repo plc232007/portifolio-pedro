@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="./assets/css/enhance.css" />
   <link rel="stylesheet" href="./assets/css/workspace.css" />
+  <link rel="stylesheet" href="./assets/css/world.css" />
 
   <!-- GSAP para animações profissionais -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -45,6 +46,7 @@
   <script src="./assets/js/script.js" defer></script>
   <script src="./assets/js/interactions.js" defer></script>
   <script src="./assets/js/workspace.js" defer></script>
+  <script src="./assets/js/world.js" defer></script>
 </head>
 
 <body>
@@ -151,7 +153,7 @@
               Disponível para estágio, freelance e projetos colaborativos
             </div>
 
-            <p class="studio-eyebrow">IDEIAS ABERTAS. MÃOS NO CÓDIGO.</p>
+            <p class="studio-eyebrow">MENTE CURIOSA. TERMINAL ABERTO.</p>
             <h1 class="hero-name">Pedro<br /><span>Leite Campos.</span></h1>
 
             <p class="hero-role">
@@ -199,7 +201,7 @@
           </div>
 
           <div class="workspace" id="workspace" aria-label="Workspace interativo de Pedro">
-            <div class="workspace-heading"><span><i></i> PEDRO’S WORKSPACE</span><span>01 / EXPLORAR</span></div>
+            <div class="workspace-heading"><span><i></i> PEDRO@WORKSPACE:~</span><span>SESSION / 01</span></div>
             <div class="workspace-stage" id="workspace-stage">
               <div class="room-halo" aria-hidden="true"></div>
               <div class="desk-scene" id="desk-scene">
@@ -213,24 +215,24 @@
                 <div class="monitor-neck" aria-hidden="true"></div>
                 <a class="desk-monitor desk-object" id="desk-monitor" href="#projetos" aria-label="Monitor: explorar projetos">
                   <div class="monitor-screen">
-                    <div class="screen-toolbar"><span>● ● ●</span><span>pedro / projetos</span><span>↗</span></div>
+                    <div class="screen-toolbar"><span>● ● ●</span><span>pedro@portfolio: ~/projects</span><span>↗</span></div>
                     <div class="screen-body">
-                      <span class="screen-kicker">EM DESTAQUE / <span id="screen-number">01</span></span>
+                      <span class="screen-kicker">PROJECT / <span id="screen-number">01</span></span>
                       <strong id="screen-title">App dos Catequistas</strong>
                       <p id="screen-description">Uma plataforma para conectar cerca de 70 catequistas.</p>
-                      <div class="screen-visual" aria-hidden="true"><div class="screen-sidebar"><i></i><i></i><i></i></div><div class="screen-widgets"><b></b><b></b><b></b><span></span></div></div>
+                      <div class="screen-terminal" aria-hidden="true"><span><b>const</b> developer = <em>"Pedro Campos"</em>;</span><span><b>focus</b>: [web, lógica, produto]</span><span class="terminal-prompt">❯ explorar projeto</span></div>
                       <span class="screen-open">Conhecer projeto <span>↗</span></span>
                     </div>
                   </div>
-                  <span class="monitor-brand">PLC — BUILT WITH CURIOSITY</span>
+                  <span class="monitor-brand">PLC / CODE AFTER DARK</span>
                 </a>
                 <div class="desk-keyboard" aria-hidden="true"><div></div><span></span></div>
                 <div class="desk-mouse" aria-hidden="true"></div>
-                <a class="desk-notebook desk-object" href="#experiencia" aria-label="Caderno: conhecer minha trajetória"><span>NOTAS &amp;<br />PRÓXIMOS<br />PASSOS.</span><small>MINHA TRAJETÓRIA ↗</small></a>
+                <a class="desk-notebook desk-object" href="#experiencia" aria-label="Caderno: conhecer minha trajetória"><span>DEV<br />NOTES_</span><small>MINHA TRAJETÓRIA ↗</small></a>
                 <a class="desk-photo desk-object" href="#sobre" aria-label="Porta-retrato: sobre Pedro"><img src="./assets/img/pedro-normal.png" alt="" /><span>oi, sou o Pedro :)</span></a>
-                <a class="desk-cup desk-object" href="#contato" aria-label="Caneca: vamos conversar"><span>let’s<br />build.</span></a>
+                <a class="desk-cup desk-object" href="#contato" aria-label="Caneca: vamos conversar"><span>&lt;/&gt;<br />coffee.</span></a>
                 <div class="desk-plant" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
-                <span class="desk-sticker" aria-hidden="true">{ plc }</span>
+                <span class="desk-sticker" aria-hidden="true">~/plc</span>
               </div>
             </div>
             <div class="workspace-controls">
@@ -255,11 +257,12 @@
             <span class="section-tag">whoami</span>
           </div>
 
-          <aside class="profile-card" id="profile-card">
+          <aside class="profile-card identity-card" id="profile-card" data-depth>
+            <span class="identity-stamp" aria-hidden="true">PLC / DEVELOPER ID</span>
             <div class="avatar-wrap">
               <div class="avatar-ring"></div>
 
-              <div class="avatar-card">
+              <div class="avatar-card" id="identity-photo">
                 <img src="./assets/img/pedro-normal.png" alt="Foto de Pedro Leite Campos"
                   class="avatar-photo avatar-photo-default" />
 
@@ -273,6 +276,7 @@
             </div>
             <p class="profile-name">Pedro Leite Campos</p>
             <p class="profile-role">Computação &amp; Fullstack em formação</p>
+            <button class="world-button identity-switch" type="button" id="identity-switch" aria-pressed="false" hidden>Versão ilustrada ↻</button>
 
             <div class="profile-stats">
               <div class="stat-item">
@@ -509,51 +513,26 @@
               </div>
 
               <div class="tech-sphere-wrap">
-                <div class="tech-sphere" id="tech-sphere" role="img"
-                  aria-label="Esfera interativa com as tecnologias que utilizo: Python, JavaScript, PHP, Laravel, Node.js, Flask, TypeScript, React, Next.js, HTML5, CSS3, Tailwind, Django, Vite, Supabase, PostgreSQL, Linguagem C, Pandas, AWS, APIs REST, Git, Jira, WordPress, Figma, Vercel, Claude Code, Codex, Cursor, GitHub Copilot">
-                    <span class="tech-node tech-node--core">Python</span>
-                    <span class="tech-node tech-node--core">JavaScript</span>
-                    <span class="tech-node tech-node--core">PHP</span>
-                    <span class="tech-node tech-node--core">Laravel</span>
-                    <span class="tech-node tech-node--core">Node.js</span>
-                    <span class="tech-node tech-node--core">Flask</span>
-                    <span class="tech-node">TypeScript</span>
-                    <span class="tech-node">React</span>
-                    <span class="tech-node">Next.js</span>
-                    <span class="tech-node">HTML5</span>
-                    <span class="tech-node">CSS3</span>
-                    <span class="tech-node">Tailwind</span>
-                    <span class="tech-node">Django</span>
-                    <span class="tech-node">Vite</span>
-                    <span class="tech-node">Supabase</span>
-                    <span class="tech-node">PostgreSQL</span>
-                    <span class="tech-node">Linguagem C</span>
-                    <span class="tech-node">Pandas</span>
-                    <span class="tech-node">AWS</span>
-                    <span class="tech-node">APIs REST</span>
-                    <span class="tech-node">Git</span>
-                    <span class="tech-node">Jira</span>
-                    <span class="tech-node">WordPress</span>
-                    <span class="tech-node">Figma</span>
-                    <span class="tech-node">Vercel</span>
-                    <span class="tech-node tech-node--ai">Claude Code</span>
-                    <span class="tech-node tech-node--ai">Codex</span>
-                    <span class="tech-node tech-node--ai">Cursor</span>
-                    <span class="tech-node tech-node--ai">GitHub Copilot</span>
+                <div class="board-stage" data-depth>
+                  <div class="motherboard" id="motherboard" data-active="frontend">
+                    <div class="board-traces" aria-hidden="true"></div>
+                    <span class="board-label" aria-hidden="true">PLC MAINBOARD / REV. 02</span>
+                    <span class="board-socket" aria-hidden="true">{ PLC }</span>
+                    <button class="board-chip chip-frontend" type="button" data-chip="frontend" aria-pressed="true" aria-controls="board-readout" disabled><small>01 / DISPLAY</small><strong>FRONTEND</strong><span>React · interfaces</span></button>
+                    <button class="board-chip chip-backend" type="button" data-chip="backend" aria-pressed="false" aria-controls="board-readout" disabled><small>02 / COMPUTE</small><strong>BACKEND</strong><span>Python · APIs</span></button>
+                    <button class="board-chip chip-data" type="button" data-chip="data" aria-pressed="false" aria-controls="board-readout" disabled><small>03 / STORAGE</small><strong>DADOS</strong><span>SQL · modelagem</span></button>
+                    <div class="board-memory" aria-hidden="true"><i></i><i></i><i></i></div>
+                    <span class="board-port" aria-hidden="true">▥ ▥ ▥ ▥</span>
+                  </div>
                 </div>
 
                 <div class="tech-legend">
-                  <span class="tech-legend-title">Uma stack, três camadas</span>
+                  <span class="tech-legend-title">Tudo conectado, do clique ao dado.</span>
                   <p>
-                    Arraste a esfera para explorar. Cada nó é uma tecnologia que já usei em projeto real,
-                    estágio ou estudo — do back-end em Python ao fluxo de trabalho assistido por IA.
+                    Selecione um componente da placa para conhecer as tecnologias e um projeto em que elas aparecem.
                   </p>
 
-                  <div class="tech-legend-keys">
-                    <span><i class="key-core"></i> Domínio principal</span>
-                    <span><i class="key-stack"></i> Ferramentas &amp; stack</span>
-                    <span><i class="key-ai"></i> IA &amp; Vibe Coding</span>
-                  </div>
+                  <div class="board-readout" id="board-readout" aria-live="polite" aria-atomic="true"><span>01 / FRONTEND</span><h5>Interfaces que conectam pessoas.</h5><p>React · Next.js · JavaScript · TypeScript · HTML · CSS</p><a href="#projetos">Ver projetos relacionados ↗</a></div>
 
                   <dl class="tech-index">
                     <dt>Linguagens</dt>
@@ -567,6 +546,12 @@
 
                     <dt>Produto</dt>
                     <dd>Figma · Jira · Kanban · WordPress</dd>
+
+                    <dt>UI &amp; análise</dt>
+                    <dd>Tailwind · Vite · Pandas</dd>
+
+                    <dt>IA &amp; assistentes</dt>
+                    <dd>Claude Code · Codex · Cursor · GitHub Copilot</dd>
                   </dl>
                 </div>
               </div>
@@ -584,6 +569,10 @@
             <span class="section-tag">git log</span>
           </div>
 
+          <div class="world-feature journal-feature" id="journal-feature" hidden>
+            <div class="journal-stage" data-depth><div class="dev-journal"><div class="journal-cover"><span>FIELD<br />NOTES_</span><small>PEDRO / WORK LOG</small></div><div class="journal-page" id="journal-page"><span id="journal-number">CAPÍTULO / 01</span><h4 id="journal-title"></h4><p id="journal-period"></p><div class="journal-ruling" aria-hidden="true"></div><a id="journal-link" href="#experiencia">Ler experiência ↗</a></div></div></div>
+            <div class="world-feature-copy"><span class="world-kicker">UM CAPÍTULO DE CADA VEZ</span><h4>Da necessidade<br />à implementação.</h4><p>Meu caderno de trabalho: experiências, decisões e aprendizados que levo para cada projeto.</p><button class="world-button" type="button" id="journal-next">Próximo capítulo →</button></div>
+          </div>
           <div class="timeline">
             <div class="tl-entry">
               <div class="tl-dot"></div>
@@ -637,6 +626,10 @@
             <span class="section-tag">README.md</span>
           </div>
 
+          <div class="world-feature archive-feature" id="archive-feature" hidden>
+            <div class="archive-stage" data-depth><div class="archive-cartridge"><span class="cartridge-notch" aria-hidden="true"></span><div class="cartridge-label" aria-live="polite" aria-atomic="true"><span id="archive-number">MODULE / 01</span><h4 id="archive-title"></h4><p id="archive-source"></p><small id="archive-status"></small></div><div class="cartridge-pins" aria-hidden="true"></div></div></div>
+            <div class="world-feature-copy"><span class="world-kicker">BIBLIOTECA EM EXPANSÃO</span><h4>Aprender. Aplicar.<br />Repetir.</h4><p>Uma coleção dos cursos e conhecimentos que alimentam meu trabalho.</p><label for="archive-select">Explorar formação complementar</label><select id="archive-select" class="world-select"></select></div>
+          </div>
           <div class="edu-grid">
             <div class="edu-card">
               <div class="edu-card-head">
@@ -733,6 +726,11 @@
           </div>
 
           <!-- Projetos Acadêmicos -->
+          <div class="project-showcase" id="project-showcase" hidden>
+            <div class="device-stage" data-depth><a class="project-device" id="project-device" href="#projetos" aria-label="Conhecer projeto selecionado"><div class="device-bezel"><div class="device-screen"><div class="device-toolbar"><span>● ● ●</span><span>~/selected-work</span></div><div class="device-content"><span class="world-kicker">PROJETO EM FOCO</span><h4 id="device-title"></h4><p id="device-tech"></p><div class="device-wireframe" aria-hidden="true"><i></i><i></i><i></i><span></span></div><span class="device-open">Explorar projeto ↗</span></div></div><span class="device-brand" aria-hidden="true">PLC / DIGITAL PRODUCTS</span></div><div class="device-base" aria-hidden="true"></div></a></div>
+            <div class="showcase-copy"><span class="world-kicker">DO WORKSPACE PARA O MUNDO</span><h4>Ideias que já<br />ganharam forma.</h4><label for="project-select">Selecione um projeto</label><select class="world-select" id="project-select"></select><p id="device-summary"></p><a class="world-button" id="device-detail" href="#projetos">Ver detalhes ↗</a><button class="world-button" type="button" id="device-zoom" aria-pressed="false">Aproximar tela ⤢</button><small>Representação visual. Os detalhes de cada projeto estão abaixo.</small></div>
+          </div>
+
           <div class="projects-subsection-header">
             <span class="projects-subsection-icon">🎓</span>
             <div>
@@ -1392,6 +1390,9 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
             <span class="section-tag">ping me</span>
           </div>
 
+          <div class="contact-console-stage" data-depth>
+            <div class="contact-console"><div class="console-top"><span><i></i> PEDRO@WORKSPACE: ~/contato</span><span>READY TO CONNECT</span></div><div class="console-content"><span class="world-kicker">UMA NOVA CONEXÃO COMEÇA AQUI.</span><h4>Vamos construir<br />o próximo capítulo<span>_</span></h4><div class="console-output" id="console-output" role="status">Escolha um canal abaixo para conversar sobre uma ideia ou oportunidade.</div><form id="contact-command" hidden><label for="console-command">pedro@portfolio:~$</label><input id="console-command" name="command" autocomplete="off" spellcheck="false" maxlength="80" placeholder="ajuda" aria-label="Comando do terminal de contato" /><button type="submit" aria-label="Executar comando">↵</button></form><div class="console-shortcuts"><a href="mailto:pleitecampos@gmail.com">email ↗</a><a href="https://github.com/plc232007" target="_blank" rel="noreferrer">github ↗</a><a href="#projetos">projetos ↑</a><button type="button" id="console-copy" hidden>copiar email</button></div></div><div class="console-bottom" aria-hidden="true"><span>PLC — HUMAN ON THE OTHER SIDE</span><span>● ● ●</span></div></div>
+          </div>
           <div class="contact-wrap">
             <div class="contact-text">
               <p>Aberto a oportunidades de estágio, colaboração em projetos e networking profissional.</p>
