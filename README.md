@@ -1,46 +1,21 @@
 # Pedro Leite Campos | Portfólio
 
-Portfólio profissional com foco em **Ciência da Computação**, **Desenvolvimento de Software**, **Análise de Requisitos** e **Fullstack Development**.
+Portfólio de desenvolvedor fullstack (React/Next.js + Python), com foco atual em IA e visão computacional.
 
-## ✨ Visão geral
+**No ar:** https://plc232007.github.io/portifolio-pedro/
 
-Este repositório apresenta uma landing page moderna, limpa e responsiva, construída para networking profissional e recrutamento.
+## Stack
 
-### Seções implementadas
-- Hero / apresentação inicial
-- Sobre mim
-- Habilidades (soft, hard e ferramentas)
-- Experiência profissional
-- Formação acadêmica, idiomas e certificações
-- Estrutura de projetos para expansão futura
-- Contato e chamada para oportunidades
+HTML, CSS e JavaScript sem framework nem build. É uma página única, estática, publicada no GitHub Pages.
 
-## 🧰 Stack
-- HTML5
-- CSS3
-- JavaScript (vanilla)
-
-## 📂 Estrutura
+## Como rodar
 
 ```bash
-.
-├── index.html
-├── styles.css
-├── script.js
-└── README.md
+python3 -m http.server 8000
+# http://localhost:8000
 ```
 
-## 🚀 Como executar
+## Contato
 
-Basta abrir o `index.html` no navegador ou iniciar um servidor local:
-
-```bash
-python3 -m http.server 4173
-```
-
-Acesse em: `http://localhost:4173`
-
-## 🔗 Contatos
-- **LinkedIn:** https://www.linkedin.com/in/pedro-campos-1473a5345/
-- **GitHub:** https://github.com/plc232007
-- **E-mail:** pleitecampos@gmail.com
+- E-mail: pleitecampos@gmail.com
+- GitHub: https://github.com/plc232007
