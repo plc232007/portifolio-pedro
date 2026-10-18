@@ -1,13 +1,11 @@
 /* ============================================================
-   INTERAÇÕES — camada criativa
-   Boot screen, progresso de scroll, navegação lateral, botões
-   magnéticos, esfera 3D de tecnologias, contadores e scramble.
+   INTERAÇÕES
+   Revelação por scroll, progresso de scroll e navegação lateral.
    ============================================================ */
 (function () {
   "use strict";
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const coarse = window.matchMedia("(pointer: coarse)").matches;
 
   /* ============================================================
      REVELAÇÃO POR SCROLL
@@ -17,7 +15,6 @@
   const GROUPS = [
     { sel: ".section-head", stagger: 0 },
     { sel: ".about-box", stagger: 0 },
-    { sel: ".fun-card", stagger: 70 },
     { sel: ".skill-card", stagger: 110 },
     { sel: ".tl-entry", stagger: 140 },
     { sel: ".edu-card", stagger: 110 },
@@ -38,15 +35,7 @@
       });
     });
 
-    const show = (el) => {
-      el.classList.add("is-in");
-      // Barras de habilidade preenchem junto com o card
-      el.querySelectorAll?.(".bar-fill[data-width]").forEach((bar, i) => {
-        setTimeout(() => {
-          bar.style.width = `${bar.dataset.width}%`;
-        }, 200 + i * 90);
-      });
-    };
+    const show = (el) => el.classList.add("is-in");
 
     if (reduced || !("IntersectionObserver" in window)) {
       items.forEach(show);
@@ -67,51 +56,6 @@
 
     // Rede de segurança: qualquer item ainda escondido após 6s aparece
     setTimeout(() => items.forEach(show), 6000);
-  }
-
-  /* ============================================================
-     BOOT SCREEN — sequência de inicialização
-     ============================================================ */
-  function initBoot() {
-    const boot = document.getElementById("boot");
-    if (!boot) return;
-
-    const close = () => {
-      if (boot.dataset.done) return;
-      boot.dataset.done = "1";
-      boot.classList.add("is-hidden");
-      document.body.classList.remove("is-booting");
-      setTimeout(() => boot.remove(), 900);
-    };
-
-    // Failsafe: nunca deixa a tela presa
-    setTimeout(close, 4200);
-    window.addEventListener("load", () => setTimeout(close, 1400));
-    boot.addEventListener("click", close);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" || e.key === "Enter") close();
-    });
-
-    if (reduced) {
-      close();
-      return;
-    }
-
-    const lines = Array.from(boot.querySelectorAll(".boot-line"));
-    const bar = boot.querySelector(".boot-bar-fill");
-    let i = 0;
-
-    const step = () => {
-      if (i < lines.length) {
-        lines[i].classList.add("is-visible");
-        if (bar) bar.style.width = `${((i + 1) / lines.length) * 100}%`;
-        i++;
-        setTimeout(step, 150 + Math.random() * 120);
-      } else {
-        setTimeout(close, 420);
-      }
-    };
-    setTimeout(step, 180);
   }
 
   /* ============================================================
@@ -183,283 +127,12 @@
   }
 
   /* ============================================================
-     BOTÕES MAGNÉTICOS
-     ============================================================ */
-  function initMagnetic() {
-    if (reduced || coarse) return;
-
-    document.querySelectorAll("[data-magnetic]").forEach((el) => {
-      const strength = parseFloat(el.dataset.magnetic) || 0.32;
-      let raf = null;
-      let cur = { x: 0, y: 0 };
-      let goal = { x: 0, y: 0 };
-
-      const tick = () => {
-        cur.x += (goal.x - cur.x) * 0.18;
-        cur.y += (goal.y - cur.y) * 0.18;
-        el.style.setProperty("--mag-x", `${cur.x.toFixed(2)}px`);
-        el.style.setProperty("--mag-y", `${cur.y.toFixed(2)}px`);
-        if (Math.abs(goal.x - cur.x) > 0.1 || Math.abs(goal.y - cur.y) > 0.1) {
-          raf = requestAnimationFrame(tick);
-        } else {
-          raf = null;
-        }
-      };
-      const run = () => {
-        if (raf === null) raf = requestAnimationFrame(tick);
-      };
-
-      el.addEventListener("pointermove", (e) => {
-        const rect = el.getBoundingClientRect();
-        goal.x = (e.clientX - (rect.left + rect.width / 2)) * strength;
-        goal.y = (e.clientY - (rect.top + rect.height / 2)) * strength;
-        run();
-      });
-      el.addEventListener("pointerleave", () => {
-        goal.x = 0;
-        goal.y = 0;
-        run();
-      });
-    });
-  }
-
-  /* ============================================================
-     RADAR DE COMPETÊNCIAS — leitura ao passar o cursor
-     ============================================================ */
-  function initRadar() {
-    const readout = document.getElementById("radar-readout");
-    const svg = document.querySelector(".radar");
-    if (!readout || !svg) return;
-
-    const nameEl = readout.querySelector(".radar-readout-name");
-    const lvlEl = readout.querySelector(".radar-readout-lvl");
-    const idle = { name: nameEl.textContent, lvl: lvlEl.textContent };
-
-    const setActive = (i) => {
-      svg.querySelectorAll(".radar-vertex, .radar-label").forEach((el) => {
-        el.classList.toggle("is-active", el.dataset.i === i);
-      });
-    };
-
-    svg.querySelectorAll(".radar-hit").forEach((hit) => {
-      const enter = () => {
-        nameEl.textContent = hit.dataset.name;
-        lvlEl.textContent = `${hit.dataset.level} · ${hit.dataset.value}%`;
-        readout.classList.add("is-live");
-        setActive(hit.dataset.i);
-      };
-      const leave = () => {
-        nameEl.textContent = idle.name;
-        lvlEl.textContent = idle.lvl;
-        readout.classList.remove("is-live");
-        setActive(null);
-      };
-      hit.addEventListener("pointerenter", enter);
-      hit.addEventListener("pointerleave", leave);
-      hit.addEventListener("focus", enter);
-      hit.addEventListener("blur", leave);
-      hit.setAttribute("tabindex", "0");
-      hit.setAttribute("role", "img");
-      hit.setAttribute(
-        "aria-label",
-        `${hit.dataset.name}: ${hit.dataset.level}, ${hit.dataset.value} por cento`
-      );
-    });
-  }
-
-  /* ============================================================
-     RELÓGIO DE STATUS NO HEADER
-     ============================================================ */
-  function initStatusChip() {
-    const el = document.getElementById("status-clock");
-    if (!el) return;
-
-    const fmt = new Intl.DateTimeFormat("pt-BR", {
-      hour: "2-digit",
-      minute: "2-digit",
-      timeZone: "America/Sao_Paulo",
-    });
-
-    const tick = () => {
-      el.textContent = fmt.format(new Date());
-    };
-    tick();
-    setInterval(tick, 20000);
-  }
-
-  /* ============================================================
-     CONTADORES ANIMADOS
-     ============================================================ */
-  function initCounters() {
-    const els = document.querySelectorAll("[data-count]");
-    if (!els.length) return;
-
-    const run = (el) => {
-      const target = parseFloat(el.dataset.count);
-      const suffix = el.dataset.countSuffix || "";
-      if (Number.isNaN(target)) return;
-      if (reduced) {
-        el.textContent = target + suffix;
-        return;
-      }
-      const dur = 1200;
-      const t0 = performance.now();
-      const tick = (now) => {
-        const p = Math.min(1, (now - t0) / dur);
-        const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + (p === 1 ? suffix : "");
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting || entry.target.dataset.counted) return;
-          entry.target.dataset.counted = "1";
-          run(entry.target);
-        });
-      },
-      { threshold: 0.4 }
-    );
-    els.forEach((el) => io.observe(el));
-  }
-
-  /* ============================================================
-     SCRAMBLE — títulos "decodificam" ao entrar em cena
-     ============================================================ */
-  function initScramble() {
-    const targets = document.querySelectorAll("[data-scramble]");
-    if (!targets.length || reduced) return;
-
-    const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&/<>{}[]*+=";
-
-    const scramble = (el) => {
-      const final = el.textContent;
-      const chars = final.split("");
-      let frame = 0;
-      const total = chars.length * 2 + 12;
-
-      const tick = () => {
-        const revealed = Math.floor((frame / total) * chars.length * 1.35);
-        el.textContent = chars
-          .map((c, i) => {
-            if (c === " ") return " ";
-            if (i < revealed) return c;
-            return GLYPHS[Math.floor(Math.random() * GLYPHS.length)];
-          })
-          .join("");
-        frame++;
-        if (frame <= total) {
-          requestAnimationFrame(tick);
-        } else {
-          el.textContent = final;
-        }
-      };
-      tick();
-    };
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting || entry.target.dataset.scrambled) return;
-          entry.target.dataset.scrambled = "1";
-          scramble(entry.target);
-        });
-      },
-      { threshold: 0.6 }
-    );
-    targets.forEach((el) => io.observe(el));
-  }
-
-  /* ============================================================
-     SPOTLIGHT — brilho seguindo o cursor em cards
-     ============================================================ */
-  function initSpotlight() {
-    if (coarse) return;
-    const cards = document.querySelectorAll("[data-spotlight]");
-    cards.forEach((card) => {
-      card.addEventListener("pointermove", (e) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--sx", `${((e.clientX - rect.left) / rect.width) * 100}%`);
-        card.style.setProperty("--sy", `${((e.clientY - rect.top) / rect.height) * 100}%`);
-      });
-    });
-  }
-
-  /* ============================================================
-     TERMINAL DO HERO — digitação de comandos rotativos
-     ============================================================ */
-  function initTypedCommand() {
-    const el = document.getElementById("typed-cmd");
-    if (!el) return;
-
-    const cmds = [
-      "cat perfil.json",
-      "git log --oneline -3",
-      "python factoryflow.py --run",
-      "npm run build && deploy",
-    ];
-    if (reduced) {
-      el.textContent = cmds[0];
-      return;
-    }
-
-    let ci = 0;
-    let pos = 0;
-    let deleting = false;
-
-    const tick = () => {
-      const cmd = cmds[ci];
-      pos += deleting ? -1 : 1;
-      el.textContent = cmd.slice(0, pos);
-
-      let delay = deleting ? 28 : 62;
-      if (!deleting && pos === cmd.length) {
-        delay = 2200;
-        deleting = true;
-      } else if (deleting && pos === 0) {
-        deleting = false;
-        ci = (ci + 1) % cmds.length;
-        delay = 420;
-      }
-      setTimeout(tick, delay);
-    };
-    setTimeout(tick, 1400);
-  }
-
-  /* ============================================================
-     CARDS COM VIRADA 3D — acessível via teclado
-     ============================================================ */
-  function initFlipCards() {
-    document.querySelectorAll(".fun-card").forEach((card) => {
-      card.setAttribute("tabindex", "0");
-      card.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          card.classList.toggle("is-flipped");
-        }
-      });
-    });
-  }
-
-  /* ============================================================
-     BOOT + INIT
+     INIT
      ============================================================ */
   function init() {
     initReveal();
-    initBoot();
     initScrollProgress();
     initSectionNav();
-    initMagnetic();
-    initRadar();
-    initStatusChip();
-    initCounters();
-    initScramble();
-    initSpotlight();
-    initTypedCommand();
-    initFlipCards();
   }
 
   if (document.readyState === "loading") {

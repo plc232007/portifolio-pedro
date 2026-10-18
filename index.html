@@ -31,32 +31,17 @@
   <link rel="stylesheet" href="./assets/css/style.css" />
   <link rel="stylesheet" href="./assets/css/enhance.css" />
   <link rel="stylesheet" href="./assets/css/workspace.css" />
-  <link rel="stylesheet" href="./assets/css/world.css" />
 
-  <!-- GSAP para animações profissionais -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Fira Code — fonte monoespaçada para o fundo de código -->
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-
-  <!-- Vanilla Tilt para efeitos 3D -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
   <script src="./assets/js/script.js" defer></script>
   <script src="./assets/js/interactions.js" defer></script>
   <script src="./assets/js/workspace.js" defer></script>
-  <script src="./assets/js/world.js" defer></script>
 </head>
 
 <body>
   <!-- HUD -->
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <nav class="section-nav" id="section-nav" aria-label="Navegação por seções"></nav>
-
-  <!-- Cursor customizado -->
-  <div class="cursor-dot" data-cursor-dot></div>
-  <div class="cursor-outline" data-cursor-outline></div>
 
   <!-- Fundo: malha técnica + véu de profundidade -->
   <div class="bg-grid" id="bg-grid" aria-hidden="true"></div>
@@ -132,11 +117,6 @@
           </ul>
         </nav>
 
-        <div class="nav-status" title="Fuso de Brasília">
-          <span class="nav-status-dot" aria-hidden="true"></span>
-          <span class="nav-status-text">BSB <b id="status-clock">--:--</b></span>
-        </div>
-
         <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema">
           <span id="theme-icon">🌙</span>
         </button>
@@ -167,11 +147,11 @@
             <p class="studio-stack">FULLSTACK <span>/</span> PRODUTO <span>/</span> EXPERIMENTAÇÃO</p>
 
             <div class="cta-group">
-              <a class="btn btn-primary" href="#projetos" data-magnetic="0.35">
+              <a class="btn btn-primary" href="#projetos">
                 Ver projetos
               </a>
 
-              <a class="btn btn-ghost" data-magnetic="0.28" href="./assets/docs/curriculo-pedro-leite-campos.pdf"
+              <a class="btn btn-ghost" href="./assets/docs/curriculo-pedro-leite-campos.pdf"
                 download="Pedro-Leite-Campos-Curriculo.pdf">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path d="M13 2H6a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7l-3-5z"></path>
@@ -182,14 +162,14 @@
                 Baixar currículo
               </a>
 
-              <a class="btn btn-ghost" data-magnetic="0.28" href="mailto:pleitecampos@gmail.com">
+              <a class="btn btn-ghost" href="mailto:pleitecampos@gmail.com">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path d="M2 5a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm2 0l6 5 6-5"></path>
                 </svg>
                 Entrar em contato
               </a>
 
-              <a class="btn btn-ghost" data-magnetic="0.28" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
+              <a class="btn btn-ghost" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-sm" aria-hidden="true">
                   <path fill-rule="evenodd"
                     d="M10 0C4.5 0 0 4.5 0 10c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7C4.7 18 4.1 16 4.1 16c-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 015 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7.6.7.8 1.6.8 2.7 0 3.8-2.3 4.7-4.5 4.9.4.3.7 1 .7 1.9V19.5c0 .3.2.6.7.5C17.1 18.2 20 14.4 20 10c0-5.5-4.5-10-10-10z">
@@ -252,12 +232,12 @@
       <section class="section reveal" id="sobre" data-nav-label="Sobre">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">01</span> <span data-scramble>Sobre mim</span></h3>
+            <h3><span class="section-index">01</span> <span>Sobre mim</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">whoami</span>
           </div>
 
-          <aside class="profile-card identity-card" id="profile-card" data-depth>
+          <aside class="profile-card identity-card" id="profile-card">
             <span class="identity-stamp" aria-hidden="true">PLC / DEVELOPER ID</span>
             <div class="avatar-wrap">
               <div class="avatar-ring"></div>
@@ -265,18 +245,10 @@
               <div class="avatar-card" id="identity-photo">
                 <img src="./assets/img/pedro-normal.png" alt="Foto de Pedro Leite Campos"
                   class="avatar-photo avatar-photo-default" />
-
-                <img src="./assets/img/pedro-ghibli.png" alt="Versão estilizada de Pedro Leite Campos"
-                  class="avatar-photo avatar-photo-hover" />
-
-                <div class="avatar-overlay">
-                  <span></span>
-                </div>
               </div>
             </div>
             <p class="profile-name">Pedro Leite Campos</p>
             <p class="profile-role">Computação &amp; Fullstack em formação</p>
-            <button class="world-button identity-switch" type="button" id="identity-switch" aria-pressed="false" hidden>Versão ilustrada ↻</button>
 
             <div class="profile-stats">
               <div class="stat-item">
@@ -306,61 +278,6 @@
               empresa da minha família, onde desenvolvo soluções digitais sob medida — desde sites e sistemas internos
               até automações e consultoria técnica para clientes reais.
             </div>
-
-            <div class="about-fun">
-              <div class="fun-card" role="button" aria-label="Raciocínio: Lógico">
-                <div class="fun-inner">
-                  <div class="fun-face fun-face--front">
-                    <span class="icon-big">🧠</span>
-                    <span class="fun-lbl">Raciocínio</span>
-                    <span class="fun-val">Lógico</span>
-                  </div>
-                  <div class="fun-face fun-face--back">
-                    <span class="fun-back-tag">modus operandi</span>
-                    <p>Quebro o problema em partes menores, mapeio as dependências e só então escrevo a primeira linha.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="fun-card" role="button" aria-label="Perfil: Builder">
-                <div class="fun-inner">
-                  <div class="fun-face fun-face--front">
-                    <span class="icon-big">🚀</span>
-                    <span class="fun-lbl">Perfil</span>
-                    <span class="fun-val">Builder</span>
-                  </div>
-                  <div class="fun-face fun-face--back">
-                    <span class="fun-back-tag">modus operandi</span>
-                    <p>Prefiro protótipo rodando a slide bonito. Entregar cedo, medir e iterar.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="fun-card" role="button" aria-label="Idioma: PT + EN">
-                <div class="fun-inner">
-                  <div class="fun-face fun-face--front">
-                    <span class="icon-big">🗺️</span>
-                    <span class="fun-lbl">Idioma</span>
-                    <span class="fun-val">PT + EN</span>
-                  </div>
-                  <div class="fun-face fun-face--back">
-                    <span class="fun-back-tag">comunicação</span>
-                    <p>Português nativo e inglês intermediário — leio documentação técnica e specs sem tradutor.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="fun-card" role="button" aria-label="Modo: Full-Stack">
-                <div class="fun-inner">
-                  <div class="fun-face fun-face--front">
-                    <span class="icon-big">⚡</span>
-                    <span class="fun-lbl">Modo</span>
-                    <span class="fun-val">Full-Stack</span>
-                  </div>
-                  <div class="fun-face fun-face--back">
-                    <span class="fun-back-tag">stack</span>
-                    <p>Do endpoint em Python ao componente na tela: acompanho a feature de ponta a ponta.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -369,7 +286,7 @@
       <section class="section reveal" id="habilidades" data-nav-label="Skills">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">02</span> <span data-scramble>Habilidades</span></h3>
+            <h3><span class="section-index">02</span> <span>Habilidades</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">skills.json</span>
           </div>
@@ -423,80 +340,6 @@
               </div>
             </div>
 
-            <!-- Hard Skills — ordem decrescente -->
-            <div class="skill-card">
-              <div class="skill-card-head">
-                <div class="skill-icon-wrap">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--cyan2)" stroke-width="1.5" class="icon-md"
-                    aria-hidden="true">
-                    <polyline points="4,14 8,8 12,11 16,5"></polyline>
-                  </svg>
-                </div>
-                <h4>Hard Skills</h4>
-              </div>
-
-              <div class="radar-wrap">
-                <svg class="radar" viewBox="0 0 340 272" role="img"
-                  aria-label="Radar de competências técnicas: Back-end · Python, Flask e Django 90 por cento, PHP e Laravel 88 por cento, Node.js e APIs REST 85 por cento, React e Next.js 78 por cento, Front-end · JS, TS, HTML e CSS 82 por cento, Linguagem C · ponteiros e arquivos 75 por cento, Git e Versionamento 80 por cento, Vibe Coding e IA aplicada 85 por cento">
-                  <polygon class="radar-grid" points="170.0,112.0 184.1,117.9 190.0,132.0 184.1,146.1 170.0,152.0 155.9,146.1 150.0,132.0 155.9,117.9" />
-                  <polygon class="radar-grid" points="170.0,92.0 198.3,103.7 210.0,132.0 198.3,160.3 170.0,172.0 141.7,160.3 130.0,132.0 141.7,103.7" />
-                  <polygon class="radar-grid" points="170.0,72.0 212.4,89.6 230.0,132.0 212.4,174.4 170.0,192.0 127.6,174.4 110.0,132.0 127.6,89.6" />
-                  <polygon class="radar-grid" points="170.0,52.0 226.6,75.4 250.0,132.0 226.6,188.6 170.0,212.0 113.4,188.6 90.0,132.0 113.4,75.4" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="170.0" y2="52.0" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="226.6" y2="75.4" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="250.0" y2="132.0" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="226.6" y2="188.6" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="170.0" y2="212.0" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="113.4" y2="188.6" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="90.0" y2="132.0" />
-                  <line class="radar-spoke" x1="170.0" y1="132.0" x2="113.4" y2="75.4" />
-                  <g class="radar-shape">
-                    <polygon class="radar-area" points="170.0,60.0 219.8,82.2 238.0,132.0 214.1,176.1 170.0,197.6 127.6,174.4 106.0,132.0 121.9,83.9" />
-                    <circle class="radar-vertex radar-vertex--comfort" data-i="0" cx="170.0" cy="60.0" r="4" />
-                    <circle class="radar-vertex radar-vertex--comfort" data-i="1" cx="219.8" cy="82.2" r="4" />
-                    <circle class="radar-vertex radar-vertex--comfort" data-i="2" cx="238.0" cy="132.0" r="4" />
-                    <circle class="radar-vertex radar-vertex--familiar" data-i="3" cx="214.1" cy="176.1" r="4" />
-                    <circle class="radar-vertex radar-vertex--familiar" data-i="4" cx="170.0" cy="197.6" r="4" />
-                    <circle class="radar-vertex radar-vertex--familiar" data-i="5" cx="127.6" cy="174.4" r="4" />
-                    <circle class="radar-vertex radar-vertex--familiar" data-i="6" cx="106.0" cy="132.0" r="4" />
-                    <circle class="radar-vertex radar-vertex--comfort" data-i="7" cx="121.9" cy="83.9" r="4" />
-                  </g>
-                  <text class="radar-label" data-i="0" x="170.0" y="19.0" text-anchor="middle">Back-end</text>
-                  <text class="radar-label" data-i="1" x="243.5" y="62.5" text-anchor="start">PHP/Laravel</text>
-                  <text class="radar-label" data-i="2" x="274.0" y="136.0" text-anchor="start">Node.js</text>
-                  <text class="radar-label" data-i="3" x="243.5" y="209.5" text-anchor="start">React/Next</text>
-                  <text class="radar-label" data-i="4" x="170.0" y="251.0" text-anchor="middle">Front-end</text>
-                  <text class="radar-label" data-i="5" x="96.5" y="209.5" text-anchor="end">Linguagem C</text>
-                  <text class="radar-label" data-i="6" x="66.0" y="136.0" text-anchor="end">Git</text>
-                  <text class="radar-label" data-i="7" x="96.5" y="62.5" text-anchor="end">IA aplicada</text>
-                  <circle class="radar-hit" data-i="0" data-name="Back-end · Python, Flask &amp; Django" data-level="Confortável" data-value="90" cx="170.0" cy="60.0" r="14" />
-                  <circle class="radar-hit" data-i="1" data-name="PHP &amp; Laravel" data-level="Confortável" data-value="88" cx="219.8" cy="82.2" r="14" />
-                  <circle class="radar-hit" data-i="2" data-name="Node.js &amp; APIs REST" data-level="Confortável" data-value="85" cx="238.0" cy="132.0" r="14" />
-                  <circle class="radar-hit" data-i="3" data-name="React &amp; Next.js" data-level="Familiarizado" data-value="78" cx="214.1" cy="176.1" r="14" />
-                  <circle class="radar-hit" data-i="4" data-name="Front-end · JS, TS, HTML &amp; CSS" data-level="Familiarizado" data-value="82" cx="170.0" cy="197.6" r="14" />
-                  <circle class="radar-hit" data-i="5" data-name="Linguagem C · ponteiros e arquivos" data-level="Familiarizado" data-value="75" cx="127.6" cy="174.4" r="14" />
-                  <circle class="radar-hit" data-i="6" data-name="Git &amp; Versionamento" data-level="Familiarizado" data-value="80" cx="106.0" cy="132.0" r="14" />
-                  <circle class="radar-hit" data-i="7" data-name="Vibe Coding &amp; IA aplicada" data-level="Confortável" data-value="85" cx="121.9" cy="83.9" r="14" />
-                </svg>
-
-                <output class="radar-readout" id="radar-readout">
-                  <span class="radar-readout-name">Passe o cursor nos pontos</span>
-                  <span class="radar-readout-lvl">8 competências mapeadas</span>
-                </output>
-
-                <div class="radar-legend">
-                  <span><i class="lvl-comfort"></i> Confortável</span>
-                  <span><i class="lvl-familiar"></i> Familiarizado</span>
-                  <span><i class="lvl-learning"></i> Em aprendizado</span>
-                </div>
-
-                <p class="radar-extra">
-                  <i class="lvl-learning"></i> Em aprendizado:
-                  Análise de Requisitos · Prototipação em Figma · AWS
-                </p>
-              </div>
-            </div>
-
             <!-- Ferramentas & Stack — linha inteira -->
             <div class="skill-card skill-card--wide">
               <div class="skill-card-head">
@@ -513,26 +356,11 @@
               </div>
 
               <div class="tech-sphere-wrap">
-                <div class="board-stage" data-depth>
-                  <div class="motherboard" id="motherboard" data-active="frontend">
-                    <div class="board-traces" aria-hidden="true"></div>
-                    <span class="board-label" aria-hidden="true">PLC MAINBOARD / REV. 02</span>
-                    <span class="board-socket" aria-hidden="true">{ PLC }</span>
-                    <button class="board-chip chip-frontend" type="button" data-chip="frontend" aria-pressed="true" aria-controls="board-readout" disabled><small>01 / DISPLAY</small><strong>FRONTEND</strong><span>React · interfaces</span></button>
-                    <button class="board-chip chip-backend" type="button" data-chip="backend" aria-pressed="false" aria-controls="board-readout" disabled><small>02 / COMPUTE</small><strong>BACKEND</strong><span>Python · APIs</span></button>
-                    <button class="board-chip chip-data" type="button" data-chip="data" aria-pressed="false" aria-controls="board-readout" disabled><small>03 / STORAGE</small><strong>DADOS</strong><span>SQL · modelagem</span></button>
-                    <div class="board-memory" aria-hidden="true"><i></i><i></i><i></i></div>
-                    <span class="board-port" aria-hidden="true">▥ ▥ ▥ ▥</span>
-                  </div>
-                </div>
-
                 <div class="tech-legend">
                   <span class="tech-legend-title">Tudo conectado, do clique ao dado.</span>
                   <p>
                     Selecione um componente da placa para conhecer as tecnologias e um projeto em que elas aparecem.
                   </p>
-
-                  <div class="board-readout" id="board-readout" aria-live="polite" aria-atomic="true"><span>01 / FRONTEND</span><h5>Interfaces que conectam pessoas.</h5><p>React · Next.js · JavaScript · TypeScript · HTML · CSS</p><a href="#projetos">Ver projetos relacionados ↗</a></div>
 
                   <dl class="tech-index">
                     <dt>Linguagens</dt>
@@ -564,15 +392,11 @@
       <section class="section reveal" id="experiencia" data-nav-label="Experiência">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">03</span> <span data-scramble>Experiência Profissional</span></h3>
+            <h3><span class="section-index">03</span> <span>Experiência Profissional</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">git log</span>
           </div>
 
-          <div class="world-feature journal-feature" id="journal-feature" hidden>
-            <div class="journal-stage" data-depth><div class="dev-journal"><div class="journal-cover"><span>FIELD<br />NOTES_</span><small>PEDRO / WORK LOG</small></div><div class="journal-page" id="journal-page"><span id="journal-number">CAPÍTULO / 01</span><h4 id="journal-title"></h4><p id="journal-period"></p><div class="journal-ruling" aria-hidden="true"></div><a id="journal-link" href="#experiencia">Ler experiência ↗</a></div></div></div>
-            <div class="world-feature-copy"><span class="world-kicker">UM CAPÍTULO DE CADA VEZ</span><h4>Da necessidade<br />à implementação.</h4><p>Meu caderno de trabalho: experiências, decisões e aprendizados que levo para cada projeto.</p><button class="world-button" type="button" id="journal-next">Próximo capítulo →</button></div>
-          </div>
           <div class="timeline">
             <div class="tl-entry">
               <div class="tl-dot"></div>
@@ -641,15 +465,11 @@
       <section class="section reveal" id="formacao" data-nav-label="Formação">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">04</span> <span data-scramble>Formação, Idiomas &amp; Certificações</span></h3>
+            <h3><span class="section-index">04</span> <span>Formação, Idiomas &amp; Certificações</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">README.md</span>
           </div>
 
-          <div class="world-feature archive-feature" id="archive-feature" hidden>
-            <div class="archive-stage" data-depth><div class="archive-cartridge"><span class="cartridge-notch" aria-hidden="true"></span><div class="cartridge-label" aria-live="polite" aria-atomic="true"><span id="archive-number">MODULE / 01</span><h4 id="archive-title"></h4><p id="archive-source"></p><small id="archive-status"></small></div><div class="cartridge-pins" aria-hidden="true"></div></div></div>
-            <div class="world-feature-copy"><span class="world-kicker">BIBLIOTECA EM EXPANSÃO</span><h4>Aprender. Aplicar.<br />Repetir.</h4><p>Uma coleção dos cursos e conhecimentos que alimentam meu trabalho.</p><label for="archive-select">Explorar formação complementar</label><select id="archive-select" class="world-select"></select></div>
-          </div>
           <div class="edu-grid">
             <div class="edu-card">
               <div class="edu-card-head">
@@ -777,16 +597,11 @@
       <section class="section reveal" id="projetos" data-nav-label="Projetos">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">05</span> <span data-scramble>Projetos</span></h3>
+            <h3><span class="section-index">05</span> <span>Projetos</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">builds</span>
           </div>
 
-          <!-- Projetos Acadêmicos -->
-          <div class="project-showcase" id="project-showcase" hidden>
-            <div class="device-stage" data-depth><a class="project-device" id="project-device" href="#projetos" aria-label="Conhecer projeto selecionado"><div class="device-bezel"><div class="device-screen"><div class="device-toolbar"><span>● ● ●</span><span>~/selected-work</span></div><div class="device-content"><span class="world-kicker">PROJETO EM FOCO</span><h4 id="device-title"></h4><p id="device-tech"></p><div class="device-wireframe" aria-hidden="true"><i></i><i></i><i></i><span></span></div><span class="device-open">Explorar projeto ↗</span></div></div><span class="device-brand" aria-hidden="true">PLC / DIGITAL PRODUCTS</span></div><div class="device-base" aria-hidden="true"></div></a></div>
-            <div class="showcase-copy"><span class="world-kicker">DO WORKSPACE PARA O MUNDO</span><h4>Ideias que já<br />ganharam forma.</h4><label for="project-select">Selecione um projeto</label><select class="world-select" id="project-select"></select><p id="device-summary"></p><a class="world-button" id="device-detail" href="#projetos">Ver detalhes ↗</a><button class="world-button" type="button" id="device-zoom" aria-pressed="false">Aproximar tela ⤢</button><small>Representação visual. Os detalhes de cada projeto estão abaixo.</small></div>
-          </div>
 
           <div class="projects-subsection-header">
             <span class="projects-subsection-icon">🎓</span>
@@ -797,7 +612,7 @@
           </div>
 
           <div class="projects-grid">
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🌐</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -836,7 +651,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🗂️</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -889,7 +704,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🍔</span>
                 <span class="proj-status proj-status-live">Publicado</span>
@@ -944,7 +759,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🤖</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -997,7 +812,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">⛪</span>
                 <span class="proj-status proj-status-live">Publicado</span>
@@ -1043,7 +858,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">📊</span>
                 <span class="proj-status proj-status-idea">Em evolução</span>
@@ -1097,7 +912,7 @@
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🧮</span>
                 <span class="proj-status proj-status-live">Contínuo</span>
@@ -1149,7 +964,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🧪</span>
                 <span class="proj-status proj-status-idea">Em evolução</span>
@@ -1201,7 +1016,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
             </div>
           </div>
           <div class="projects-grid">
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">📚</span>
                 <span class="proj-status proj-status-live">Em produção</span>
@@ -1246,7 +1061,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">💰</span>
                 <span class="proj-status proj-status-idea">Em evolução</span>
@@ -1292,7 +1107,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🏢</span>
                 <span class="proj-status proj-status-live">Publicado</span>
@@ -1332,7 +1147,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">🛍️</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -1374,7 +1189,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
               </div>
             </article>
 
-            <article class="proj-card" data-spotlight>
+            <article class="proj-card">
               <div class="proj-top">
                 <span class="proj-icon">📐</span>
                 <span class="proj-status proj-status-live">Em produção</span>
@@ -1442,14 +1257,11 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
       <section class="section reveal" id="contato" data-nav-label="Contato">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">06</span> <span data-scramble>Contato</span></h3>
+            <h3><span class="section-index">06</span> <span>Contato</span></h3>
             <div class="section-line"></div>
             <span class="section-tag">ping me</span>
           </div>
 
-          <div class="contact-console-stage" data-depth>
-            <div class="contact-console"><div class="console-top"><span><i></i> PEDRO@WORKSPACE: ~/contato</span><span>READY TO CONNECT</span></div><div class="console-content"><span class="world-kicker">UMA NOVA CONEXÃO COMEÇA AQUI.</span><h4>Vamos construir<br />o próximo capítulo<span>_</span></h4><div class="console-output" id="console-output" role="status">Escolha um canal abaixo para conversar sobre uma ideia ou oportunidade.</div><form id="contact-command" hidden><label for="console-command">pedro@portfolio:~$</label><input id="console-command" name="command" autocomplete="off" spellcheck="false" maxlength="80" placeholder="ajuda" aria-label="Comando do terminal de contato" /><button type="submit" aria-label="Executar comando">↵</button></form><div class="console-shortcuts"><a href="mailto:pleitecampos@gmail.com">email ↗</a><a href="https://github.com/plc232007" target="_blank" rel="noreferrer">github ↗</a><a href="#projetos">projetos ↑</a><button type="button" id="console-copy" hidden>copiar email</button></div></div><div class="console-bottom" aria-hidden="true"><span>PLC — HUMAN ON THE OTHER SIDE</span><span>● ● ●</span></div></div>
-          </div>
           <div class="contact-wrap">
             <div class="contact-text">
               <p>Aberto a oportunidades de estágio, colaboração em projetos e networking profissional.</p>
@@ -1507,16 +1319,6 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
 
   <!-- Floating Action Buttons -->
   <div class="fab-group" id="fab-group">
-    <button class="fab fab--pdf" id="fab-pdf" aria-label="Exportar currículo em PDF" title="Exportar currículo em PDF">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="fab-icon" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="12" y1="12" x2="12" y2="18" />
-        <polyline points="9 15 12 18 15 15" />
-      </svg>
-      <span class="fab-label">Currículo PDF</span>
-    </button>
-
     <a class="fab fab--whatsapp" id="fab-whatsapp"
       href="https://wa.me/5561992866000?text=Ol%C3%A1%20Pedro%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!"
       target="_blank" rel="noreferrer" aria-label="Contato via WhatsApp" title="Falar no WhatsApp">
