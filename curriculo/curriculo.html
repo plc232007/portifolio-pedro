@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pedro Leite Campos — Currículo</title>
+<style>
+@page { size: A4; margin: 0 0 14mm; }
+@page :first { margin-top: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Carlito, "Liberation Sans", sans-serif; font-size: 9.6pt; color: #1f2a37; line-height: 1.38; }
+header { background: #2c3e55; color: #fff; display: flex; align-items: center; gap: 20px; padding: 10mm 16mm 7mm; }
+header img { width: 27mm; height: 27mm; border-radius: 50%; object-fit: cover; border: 3px solid #fff; }
+h1 { font-size: 20pt; letter-spacing: .02em; font-weight: 800; }
+.sub { color: #c9d6e6; font-size: 10.5pt; margin: 2px 0 8px; }
+.contact { font-size: 7.8pt; color: #dfe7f1; line-height: 1.7; }
+.contact span + span::before { content: "|"; margin: 0 6px; color: #8aa0b8; }
+main { padding: 3mm 16mm 0; }
+section { margin-top: 4mm; }
+h2 { font-size: 8.5pt; letter-spacing: .22em; text-transform: uppercase; color: #2c3e55; border-bottom: 1.3px solid #2c3e55; padding-bottom: 2px; margin-bottom: 2.2mm; }
+p.summary { text-align: justify; }
+table.skills { border-collapse: collapse; width: 100%; }
+table.skills th { text-align: left; font-weight: 700; width: 34mm; vertical-align: top; padding: .6px 0; }
+table.skills td { padding: .6px 0; }
+.job, .proj { margin-bottom: 2.4mm; break-inside: avoid; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.role { font-weight: 700; }
+.org { color: #4a6380; font-weight: 400; }
+.date, .link { color: #4a6380; font-size: 8pt; white-space: nowrap; }
+.meta { color: #6a7d92; font-size: 8pt; }
+ul { margin: .8mm 0 0 4mm; }
+li { margin: .2mm 0; padding-left: 1mm; }
+li::marker { color: #8aa0b8; }
+.tag { display: inline-block; font-size: 6.8pt; letter-spacing: .08em; font-weight: 700; color: #2f7a4f; border: 1px solid #9fd0b2; border-radius: 3px; padding: 0 4px; margin-left: 6px; vertical-align: 1px; }
+.tech { color: #4a6380; font-size: 8pt; margin-top: .8mm; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1mm 8mm; }
+.cols b { font-weight: 700; }
+.page-break { break-before: page; }
+.page2 { padding-top: 12mm; }
+</style>
+</head>
+<body>
+<header>
+  <img src="foto.png" alt="">
+  <div>
+    <h1>PEDRO LEITE CAMPOS</h1>
+    <div class="sub">IA e Visão Computacional · Python · PyTorch · YOLO · OpenCV</div>
+    <div class="contact">
+      <span>Brasília, DF</span><span>+55 61 99286-6000</span><span>pleitecampos@gmail.com</span><br>
+      <span>github.com/plc232007</span><span>linkedin.com/in/pedro-campos-1473a5345</span><span>plc232007.github.io/portifolio-pedro</span>
+    </div>
+  </div>
+</header>
+<main>
+<section>
+  <h2>Resumo profissional</h2>
+  <p class="summary">Estagiário de IA na CNT, onde treino modelos de visão computacional com YOLO e PyTorch para a Pesquisa CNT de Rodovias e trato dados com Pandas, NumPy e OpenCV. IA e visão computacional são meu foco de carreira. Antes, na Engesoftware Tecnologia, fui analista de requisitos e depois desenvolvedor fullstack. Por isso também construo o que fica em volta do modelo: APIs REST em Python, banco de dados e interfaces em React/Next.js, com atenção a testes e código legível.</p>
+</section>
+
+<section>
+  <h2>Competências técnicas</h2>
+  <table class="skills">
+    <tr><th>IA & Visão Comp.</th><td>PyTorch, YOLO, OpenCV, Pandas, NumPy, deep learning, LLMs e agentes</td></tr>
+    <tr><th>Linguagens</th><td>Python, TypeScript, JavaScript, SQL, C</td></tr>
+    <tr><th>Front-end</th><td>React, Next.js, Vite, Tailwind CSS, shadcn/ui, HTML5, CSS3</td></tr>
+    <tr><th>Back-end</th><td>FastAPI, Flask, Django REST, APIs REST, autenticação JWT</td></tr>
+    <tr><th>Dados & Infra</th><td>PostgreSQL, MySQL, Supabase, Row Level Security, Git/GitHub, Vercel, Linux</td></tr>
+    <tr><th>Qualidade</th><td>pytest, Vitest, fast-check (testes de propriedade), Zod/Pydantic, code review</td></tr>
+    <tr><th>Produto</th><td>Análise de requisitos, Jira, Kanban, Figma, WordPress</td></tr>
+    <tr><th>Contato inicial</th><td>PHP/Laravel, Node.js, AWS (fundamentos)</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Experiência profissional</h2>
+  <div class="job">
+    <div class="row"><div><span class="role">Estagiário em IA e Visão Computacional</span> <span class="org">— CNT (Confederação Nacional do Transporte)</span></div><span class="date">09/2026 — Atual</span></div>
+    <div class="meta">Estágio · Brasília, DF · Pesquisa CNT de Rodovias</div>
+    <ul>
+      <li>Aplico visão computacional à Pesquisa CNT de Rodovias, que avalia as condições das rodovias brasileiras.</li>
+      <li>Treino e avalio modelos YOLO em PyTorch, comparando métricas entre experimentos.</li>
+      <li>Preparo e analiso dados com Pandas e NumPy e processo imagens com OpenCV.</li>
+      <li>Documento experimentos e resultados para a equipe.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="row"><div><span class="role">Desenvolvedor Fullstack</span> <span class="org">— Engesoftware Tecnologia</span></div><span class="date">10/2025 — 10/2026</span></div>
+    <div class="meta">Estágio · Brasília, DF</div>
+    <ul>
+      <li>Desenvolvi interfaces web com JavaScript, TypeScript e HTML/CSS em ciclos semanais de entrega.</li>
+      <li>Construí endpoints REST em Python e Flask integrados a banco de dados relacional.</li>
+      <li>Trabalhei em repositórios colaborativos com Git, branches e code review.</li>
+      <li>Implementei e mantive soluções em WordPress para demandas internas com prazo definido.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="row"><div><span class="role">Analista de Requisitos</span> <span class="org">— Engesoftware Tecnologia</span></div><span class="date">04/2025 — 10/2025</span></div>
+    <div class="meta">Estágio · Brasília, DF</div>
+    <ul>
+      <li>Levantei e documentei requisitos de mais de 20 funcionalidades em sprints quinzenais.</li>
+      <li>Traduzi regras de negócio em especificações técnicas consumidas por 3 times de desenvolvimento.</li>
+      <li>Organizei o backlog no Jira, com priorização por sprint em fluxo Kanban.</li>
+      <li>Prototipei fluxos de 4 módulos do sistema no Figma, reduzindo retrabalho no front-end.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="row"><div><span class="role">Desenvolvedor e Consultor de Tecnologia</span> <span class="org">— Leite Campos Consultoria</span></div><span class="date">2025 — Atual</span></div>
+    <div class="meta">Empresa familiar · Brasília, DF</div>
+    <ul>
+      <li>Desenvolvo sites, sistemas internos e automações sob medida para clientes finais.</li>
+      <li>Conduzo o ciclo completo: levantamento da necessidade, proposta técnica, implementação e deploy.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page-break page2">
+  <h2>Projetos em destaque</h2>
+  <div class="proj">
+    <div class="row"><div><span class="role">LVM — Laboratório Virtual de Matemática (IFB)</span><span class="tag">EM PRODUÇÃO</span></div><span class="link">github.com/plc232007/lvm</span></div>
+    <ul>
+      <li>Laboratório de geometria para um TCC do IFB: o aluno manipula o triângulo e vê as relações métricas valerem em qualquer posição; exercícios gerados por semente e assistente de IA que orienta sem entregar a resposta.</li>
+      <li>Domínio matemático isolado da UI, geradores determinísticos com testes de propriedade e assistente de IA executado no servidor.</li>
+    </ul>
+    <div class="tech">Next.js 16 · React 19 · TypeScript · Mafs · KaTeX · Vitest · fast-check · LLM · Vercel</div>
+  </div>
+  <div class="proj">
+    <div class="row"><div><span class="role">App dos Catequistas — Paróquia São José</span><span class="tag">EM PRODUÇÃO</span></div><span class="link">github.com/plc232007/app-catequese</span></div>
+    <ul>
+      <li>Plataforma usada por cerca de 70 catequistas: biblioteca de materiais, mural de avisos, calendário de encontros e painel administrativo.</li>
+      <li>Modelagem no PostgreSQL com permissões por Row Level Security; SPA em React com deploy contínuo.</li>
+    </ul>
+    <div class="tech">React · Vite · React Router · Supabase · PostgreSQL · Tailwind · Vercel</div>
+  </div>
+  <div class="proj">
+    <div class="row"><div><span class="role">Organizador de Contas</span><span class="tag">EM PRODUÇÃO</span></div><span class="link">github.com/plc232007/organizador-contas</span></div>
+    <ul>
+      <li>Finanças pessoais multiusuário com isolamento de dados por conta, contas a pagar, compras parceladas e resumo mensal; instalável como PWA.</li>
+      <li>App Router do Next.js, migrations SQL versionadas, Row Level Security e validação com Zod.</li>
+    </ul>
+    <div class="tech">Next.js 16 · React 19 · TypeScript · Supabase · Tailwind · shadcn/ui · Zod · PWA</div>
+  </div>
+  <div class="proj">
+    <div class="row"><div><span class="role">FactoryFlow AI</span><span class="tag">CONCLUÍDO</span></div><span class="link">github.com/plc232007/factoryflow-ai</span></div>
+    <ul>
+      <li>Pipeline multiagente que recebe um requisito em linguagem natural e gera análise técnica, arquitetura, código Python, testes e relatório final.</li>
+    </ul>
+    <div class="tech">Python · OpenAI Agents SDK · pytest · IA generativa</div>
+  </div>
+  <div class="proj">
+    <div class="row"><div><span class="role">Anime Finance</span><span class="tag">EM EVOLUÇÃO</span></div><span class="link">github.com/plc232007/anime-finance</span></div>
+    <ul>
+      <li>Finanças pessoais fullstack: API em Django REST com JWT, front-end React desacoplado e módulo de IA que analisa hábitos de gasto; testes com pytest.</li>
+    </ul>
+    <div class="tech">Django REST · JWT · MySQL · React · Vite · Tailwind · Recharts · pytest</div>
+  </div>
+  <div class="proj">
+    <div class="row"><div><span class="role">Task Manager API</span><span class="tag">CONCLUÍDO</span></div><span class="link">github.com/plc232007/to-do-list</span></div>
+    <ul><li>API REST com CRUD de tarefas, modelagem com SQLAlchemy e validação com Pydantic.</li></ul>
+    <div class="tech">Python · FastAPI · SQLAlchemy · SQLite · Pydantic</div>
+  </div>
+</section>
+
+<section>
+  <h2>Formação acadêmica</h2>
+  <div class="cols">
+    <div><b>Bacharelado em Ciência da Computação</b><br><span class="meta">Centro Universitário IESB · 2025 — 2028 (em curso)</span></div>
+    <div><b>Ensino Fundamental e Médio</b><br><span class="meta">Colégio Militar Dom Pedro II · 2013 — 2024</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Cursos e idiomas</h2>
+  <div class="cols">
+    <div>Python: primeira aplicação; Orientação a Objetos — Alura</div>
+    <div>Claude 101, Claude Code, Claude Code in Action — Anthropic</div>
+    <div>JavaScript / TypeScript — Udemy</div>
+    <div>Algoritmos, Redes, Linux — Udemy</div>
+    <div>Git e GitHub; Pensamento computacional — Alura</div>
+    <div><b>Idiomas:</b> Português (nativo) · Inglês (intermediário)</div>
+  </div>
+</section>
+</main>
+</body>
+</html>

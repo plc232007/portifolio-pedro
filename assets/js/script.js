@@ -4,26 +4,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
   initThemeToggle();
-  initCustomCursor();
-  
-  // Garantir que o conteúdo seja visível mesmo se GSAP falhar
-  setTimeout(() => {
-    if (typeof gsap === 'undefined') {
-      console.warn('GSAP não carregado - conteúdo exibido sem animações');
-      document.querySelectorAll('.reveal, .section').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-    } else {
-      initGSAPAnimations();
-    }
-  }, 100);
-  
-  initVanillaTilt();
   initBackToTop();
   initHeaderScroll();
-  initProjectCardGlow();
-  initFABButtons();
 });
 
 // ============================================
@@ -46,7 +28,12 @@ function initThemeToggle() {
 
   if (!themeToggle || !themeIcon) return;
 
-  const savedTheme = localStorage.getItem("theme");
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("theme");
+  } catch {
+    // Storage bloqueado (modo privado): segue com o tema padrão.
+  }
 
   if (savedTheme === "light") {
     body.classList.add("light-theme");
@@ -61,157 +48,12 @@ function initThemeToggle() {
     const isLight = body.classList.contains("light-theme");
     themeIcon.textContent = isLight ? "☀️" : "🌙";
 
-    localStorage.setItem("theme", isLight ? "light" : "dark");
-    // O fundo agora é só CSS — troca de tema com as variáveis, sem repintar nada
+    try {
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+    } catch {
+      // Sem persistência; o tema vale só para esta visita.
+    }
   });
-}
-
-// ============================================
-// CURSOR CUSTOMIZADO
-// ============================================
-function initCustomCursor() {
-  const cursorDot = document.querySelector('[data-cursor-dot]');
-  const cursorOutline = document.querySelector('[data-cursor-outline]');
-  
-  if (!cursorDot || !cursorOutline) return;
-  
-  // Detectar se é dispositivo touch
-  if ('ontouchstart' in window) {
-    cursorDot.style.display = 'none';
-    cursorOutline.style.display = 'none';
-    return;
-  }
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let outlineX = 0;
-  let outlineY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top = `${e.clientY}px`;
-    cursorDot.classList.add('active');
-    cursorOutline.classList.add('active');
-  });
-
-  // Animação suave do outline
-  function animateOutline() {
-    outlineX += (mouseX - outlineX) * 0.15;
-    outlineY += (mouseY - outlineY) * 0.15;
-    
-    cursorOutline.style.left = `${outlineX}px`;
-    cursorOutline.style.top = `${outlineY}px`;
-    
-    requestAnimationFrame(animateOutline);
-  }
-  animateOutline();
-
-  // Efeito hover em elementos interativos
-  const interactiveElements = document.querySelectorAll('a, button, .skill-card, .proj-card, .fun-card');
-  
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursorOutline.classList.add('hover');
-    });
-    
-    el.addEventListener('mouseleave', () => {
-      cursorOutline.classList.remove('hover');
-    });
-  });
-}
-
-// ============================================
-// ANIMAÇÕES COM GSAP
-// ============================================
-function initGSAPAnimations() {
-  // O workspace usa a entrada em CSS; evita sobrepor duas animações
-  // e deixar os links principais presos em opacity: 0.
-  if (document.querySelector('.workspace-hero')) return;
-  if (typeof gsap === 'undefined') {
-    console.warn('GSAP não carregado, seções permanecerão visíveis');
-    return;
-  }
-  
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Animação do Hero
-  gsap.from('.hero-badge', {
-    opacity: 0,
-    y: -30,
-    duration: 0.8,
-    ease: 'power3.out'
-  });
-
-  gsap.from('.hero-name', {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    delay: 0.2,
-    ease: 'power3.out'
-  });
-
-  gsap.from('.hero-role', {
-    opacity: 0,
-    y: 30,
-    duration: 0.8,
-    delay: 0.4,
-    ease: 'power3.out'
-  });
-
-  gsap.from('.hero-intro', {
-    opacity: 0,
-    y: 30,
-    duration: 0.8,
-    delay: 0.6,
-    ease: 'power3.out'
-  });
-
-  gsap.from('.cta-group .btn', {
-    opacity: 0,
-    y: 20,
-    duration: 0.6,
-    stagger: 0.1,
-    delay: 1,
-    ease: 'power2.out'
-  });
-
-  /* As revelações por scroll (seções, cards, barras de skill e timeline)
-     são tratadas em interactions.js com IntersectionObserver + CSS.
-     Assim o conteúdo nunca fica preso em opacity:0 se o GSAP falhar. */
-}
-
-// ============================================
-// EFEITO 3D COM VANILLA TILT
-// ============================================
-function initVanillaTilt() {
-  if (typeof VanillaTilt === 'undefined') return;
-  
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReducedMotion) return;
-
-  // Inclinação discreta: o suficiente para dar volume, longe do exagero.
-  // A profundidade vem do translateZ dos elementos internos (enhance.css).
-  VanillaTilt.init(document.querySelectorAll('.proj-card'), {
-    max: 3.5,
-    speed: 900,
-    glare: true,
-    'max-glare': 0.1,
-    scale: 1,
-    perspective: 1400
-  });
-
-  VanillaTilt.init(document.querySelectorAll('.skill-card:not(.skill-card--wide), .exp-card, .edu-card'), {
-    max: 2.5,
-    speed: 900,
-    glare: false,
-    scale: 1,
-    perspective: 1600
-  });
-
-  // O card de perfil fica parado — a foto não deve balançar
 }
 
 // ============================================
@@ -221,36 +63,16 @@ function initBackToTop() {
   const button = document.getElementById("back-to-top");
   if (!button) return;
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 400) {
-      button.classList.add("show");
-      
-      if (typeof gsap !== 'undefined') {
-        gsap.to(button, {
-          opacity: 1,
-          scale: 1,
-          duration: 0.3,
-          ease: 'back.out(1.7)'
-        });
-      }
-    } else {
-      button.classList.remove("show");
-      
-      if (typeof gsap !== 'undefined') {
-        gsap.to(button, {
-          opacity: 0,
-          scale: 0.8,
-          duration: 0.3
-        });
-      }
-    }
-  });
+  window.addEventListener(
+    "scroll",
+    () => {
+      button.classList.toggle("show", window.scrollY > 400);
+    },
+    { passive: true }
+  );
 
   button.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
@@ -258,65 +80,14 @@ function initBackToTop() {
 // HEADER COM EFEITO DE SCROLL
 // ============================================
 function initHeaderScroll() {
-  const header = document.querySelector('.header');
+  const header = document.querySelector(".header");
   if (!header) return;
 
-  let lastScroll = 0;
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    if (currentScroll > 100) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-
-    lastScroll = currentScroll;
-  });
-}
-
-// ============================================
-// EFEITO DE BRILHO NOS CARDS DE PROJETO
-// ============================================
-function initProjectCardGlow() {
-  const cards = document.querySelectorAll('.proj-card');
-  
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      
-      card.style.setProperty('--mouse-x', `${x}%`);
-      card.style.setProperty('--mouse-y', `${y}%`);
-    });
-  });
-}
-
-// ============================================
-// FLOATING ACTION BUTTONS (PDF + WHATSAPP)
-// ============================================
-function initFABButtons() {
-  const fabPdf = document.getElementById('fab-pdf');
-  if (!fabPdf) return;
-
-  fabPdf.addEventListener('click', () => {
-    // Download direto — funciona local e hospedado
-    const link = document.createElement('a');
-    link.href = './assets/docs/curriculo-pedro-leite-campos.pdf';
-    link.download = 'Pedro-Leite-Campos-Curriculo.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-
-  // Animar entrada dos FABs
-  const fabGroup = document.getElementById('fab-group');
-  if (fabGroup && typeof gsap !== 'undefined') {
-    gsap.fromTo(fabGroup.children, 
-      { opacity: 0, x: 60 },
-      { opacity: 1, x: 0, duration: 0.5, stagger: 0.15, delay: 1.5, ease: 'back.out(1.7)' }
-    );
-  }
+  window.addEventListener(
+    "scroll",
+    () => {
+      header.classList.toggle("scrolled", window.scrollY > 100);
+    },
+    { passive: true }
+  );
 }
