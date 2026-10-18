@@ -127,12 +127,38 @@
   }
 
   /* ============================================================
+     TILT 3D NOS PROJETOS EM DESTAQUE
+     Só com mouse e sem prefers-reduced-motion. O brilho do
+     ::before segue o cursor pelas variáveis --mouse-x/--mouse-y.
+     ============================================================ */
+  function initCardTilt() {
+    if (reduced || !window.matchMedia("(pointer: fine)").matches) return;
+
+    document.querySelectorAll(".proj-card--featured").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        card.classList.add("is-tilting");
+        card.style.transform = `perspective(1000px) rotateX(${((0.5 - y) * 7).toFixed(2)}deg) rotateY(${((x - 0.5) * 9).toFixed(2)}deg) translateY(-4px)`;
+        card.style.setProperty("--mouse-x", `${(x * 100).toFixed(1)}%`);
+        card.style.setProperty("--mouse-y", `${(y * 100).toFixed(1)}%`);
+      });
+      card.addEventListener("pointerleave", () => {
+        card.style.transform = "";
+        card.classList.remove("is-tilting");
+      });
+    });
+  }
+
+  /* ============================================================
      INIT
      ============================================================ */
   function init() {
     initReveal();
     initScrollProgress();
     initSectionNav();
+    initCardTilt();
   }
 
   if (document.readyState === "loading") {

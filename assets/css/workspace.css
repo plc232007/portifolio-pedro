@@ -58,7 +58,7 @@ body.light-theme .workspace-hero .btn-primary { color: #f1fff5; }
 .workspace-heading i { display: inline-block; width: 6px; height: 6px; background: var(--desk-lime); border-radius: 50%; margin-right: 6px; }
 .workspace-stage { position: relative; aspect-ratio: 1.18; perspective: 1100px; isolation: isolate; overflow: clip; }
 .room-halo { position: absolute; inset: 5% -5% 0; background: radial-gradient(ellipse, #39ff8820, transparent 65%); pointer-events: none; }
-.desk-scene { position: absolute; width: 600px; height: 500px; left: 50%; top: 50%; transform-style: preserve-3d; transform: translate(-50%, -50%) scale(var(--scene-scale, .9)) rotateX(var(--desk-rx, -5deg)) rotateY(var(--desk-ry, -13deg)); transition: transform .25s ease-out; }
+.desk-scene { position: absolute; width: 600px; height: 500px; left: 50%; top: 50%; transform-style: preserve-3d; transform: translate(-50%, -50%) scale(var(--scene-scale, .9)) rotateX(calc(var(--desk-rx, -5deg) + var(--scroll-tilt, 0deg))) rotateY(var(--desk-ry, -13deg)); }
 .desk-scene > * { position: absolute; }
 .desk-shadow { width: 470px; height: 130px; background: #0007; filter: blur(25px); border-radius: 50%; left: 65px; top: 335px; transform: translateZ(-80px); }
 .desk-surface { left: 35px; top: 225px; width: 530px; height: 230px; border: 1px solid #46564d; border-radius: 15px; background: linear-gradient(125deg, #28322e, #171e1c 65%, #0b1310); transform: rotateX(58deg); box-shadow: 0 16px 0 #0a110e, 0 19px 0 #314c3b; }
@@ -110,8 +110,52 @@ body.light-theme .workspace-hero .btn-primary { color: #f1fff5; }
 .desk-plant i:nth-child(2) { transform: rotate(35deg); left: 23px; top: -3px; }
 .desk-plant i:nth-child(3) { transform: rotate(-5deg); top: -22px; }
 .desk-sticker { left: 452px; top: 370px; font-size: 13px; background: #080e0a; color: #70ff9c; padding: 0 6px; transform: rotateX(58deg) rotateZ(-8deg) translateZ(20px); }
-.desk-object { transition: filter .2s, outline-color .2s; outline: 2px solid transparent; outline-offset: 5px; }
-.desk-object:hover, .desk-object:focus-visible { filter: brightness(1.15); outline-color: #70ff9c; }
+.desk-object { transition: filter .2s, outline-color .2s, translate .35s cubic-bezier(.2, .8, .2, 1.2); outline: 2px solid transparent; outline-offset: 5px; }
+.desk-object:hover, .desk-object:focus-visible { filter: brightness(1.15); outline-color: #70ff9c; translate: 0 -4px 18px; }
+/* Profundidade extra: flutuação ociosa, luz que segue o ponteiro e o monitor iluminando a mesa. */
+.desk-float { position: absolute; inset: 0; transform-style: preserve-3d; animation: desk-float 9s ease-in-out infinite; }
+@keyframes desk-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotateY(0deg); }
+  50% { transform: translate3d(0, -7px, 0) rotateY(1.6deg); }
+}
+.is-offscreen .desk-float, .is-offscreen .cv-feed * { animation-play-state: paused; }
+.desk-monitor { overflow: hidden; }
+.desk-monitor::after, .desk-surface::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(circle at var(--lx, 50%) var(--ly, 30%), #ffffff1f, transparent 45%); mix-blend-mode: screen; }
+.desk-surface::after { background: radial-gradient(ellipse at var(--lx, 50%) calc(var(--ly, 30%) + 20%), #ffffff14, transparent 50%); }
+.screen-spill { left: 120px; top: 240px; width: 380px; height: 150px; border-radius: 50%; background: radial-gradient(ellipse, #70ff9c2e, transparent 70%); transform: rotateX(58deg) translateZ(2px); filter: blur(6px); animation: screen-spill 4.5s ease-in-out infinite; pointer-events: none; }
+@keyframes screen-spill { 50% { opacity: .55; } }
+
+/* Monitor em modo visão computacional: detecções no estilo YOLO desenhadas em SVG (ilustração). */
+.screen-cv { padding: 7px 10px 0; }
+.screen-cv[hidden], .screen-body[hidden] { display: none; }
+.screen-cv .screen-kicker { margin-bottom: 5px; }
+.cv-feed { display: block; width: 100%; height: auto; border: 1px solid #2c4a35; border-radius: 3px; background: #0b1711; }
+.cv-det rect:first-child { fill: none; stroke-width: 1.4; stroke-dasharray: 100; stroke-dashoffset: 0; }
+.cv-det .cv-tag { stroke: none; }
+.cv-det text { font: 700 6px var(--mono); fill: #04120a; }
+.cv-det--car rect:first-child { stroke: #70ff9c; } .cv-det--car .cv-tag { fill: #70ff9c; }
+.cv-det--sign rect:first-child { stroke: #ffd166; } .cv-det--sign .cv-tag { fill: #ffd166; }
+.cv-det--crack rect:first-child { stroke: #ff7b72; } .cv-det--crack .cv-tag { fill: #ff7b72; }
+.cv-det { animation: cv-det 6s ease-out infinite; }
+.cv-det rect:first-child { animation: cv-draw 6s ease-out infinite; }
+.cv-det--sign, .cv-det--sign rect:first-child { animation-delay: .7s; }
+.cv-det--crack, .cv-det--crack rect:first-child { animation-delay: 1.4s; }
+@keyframes cv-det { 0%, 12% { opacity: 0; } 18%, 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes cv-draw { 0%, 12% { stroke-dashoffset: 100; } 26%, 100% { stroke-dashoffset: 0; } }
+.cv-scan { fill: #70ff9c; opacity: .55; animation: cv-scan 3s linear infinite; }
+@keyframes cv-scan { from { transform: translateY(0); } to { transform: translateY(134px); } }
+.cv-lane { animation: cv-lane 1.2s linear infinite; }
+@keyframes cv-lane { to { stroke-dashoffset: -13; } }
+.cv-meta { display: flex; justify-content: space-between; margin-top: 5px; font: 7px var(--mono); color: #86ad90; }
+.cv-meta span:last-child { color: #5f7f69; }
+
+/* Inclinação da mesa conforme o hero sai da tela (scroll-driven animation; navegadores sem suporte ignoram). */
+@property --scroll-tilt { syntax: '<angle>'; inherits: true; initial-value: 0deg; }
+@supports (animation-timeline: view()) {
+  .workspace-stage { animation: desk-scroll linear both; animation-timeline: view(); animation-range: exit 0% exit 100%; }
+  @keyframes desk-scroll { to { --scroll-tilt: 16deg; } }
+}
+
 .workspace-controls { display: flex; justify-content: space-between; gap: 1rem; align-items: center; margin-top: -.7rem; font-size: .58rem; color: var(--muted); }
 .workspace-controls button { background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 30px; padding: .65rem .8rem; font: inherit; cursor: pointer; }
 .workspace-controls button:hover { border-color: var(--cyan); }
@@ -147,6 +191,7 @@ body.light-theme .room-halo { background: radial-gradient(ellipse, #72984b25, tr
 }
 @media (prefers-reduced-motion: reduce) {
   .desk-scene, .desk-object { transition: none; }
+  .desk-object:hover, .desk-object:focus-visible { translate: none; }
   .workspace-hero *, .workspace-hero *::before, .workspace-hero *::after { animation: none !important; }
   html { scroll-behavior: auto; }
 }
@@ -209,3 +254,11 @@ body.light-theme .room-halo { background: radial-gradient(ellipse, #72984b25, tr
 .course-list strong { color: var(--text); font-weight: 600; }
 .course-src { display: inline-block; margin-left: .3rem; font: .62rem var(--mono); color: var(--cyan); }
 .course-wip { margin-top: .9rem; font-size: .75rem; color: var(--muted); }
+
+/* Tilt dos projetos em destaque: transição curta enquanto o cursor está sobre o card. */
+html.js-reveal .proj-card--featured.is-tilting, .proj-card--featured.is-tilting { transition: transform .12s ease-out, border-color .3s, box-shadow .3s; }
+.proj-card--featured { transform-style: preserve-3d; overflow: visible; }
+.proj-card--featured::before { border-radius: inherit; background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), #70ff9c26, transparent 55%); }
+.proj-card--featured.is-tilting h3 { transform: translateZ(18px); }
+.proj-card--featured.is-tilting .proj-links { transform: translateZ(12px); }
+.proj-card--featured h3, .proj-card--featured .proj-links { transition: transform .3s ease-out; }

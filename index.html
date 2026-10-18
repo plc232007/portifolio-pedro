@@ -181,21 +181,54 @@
             <div class="workspace-heading"><span><i></i> PEDRO@WORKSPACE:~</span><span>SESSION / 01</span></div>
             <div class="workspace-stage" id="workspace-stage">
               <div class="room-halo" aria-hidden="true"></div>
+              <div class="desk-float">
               <div class="desk-scene" id="desk-scene">
                 <div class="desk-shadow" aria-hidden="true"></div>
                 <div class="desk-leg desk-leg-left" aria-hidden="true"></div>
                 <div class="desk-leg desk-leg-right" aria-hidden="true"></div>
                 <div class="desk-surface" aria-hidden="true"></div>
+                <div class="screen-spill" aria-hidden="true"></div>
                 <div class="desk-edge" aria-hidden="true"></div>
                 <div class="desk-mat" aria-hidden="true"></div>
                 <div class="monitor-foot" aria-hidden="true"></div>
                 <div class="monitor-neck" aria-hidden="true"></div>
-                <a class="desk-monitor desk-object" id="desk-monitor" href="#projetos" aria-label="Monitor: explorar projetos">
-                  <div class="monitor-screen">
-                    <div class="screen-toolbar"><span>● ● ●</span><span>pedro@portfolio: ~/projects</span><span>↗</span></div>
-                    <div class="screen-body">
+                <a class="desk-monitor desk-object" id="desk-monitor" href="#exp-cnt" aria-label="Monitor: visão computacional na Pesquisa CNT de Rodovias">
+                  <div class="monitor-screen" id="monitor-screen" data-mode="cv">
+                    <div class="screen-toolbar"><span>● ● ●</span><span id="screen-path">yolo@cnt: ~/rodovias</span><span>↗</span></div>
+                    <div class="screen-cv">
+                      <span class="screen-kicker">CNT / PESQUISA DE RODOVIAS</span>
+                      <svg class="cv-feed" viewBox="0 0 300 136" aria-hidden="true" focusable="false">
+                        <defs>
+                          <linearGradient id="cv-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d2a1b" /><stop offset="1" stop-color="#1d4a30" /></linearGradient>
+                        </defs>
+                        <rect width="300" height="56" fill="url(#cv-sky)" />
+                        <polygon points="0,56 40,43 90,51 140,39 200,52 250,41 300,50 300,56" fill="#12301f" />
+                        <rect y="56" width="300" height="80" fill="#0b1711" />
+                        <polygon points="138,56 162,56 300,136 0,136" fill="#1b2620" />
+                        <line x1="138" y1="56" x2="12" y2="136" stroke="#7d8f80" stroke-width="1.2" />
+                        <line x1="162" y1="56" x2="288" y2="136" stroke="#7d8f80" stroke-width="1.2" />
+                        <line class="cv-lane" x1="150" y1="58" x2="150" y2="136" stroke="#d9e6c3" stroke-width="2" stroke-dasharray="6 7" />
+                        <g class="cv-car">
+                          <rect x="92" y="94" width="46" height="24" rx="5" fill="#3d5246" />
+                          <rect x="99" y="85" width="32" height="13" rx="4" fill="#2c3e33" />
+                          <rect x="102" y="87" width="26" height="8" rx="2" fill="#9fc7ae" opacity=".45" />
+                          <rect x="95" y="104" width="7" height="4" rx="1" fill="#ffcf7a" />
+                          <rect x="128" y="104" width="7" height="4" rx="1" fill="#ffcf7a" />
+                        </g>
+                        <line x1="250" y1="70" x2="250" y2="104" stroke="#55665a" stroke-width="2" />
+                        <polygon points="250,50 263,70 237,70" fill="#e0b23c" />
+                        <text x="250" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#2a2208">!</text>
+                        <polyline points="176,121 182,114 188,122 195,115 202,123 210,117" fill="none" stroke="#040806" stroke-width="2.2" />
+                        <g class="cv-det cv-det--car"><rect x="86" y="80" width="58" height="42" pathLength="100" /><rect class="cv-tag" x="86" y="71" width="51" height="9" /><text x="89" y="78">veículo 0.94</text></g>
+                        <g class="cv-det cv-det--sign"><rect x="233" y="46" width="34" height="27" pathLength="100" /><rect class="cv-tag" x="224" y="37" width="45" height="9" /><text x="227" y="44">placa 0.88</text></g>
+                        <g class="cv-det cv-det--crack"><rect x="172" y="109" width="42" height="18" pathLength="100" /><rect class="cv-tag" x="172" y="100" width="48" height="9" /><text x="175" y="107">trinca 0.81</text></g>
+                        <rect class="cv-scan" width="300" height="2" />
+                      </svg>
+                      <div class="cv-meta"><span>YOLO · PyTorch · OpenCV</span><span>demo ilustrativa</span></div>
+                    </div>
+                    <div class="screen-body" hidden>
                       <span class="screen-kicker">PROJECT / <span id="screen-number">01</span></span>
-                      <strong id="screen-title">LVM — Laboratório Virtual de Matemática</strong>
+                      <strong id="screen-title">LVM</strong>
                       <p id="screen-description">Geometria interativa com exercícios gerados por semente e assistente de IA.</p>
                       <div class="screen-terminal" aria-hidden="true"><span><b>const</b> developer = <em>"Pedro Campos"</em>;</span><span><b>focus</b>: [visão computacional, python, web]</span><span class="terminal-prompt">❯ explorar projeto</span></div>
                       <span class="screen-open">Conhecer projeto <span>↗</span></span>
@@ -211,10 +244,11 @@
                 <div class="desk-plant" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
                 <span class="desk-sticker" aria-hidden="true">~/plc</span>
               </div>
+              </div>
             </div>
             <div class="workspace-controls">
               <p id="workspace-hint">Mova o mouse. Explore os objetos.</p>
-              <button type="button" id="workspace-next" hidden aria-label="Mostrar próximo projeto no monitor">Próximo projeto <span>→</span></button>
+              <button type="button" id="workspace-next" hidden aria-label="Mostrar o próximo item no monitor">Próximo <span>→</span></button>
             </div>
             <nav class="workspace-shortcuts" aria-label="Explorar o workspace">
               <a href="#projetos">01 <span>Projetos</span> ↗</a>

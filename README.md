@@ -10,6 +10,11 @@ Portfólio de Pedro Leite Campos: IA e visão computacional com Python (PyTorch,
   aqui só trariam bundle e build sem nenhum ganho para quem lê.
 - **Progressive enhancement.** Todo o conteúdo está no HTML. O JS só adiciona a revelação por scroll, o tema e a
   mesa interativa do hero. Sem JS, nada fica escondido: a classe `js-reveal` só é aplicada quando o script roda.
+- **Efeitos 3D só com CSS e JS puro.** A mesa do hero usa `transform-style: preserve-3d`, parallax com inércia
+  (lerp em `requestAnimationFrame`, que para quando a cena estabiliza) e inclinação no scroll com scroll-driven
+  animations (`animation-timeline: view()`), que navegadores sem suporte simplesmente ignoram. A tela do monitor
+  é um SVG animado de detecção estilo YOLO, uma ilustração e não uma captura real. Com `prefers-reduced-motion`,
+  tudo fica estático.
 - **Sem dependências de terceiros em runtime**, a não ser as fontes do Google Fonts.
 - **Peso:** HTML + CSS + JS + foto somam ~120 KB. As imagens são WebP com `width`/`height` explícitos para
   evitar CLS.
