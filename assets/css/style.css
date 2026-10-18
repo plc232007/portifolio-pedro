@@ -525,12 +525,12 @@ body.light-theme .hero-intro {
 }
 
 .profile-name,
-.skill-card h4,
-.edu-card h4,
-.proj-card h4,
-.exp-card h4,
-.section-head h3,
-.contact-right h4 {
+.skill-card h3,
+.edu-card h3,
+.proj-card h3,
+.exp-card h3,
+.section-head h2,
+.contact-right h3 {
   color: var(--text);
 }
 
@@ -586,7 +586,7 @@ body.light-theme .hero-intro {
   position: relative;
 }
 
-.section-head h3 {
+.section-head h2 {
   font-family: var(--display);
   font-size: 1.6rem;
   font-weight: 800;
@@ -766,11 +766,11 @@ body.light-theme .about-text {
   flex-shrink: 0;
 }
 
-.skill-card h4,
-.edu-card h4,
-.contact-right h4,
-.proj-card h4,
-.exp-card h4 {
+.skill-card h3,
+.edu-card h3,
+.contact-right h3,
+.proj-card h3,
+.exp-card h3 {
   font-family: var(--display);
   font-size: 0.95rem;
   font-weight: 700;
@@ -1271,7 +1271,7 @@ body.light-theme .fab--whatsapp {
   border-color: rgba(148, 163, 184, 0.3);
 }
 
-.proj-card h4 {
+.proj-card h3 {
   font-family: var(--display);
   font-size: 1rem;
   font-weight: 700;
@@ -1813,7 +1813,7 @@ body.light-theme .back-to-top {
     padding: 0.5rem 0.9rem;
   }
 
-  .section-head h3 {
+  .section-head h2 {
     font-size: 1.4rem;
   }
 

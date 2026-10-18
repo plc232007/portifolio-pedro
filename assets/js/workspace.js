@@ -38,7 +38,7 @@
   // Reuse portfolio content so the monitor stays aligned with the project cards.
   const cards = [...document.querySelectorAll('#projetos .proj-card')];
   const featuredNames = ['LVM', 'Organizador de Contas', 'App dos Catequistas'];
-  const featured = featuredNames.map(name => cards.find(card => card.querySelector('h4')?.textContent.includes(name))).filter(Boolean);
+  const featured = featuredNames.map(name => cards.find(card => card.querySelector('h3')?.textContent.includes(name))).filter(Boolean);
   const monitor = document.getElementById('desk-monitor');
   const title = document.getElementById('screen-title');
   const description = document.getElementById('screen-description');
@@ -53,7 +53,7 @@
   function showProject() {
     const card = featured[current];
     if (!card) return;
-    const fullTitle = card.querySelector('h4').textContent.trim();
+    const fullTitle = card.querySelector('h3').textContent.trim();
     title.textContent = fullTitle.split(' — ')[0];
     description.textContent = summaries[featuredNames.findIndex(name => fullTitle.includes(name))];
     document.getElementById('screen-number').textContent = String(current + 1).padStart(2, '0');

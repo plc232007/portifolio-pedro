@@ -57,21 +57,14 @@
         <nav aria-label="Navegação principal">
           <ul class="nav-links">
             <li>
-              <a href="#sobre">
+              <a href="#projetos">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
-                  <circle cx="10" cy="7" r="3"></circle>
-                  <path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"></path>
+                  <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                  <rect x="11" y="3" width="6" height="6" rx="1"></rect>
+                  <rect x="3" y="11" width="6" height="6" rx="1"></rect>
+                  <rect x="11" y="11" width="6" height="6" rx="1"></rect>
                 </svg>
-                Sobre
-              </a>
-            </li>
-
-            <li>
-              <a href="#habilidades">
-                <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
-                  <path d="M10 2l2.4 4.8 5.3.8-3.8 3.7.9 5.2L10 14l-4.8 2.5.9-5.2-3.8-3.7 5.3-.8z"></path>
-                </svg>
-                Skills
+                Projetos
               </a>
             </li>
 
@@ -86,23 +79,30 @@
             </li>
 
             <li>
+              <a href="#habilidades">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
+                  <path d="M10 2l2.4 4.8 5.3.8-3.8 3.7.9 5.2L10 14l-4.8 2.5.9-5.2-3.8-3.7 5.3-.8z"></path>
+                </svg>
+                Skills
+              </a>
+            </li>
+
+            <li>
+              <a href="#sobre">
+                <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
+                  <circle cx="10" cy="7" r="3"></circle>
+                  <path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"></path>
+                </svg>
+                Sobre
+              </a>
+            </li>
+
+            <li>
               <a href="#formacao">
                 <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
                   <path d="M10 2L2 6.5l8 4 8-4L10 2zM2 13.5l8 4 8-4M2 10l8 4 8-4"></path>
                 </svg>
                 Formação
-              </a>
-            </li>
-
-            <li>
-              <a href="#projetos">
-                <svg viewBox="0 0 20 20" fill="currentColor" class="icon-xs" aria-hidden="true">
-                  <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                  <rect x="11" y="3" width="6" height="6" rx="1"></rect>
-                  <rect x="3" y="11" width="6" height="6" rx="1"></rect>
-                  <rect x="11" y="11" width="6" height="6" rx="1"></rect>
-                </svg>
-                Projetos
               </a>
             </li>
 
@@ -218,11 +218,861 @@
         </div>
       </section>
 
+      <!-- ========== PROJETOS ========== -->
+      <section class="section reveal" id="projetos" data-nav-label="Projetos">
+        <div class="container">
+          <div class="section-head">
+            <h2><span class="section-index">01</span> <span>Projetos</span></h2>
+            <div class="section-line"></div>
+            <span class="section-tag">builds</span>
+          </div>
+
+
+          <div class="projects-subsection-header">
+            <span class="projects-subsection-icon">🎓</span>
+            <div>
+              <h3 class="projects-subsection-title">Projetos Acadêmicos</h3>
+              <p class="projects-subsection-desc">Projetos de estudo, aprendizado e experimentação</p>
+            </div>
+          </div>
+
+          <div class="projects-grid">
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🌐</span>
+                <span class="proj-status proj-status-live">Concluído</span>
+              </div>
+
+              <h3>Portfólio Pessoal</h3>
+              <p class="proj-description">
+                Portfólio responsivo desenvolvido para apresentar meu perfil profissional, habilidades, experiência e
+                projetos de forma organizada e moderna.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Marca pessoal e apresentação profissional</span>
+                </div>
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Design, front-end e estruturação</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+                <a class="proj-link" href="#inicio">
+                  Ver projeto
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🗂️</span>
+                <span class="proj-status proj-status-live">Concluído</span>
+              </div>
+
+              <h3>Task Manager API</h3>
+              <p class="proj-description">
+                API REST para gerenciamento de tarefas com operações CRUD, desenvolvida para praticar fundamentos de
+                backend moderno com Python, organização de código e persistência de dados.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># GET /tasks</span>
+<span class="pp-key">curl</span> http://localhost:8000/tasks
+
+<span class="pp-string">[
+  {"id": 1, "title": "Revisar spec", "done": false},
+  {"id": 2, "title": "Deploy API",   "done": true }
+]</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Criar uma API robusta para cadastro, listagem, edição e remoção de
+                    tarefas</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento backend, modelagem de dados e estruturação da
+                    aplicação</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">SQLAlchemy</span>
+                <span class="tech-pill">SQLite</span>
+                <span class="tech-pill">Pydantic</span>
+                <span class="tech-pill">Uvicorn</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/to-do-list" target="_blank" rel="noreferrer">
+                  GitHub
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🍔</span>
+                <span class="proj-status proj-status-live">Publicado</span>
+              </div>
+
+              <h3>Sabor Express</h3>
+              <p class="proj-description">
+                Gerenciador de restaurantes em Python com duas interfaces sobre a mesma camada de regras: um menu no
+                terminal e uma aplicação web em Flask. Cadastro com validação de campo vazio e nome duplicado, filtro
+                por categoria, busca por nome e ativação/desativação de estabelecimentos.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># uma lógica, duas interfaces</span>
+<span class="pp-key">restaurantes.py</span> <span class="pp-arrow">→</span> regras + dados
+   <span class="pp-arrow">├──</span> <span class="pp-key">app.py</span> <span class="pp-arrow">→</span> <span class="pp-string">menu no terminal</span>
+   <span class="pp-arrow">└──</span> <span class="pp-key">web.py</span> <span class="pp-arrow">→</span> <span class="pp-string">rotas Flask</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Tirar as regras de dentro da interface, de forma que terminal e web
+                    nunca divirjam de comportamento</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Refatoração da lógica em módulo próprio, construção da interface web
+                    em Flask e deploy serverless</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">Jinja2</span>
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/sabor-express" target="_blank"
+                  rel="noreferrer">
+                  GitHub
+                </a>
+                <a class="proj-link" href="https://sabor-express-eight.vercel.app/" target="_blank" rel="noreferrer">
+                  Ver site
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🤖</span>
+                <span class="proj-status proj-status-live">Concluído</span>
+              </div>
+
+              <h3>FactoryFlow AI</h3>
+              <p class="proj-description">
+                Protótipo de mini fábrica de software orientada por agentes de IA. Recebe um requisito em linguagem
+                natural e executa um pipeline multiagente para gerar análise técnica, arquitetura, plano de
+                implementação, código Python, testes automatizados e relatório final.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># Pipeline multiagente</span>
+<span class="pp-key">input</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Analista]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Arquiteto]</span>
+       <span class="pp-arrow">→</span> <span class="pp-agent">[Dev]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[QA]</span> <span class="pp-arrow">→</span> <span class="pp-string">report.md</span>
+
+<span class="pp-comment">✓ spec.md  ✓ arch.md  ✓ code.py  ✓ tests</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Demonstrar uso de IA generativa e arquitetura agêntica aplicada ao ciclo
+                    de desenvolvimento de software</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Arquitetura do pipeline, orquestração de agentes, integração com LLM,
+                    geração de artefatos e estruturação backend em Python</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">OpenAI SDK</span>
+                <span class="tech-pill">Agents</span>
+                <span class="tech-pill">pytest</span>
+                <span class="tech-pill">python-dotenv</span>
+                <span class="tech-pill">Generative AI</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/factoryflow-ai" target="_blank"
+                  rel="noreferrer">
+                  GitHub
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">⛪</span>
+                <span class="proj-status proj-status-live">Publicado</span>
+              </div>
+
+              <h3>Portal do Aluno — Catequese IC</h3>
+              <p class="proj-description">
+                Site multipágina desenvolvido para a turma de Iniciação Cristã de Adultos da Paróquia São José, reunindo
+                conteúdos, devoção, organização dos encontros e materiais de apoio em uma navegação simples e acessível.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Centralizar conteúdos e informações da turma em um portal estático, leve
+                    e fácil de manter</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Estruturação do site, organização das páginas, desenvolvimento frontend
+                    e definição da experiência de navegação</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">HTML</span>
+                <span class="tech-pill">CSS</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">GitHub Pages</span>
+                <span class="tech-pill">Frontend</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/catequese-adultos-ic" target="_blank"
+                  rel="noreferrer">
+                  GitHub
+                </a>
+                <a class="proj-link" href="https://plc232007.github.io/catequese-adultos-ic/" target="_blank"
+                  rel="noreferrer">
+                  Ver site
+                </a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">📊</span>
+                <span class="proj-status proj-status-idea">Em evolução</span>
+              </div>
+
+              <h3>Anime Finance</h3>
+              <p class="proj-description">
+                Aplicação fullstack de finanças pessoais com temática anime: lançamento de transações, metas de
+                economia, dashboards com gráficos e um módulo de IA que analisa os hábitos de gasto e sugere ajustes.
+                Backend em Django REST com autenticação JWT e frontend React consumindo a API.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment"># apps do backend</span>
+<span class="pp-key">users</span>      <span class="pp-arrow">→</span> cadastro + <span class="pp-string">JWT</span>
+<span class="pp-key">transactions</span> <span class="pp-arrow">→</span> receitas, gastos, categorias
+<span class="pp-key">goals</span>      <span class="pp-arrow">→</span> metas e progresso
+<span class="pp-key">ai</span>         <span class="pp-arrow">→</span> análise de hábitos via LLM</pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Exercitar uma arquitetura fullstack completa — API versionada,
+                    autenticação, testes e frontend desacoplado</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Modelagem do domínio, API em Django REST, integração com LLM,
+                    testes com pytest e construção da interface em React</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Django</span>
+                <span class="tech-pill">Django REST</span>
+                <span class="tech-pill">JWT</span>
+                <span class="tech-pill">MySQL</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">Recharts</span>
+                <span class="tech-pill">pytest</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/anime-finance" target="_blank"
+                  rel="noreferrer">GitHub</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🧮</span>
+                <span class="proj-status proj-status-live">Contínuo</span>
+              </div>
+
+              <h3>Fundamentos em Linguagem C</h3>
+              <p class="proj-description">
+                Repositórios de estudo e das aulas de APC II, onde trabalho os fundamentos que a web esconde:
+                ponteiros, aritmética de ponteiros, alocação de memória, manipulação de arquivos e estruturas de
+                dados implementadas do zero.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment">/* aritmética de ponteiros */</span>
+<span class="pp-key">int</span> v[] = {10, 20, 30};
+<span class="pp-key">int</span> *p = v;
+
+printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment">// 30</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Firmar a base de computação — memória, ponteiros e complexidade —
+                    que sustenta qualquer linguagem de alto nível</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Implementação dos exercícios, organização por tópico e
+                    documentação do progresso</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Linguagem C</span>
+                <span class="tech-pill">Ponteiros</span>
+                <span class="tech-pill">Estruturas de Dados</span>
+                <span class="tech-pill">Arquivos</span>
+                <span class="tech-pill">Algoritmos</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/c-learning" target="_blank"
+                  rel="noreferrer">c-learning</a>
+                <a class="proj-link" href="https://github.com/plc232007/aulas-c" target="_blank"
+                  rel="noreferrer">aulas-c</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🧪</span>
+                <span class="proj-status proj-status-idea">Em evolução</span>
+              </div>
+
+              <h3>PromptLab AI</h3>
+              <p class="proj-description">
+                Plataforma interativa para criar, testar e comparar prompts e agentes de IA em diferentes cenários, com
+                foco em experimentação, avaliação de respostas e melhoria iterativa de resultados.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Explorar IA generativa de forma prática e interativa, comparando
+                    estratégias de prompting e comportamento de agentes</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Concepção do produto, backend em Python, integração com LLM e
+                    desenvolvimento da experiência interativa</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">LLM</span>
+                <span class="tech-pill">Agents</span>
+                <span class="tech-pill">Prompt Engineering</span>
+                <span class="tech-pill">UI/UX</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
+                  Em desenvolvimento
+                </a>
+              </div>
+            </article>
+          </div>
+
+          <!-- Projetos Reais -->
+          <div class="projects-subsection-header projects-subsection-header--real">
+            <span class="projects-subsection-icon">🏢</span>
+            <div>
+              <h3 class="projects-subsection-title">Projetos Reais</h3>
+              <p class="projects-subsection-desc">Soluções entregues para clientes reais</p>
+            </div>
+          </div>
+          <div class="projects-grid">
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">📚</span>
+                <span class="proj-status proj-status-live">Em produção</span>
+              </div>
+
+              <h3>App dos Catequistas — Paróquia São José</h3>
+              <p class="proj-description">
+                Plataforma web usada por cerca de 70 catequistas: biblioteca de materiais de formação, mural de avisos,
+                calendário de encontros e painel administrativo para a coordenação publicar conteúdo. Autenticação e
+                permissões controladas por Row Level Security no banco.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Substituir grupos de WhatsApp e pastas soltas por um lugar único,
+                    organizado e com controle de acesso</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — modelagem no Postgres, políticas de
+                    segurança, SPA em React, painel admin e deploy</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Vite</span>
+                <span class="tech-pill">React Router</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/app-catequese" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://app-catequese-taupe.vercel.app" target="_blank"
+                  rel="noreferrer">Ver app</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">💰</span>
+                <span class="proj-status proj-status-idea">Em evolução</span>
+              </div>
+
+              <h3>Organizador de Contas</h3>
+              <p class="proj-description">
+                Sistema de finanças pessoais construído em Next.js: registro de gastos e receitas, contas a pagar com
+                vencimento, compras parceladas e resumo do mês. Cada pessoa tem sua própria conta e enxerga apenas os
+                próprios dados. Instalável como PWA no celular.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Resolver o controle financeiro da família sem depender de planilha,
+                    com isolamento real de dados por usuário</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — App Router, migrations SQL, Row Level
+                    Security, design system com shadcn/ui e configuração de PWA</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Next.js 16</span>
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">shadcn/ui</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">Zod</span>
+                <span class="tech-pill">PWA</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/organizador-contas" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://organizador-contas-et4n.vercel.app/" target="_blank"
+                  rel="noreferrer">Ver app</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🏢</span>
+                <span class="proj-status proj-status-live">Publicado</span>
+              </div>
+
+              <h3>Leite Campos Consultoria</h3>
+              <p class="proj-description">
+                Site institucional da consultoria da família, apresentando os serviços, a proposta de valor e os
+                canais de contato. Página leve, responsiva e sem dependências, publicada em GitHub Pages.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Dar presença digital à empresa e centralizar a captação de
+                    contatos</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Concepção, design, desenvolvimento front-end e publicação</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">HTML5</span>
+                <span class="tech-pill">CSS3</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">GitHub Pages</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/leite-campos" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://plc232007.github.io/leite-campos/" target="_blank"
+                  rel="noreferrer">Ver site</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">🛍️</span>
+                <span class="proj-status proj-status-live">Concluído</span>
+              </div>
+
+              <h3>Catálogo Naty</h3>
+              <p class="proj-description">
+                Plataforma web para catálogo de produtos e gerenciamento de estoque — permite cadastrar itens com fotos,
+                preços e categorias, controlar entradas e saídas do inventário e compartilhar o catálogo com clientes via
+                link público.
+              </p>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Digitalizar a vitrine de produtos e o controle de estoque para uma
+                    empreendedora, eliminando planilhas manuais</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — concepção, design, frontend e deploy em
+                    produção</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">HTML</span>
+                <span class="tech-pill">CSS</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/catalogo-naty" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://catalogo-naty.vercel.app/" target="_blank"
+                  rel="noreferrer">Ver site</a>
+              </div>
+            </article>
+
+            <article class="proj-card">
+              <div class="proj-top">
+                <span class="proj-icon">📐</span>
+                <span class="proj-status proj-status-live">Em produção</span>
+              </div>
+
+              <h3>LVM — Laboratório Virtual de Matemática (IFB)</h3>
+              <p class="proj-description">
+                Laboratório de matemática desenvolvido para o TCC de um cliente do IFB. O aluno arrasta o triângulo
+                e vê as relações métricas continuarem valendo em qualquer posição, com exercícios gerados por semente
+                — os números mudam a cada tentativa, então não há gabarito para decorar. Inclui o Fermat, assistente
+                de IA que tira dúvidas no contexto da atividade sem entregar a resposta.
+              </p>
+
+              <div class="proj-preview">
+                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
+                <pre class="proj-preview-code"><span class="pp-comment">/* relações métricas — valem em qualquer posição */</span>
+<span class="pp-key">a·h</span> = b·c      <span class="pp-key">b²</span> = a·n
+<span class="pp-key">c²</span> = a·m      <span class="pp-key">h²</span> = m·n
+
+<span class="pp-comment">// exercício por semente → números novos a cada tentativa</span></pre>
+              </div>
+
+              <div class="proj-meta">
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Objetivo</span>
+                  <span class="proj-meta-value">Substituir um mural de links estático por um laboratório
+                    interativo, em que a geometria é manipulada em vez de apenas lida</span>
+                </div>
+
+                <div class="proj-meta-item">
+                  <span class="proj-meta-label">Meu papel</span>
+                  <span class="proj-meta-value">Desenvolvimento completo — arquitetura com domínio puro isolado da UI,
+                    geradores determinísticos, testes de propriedade, assistente de IA server-side e deploy</span>
+                </div>
+              </div>
+
+              <div class="proj-techs">
+                <span class="tech-pill">Next.js 16</span>
+                <span class="tech-pill">React 19</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">shadcn/ui</span>
+                <span class="tech-pill">Mafs</span>
+                <span class="tech-pill">KaTeX</span>
+                <span class="tech-pill">MDX</span>
+                <span class="tech-pill">Vitest</span>
+                <span class="tech-pill">fast-check</span>
+                <span class="tech-pill">LLM</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+
+              <div class="proj-links">
+                <a class="proj-link" href="https://github.com/plc232007/lvm" target="_blank"
+                  rel="noreferrer">GitHub</a>
+                <a class="proj-link" href="https://lvm-seven.vercel.app" target="_blank"
+                  rel="noreferrer">Ver app</a>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== EXPERIÊNCIA ========== -->
+      <section class="section reveal" id="experiencia" data-nav-label="Experiência">
+        <div class="container">
+          <div class="section-head">
+            <h2><span class="section-index">02</span> <span>Experiência Profissional</span></h2>
+            <div class="section-line"></div>
+            <span class="section-tag">git log</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-entry">
+              <div class="tl-dot"></div>
+              <div class="exp-card">
+                <div class="exp-head">
+                  <div>
+                    <div class="exp-company">CNT</div>
+                    <h3>Estagiário em IA e Visão Computacional</h3>
+                    <p class="exp-period">09/2026 — Atual</p>
+                  </div>
+                  <span class="exp-badge">Estágio</span>
+                </div>
+                <ul class="exp-list">
+                  <li>Treino e avalio modelos de machine learning e deep learning aplicados a visão computacional, em Python.</li>
+                  <li>Preparo e analiso os dados de imagem usados nos experimentos e comparo os resultados entre execuções.</li>
+                  <li>Documento experimentos e resultados para a equipe.</li>
+                </ul>
+                <div class="exp-techs">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Machine Learning</span>
+                  <span class="tech-pill">Deep Learning</span>
+                  <span class="tech-pill">Visão Computacional</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-dot"></div>
+              <div class="exp-card">
+                <div class="exp-head">
+                  <div>
+                    <div class="exp-company">Engesoftware Tecnologia</div>
+                    <h3>Desenvolvedor Fullstack</h3>
+                    <p class="exp-period">10/2025 — Atual</p>
+                  </div>
+                  <span class="exp-badge">Estágio</span>
+                </div>
+                <ul class="exp-list">
+                  <li>Desenvolvo interfaces web com JavaScript, TypeScript e HTML/CSS em ciclos semanais de entrega.</li>
+                  <li>Construo endpoints REST em Python e Flask integrados a banco de dados relacional.</li>
+                  <li>Trabalho em repositórios colaborativos com Git, branches e code review.</li>
+                  <li>Implemento e mantenho soluções em WordPress para demandas internas com prazo definido.</li>
+                </ul>
+                <div class="exp-techs">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">Flask</span>
+                  <span class="tech-pill">TypeScript</span>
+                  <span class="tech-pill">Git</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tl-entry">
+              <div class="tl-dot"></div>
+              <div class="exp-card">
+                <div class="exp-head">
+                  <div>
+                    <div class="exp-company">Engesoftware Tecnologia</div>
+                    <h3>Analista de Requisitos</h3>
+                    <p class="exp-period">04/2025 — 10/2025</p>
+                  </div>
+                  <span class="exp-badge">Estágio</span>
+                </div>
+                <ul class="exp-list">
+                  <li>Levantei e documentei requisitos de mais de 20 funcionalidades em sprints quinzenais.</li>
+                  <li>Traduzi regras de negócio em especificações técnicas consumidas por 3 times de desenvolvimento.</li>
+                  <li>Organizei o backlog no Jira, com priorização por sprint em fluxo Kanban.</li>
+                  <li>Prototipei fluxos de 4 módulos do sistema no Figma, reduzindo retrabalho no front-end.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== HABILIDADES ========== -->
+      <section class="section reveal" id="habilidades" data-nav-label="Skills">
+        <div class="container">
+          <div class="section-head">
+            <h2><span class="section-index">03</span> <span>Habilidades</span></h2>
+            <div class="section-line"></div>
+            <span class="section-tag">skills.json</span>
+          </div>
+
+          <div class="skills-grid">
+            <!-- Soft Skills -->
+            <div class="skill-card">
+              <div class="skill-card-head">
+                <div class="skill-icon-wrap">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--cyan)" stroke-width="1.5" class="icon-md"
+                    aria-hidden="true">
+                    <circle cx="10" cy="8" r="3"></circle>
+                    <path d="M5 17c0-2.8 2.2-5 5-5s5 2.2 5 5"></path>
+                  </svg>
+                </div>
+                <h3>Soft Skills</h3>
+              </div>
+
+              <ul>
+                <li>Raciocínio lógico e analítico</li>
+                <li>Resolução de problemas</li>
+                <li>Aprendizado contínuo</li>
+                <li>Comunicação técnica clara</li>
+                <li>Resiliência &amp; Proatividade</li>
+              </ul>
+
+              <div class="flow">
+                <span class="flow-label">// como eu trabalho</span>
+                <ol class="flow-steps">
+                  <li>
+                    <span class="flow-num">01</span>
+                    <span class="flow-title">Entender</span>
+                    <span class="flow-desc">Escuto o problema antes de propor solução</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">02</span>
+                    <span class="flow-title">Mapear</span>
+                    <span class="flow-desc">Traduzo em requisitos e critérios claros</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">03</span>
+                    <span class="flow-title">Construir</span>
+                    <span class="flow-desc">Entrego em partes pequenas e versionadas</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">04</span>
+                    <span class="flow-title">Iterar</span>
+                    <span class="flow-desc">Meço o resultado e ajusto o que não serviu</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- Ferramentas & Stack — linha inteira -->
+            <div class="skill-card skill-card--wide">
+              <div class="skill-card-head">
+                <div class="skill-icon-wrap">
+                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--orange)" stroke-width="1.5" class="icon-md"
+                    aria-hidden="true">
+                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                    <rect x="11" y="3" width="6" height="6" rx="1"></rect>
+                    <rect x="3" y="11" width="6" height="6" rx="1"></rect>
+                    <rect x="11" y="11" width="6" height="6" rx="1"></rect>
+                  </svg>
+                </div>
+                <h3>Ferramentas &amp; Stack</h3>
+              </div>
+
+              <div class="tech-sphere-wrap">
+                <div class="tech-legend">
+                  <span class="tech-legend-title">Tudo conectado, do clique ao dado.</span>
+                  <p>
+                    Selecione um componente da placa para conhecer as tecnologias e um projeto em que elas aparecem.
+                  </p>
+
+                  <dl class="tech-index">
+                    <dt>Linguagens</dt>
+                    <dd>Python · JavaScript · TypeScript · PHP · Linguagem C · SQL</dd>
+
+                    <dt>Frameworks</dt>
+                    <dd>Laravel · Node.js · React · Next.js · Django · Flask</dd>
+
+                    <dt>Dados &amp; infra</dt>
+                    <dd>PostgreSQL · Supabase · AWS · Vercel · Git · APIs REST</dd>
+
+                    <dt>Produto</dt>
+                    <dd>Figma · Jira · Kanban · WordPress</dd>
+
+                    <dt>UI &amp; análise</dt>
+                    <dd>Tailwind · Vite · Pandas</dd>
+
+                    <dt>IA &amp; assistentes</dt>
+                    <dd>Claude Code · Codex · Cursor · GitHub Copilot</dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ========== SOBRE ========== -->
       <section class="section reveal" id="sobre" data-nav-label="Sobre">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">01</span> <span>Sobre mim</span></h3>
+            <h2><span class="section-index">04</span> <span>Sobre mim</span></h2>
             <div class="section-line"></div>
             <span class="section-tag">whoami</span>
           </div>
@@ -277,201 +1127,11 @@
         </div>
       </section>
 
-      <!-- ========== HABILIDADES ========== -->
-      <section class="section reveal" id="habilidades" data-nav-label="Skills">
-        <div class="container">
-          <div class="section-head">
-            <h3><span class="section-index">02</span> <span>Habilidades</span></h3>
-            <div class="section-line"></div>
-            <span class="section-tag">skills.json</span>
-          </div>
-
-          <div class="skills-grid">
-            <!-- Soft Skills -->
-            <div class="skill-card">
-              <div class="skill-card-head">
-                <div class="skill-icon-wrap">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--cyan)" stroke-width="1.5" class="icon-md"
-                    aria-hidden="true">
-                    <circle cx="10" cy="8" r="3"></circle>
-                    <path d="M5 17c0-2.8 2.2-5 5-5s5 2.2 5 5"></path>
-                  </svg>
-                </div>
-                <h4>Soft Skills</h4>
-              </div>
-
-              <ul>
-                <li>Raciocínio lógico e analítico</li>
-                <li>Resolução de problemas</li>
-                <li>Aprendizado contínuo</li>
-                <li>Comunicação técnica clara</li>
-                <li>Resiliência &amp; Proatividade</li>
-              </ul>
-
-              <div class="flow">
-                <span class="flow-label">// como eu trabalho</span>
-                <ol class="flow-steps">
-                  <li>
-                    <span class="flow-num">01</span>
-                    <span class="flow-title">Entender</span>
-                    <span class="flow-desc">Escuto o problema antes de propor solução</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">02</span>
-                    <span class="flow-title">Mapear</span>
-                    <span class="flow-desc">Traduzo em requisitos e critérios claros</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">03</span>
-                    <span class="flow-title">Construir</span>
-                    <span class="flow-desc">Entrego em partes pequenas e versionadas</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">04</span>
-                    <span class="flow-title">Iterar</span>
-                    <span class="flow-desc">Meço o resultado e ajusto o que não serviu</span>
-                  </li>
-                </ol>
-              </div>
-            </div>
-
-            <!-- Ferramentas & Stack — linha inteira -->
-            <div class="skill-card skill-card--wide">
-              <div class="skill-card-head">
-                <div class="skill-icon-wrap">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--orange)" stroke-width="1.5" class="icon-md"
-                    aria-hidden="true">
-                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="11" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="3" y="11" width="6" height="6" rx="1"></rect>
-                    <rect x="11" y="11" width="6" height="6" rx="1"></rect>
-                  </svg>
-                </div>
-                <h4>Ferramentas &amp; Stack</h4>
-              </div>
-
-              <div class="tech-sphere-wrap">
-                <div class="tech-legend">
-                  <span class="tech-legend-title">Tudo conectado, do clique ao dado.</span>
-                  <p>
-                    Selecione um componente da placa para conhecer as tecnologias e um projeto em que elas aparecem.
-                  </p>
-
-                  <dl class="tech-index">
-                    <dt>Linguagens</dt>
-                    <dd>Python · JavaScript · TypeScript · PHP · Linguagem C · SQL</dd>
-
-                    <dt>Frameworks</dt>
-                    <dd>Laravel · Node.js · React · Next.js · Django · Flask</dd>
-
-                    <dt>Dados &amp; infra</dt>
-                    <dd>PostgreSQL · Supabase · AWS · Vercel · Git · APIs REST</dd>
-
-                    <dt>Produto</dt>
-                    <dd>Figma · Jira · Kanban · WordPress</dd>
-
-                    <dt>UI &amp; análise</dt>
-                    <dd>Tailwind · Vite · Pandas</dd>
-
-                    <dt>IA &amp; assistentes</dt>
-                    <dd>Claude Code · Codex · Cursor · GitHub Copilot</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ========== EXPERIÊNCIA ========== -->
-      <section class="section reveal" id="experiencia" data-nav-label="Experiência">
-        <div class="container">
-          <div class="section-head">
-            <h3><span class="section-index">03</span> <span>Experiência Profissional</span></h3>
-            <div class="section-line"></div>
-            <span class="section-tag">git log</span>
-          </div>
-
-          <div class="timeline">
-            <div class="tl-entry">
-              <div class="tl-dot"></div>
-              <div class="exp-card">
-                <div class="exp-head">
-                  <div>
-                    <div class="exp-company">CNT</div>
-                    <h4>Estagiário em IA e Visão Computacional</h4>
-                    <p class="exp-period">09/2026 — Atual</p>
-                  </div>
-                  <span class="exp-badge">Estágio</span>
-                </div>
-                <ul class="exp-list">
-                  <li>Treino e avalio modelos de machine learning e deep learning aplicados a visão computacional, em Python.</li>
-                  <li>Preparo e analiso os dados de imagem usados nos experimentos e comparo os resultados entre execuções.</li>
-                  <li>Documento experimentos e resultados para a equipe.</li>
-                </ul>
-                <div class="exp-techs">
-                  <span class="tech-pill">Python</span>
-                  <span class="tech-pill">Machine Learning</span>
-                  <span class="tech-pill">Deep Learning</span>
-                  <span class="tech-pill">Visão Computacional</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="tl-entry">
-              <div class="tl-dot"></div>
-              <div class="exp-card">
-                <div class="exp-head">
-                  <div>
-                    <div class="exp-company">Engesoftware Tecnologia</div>
-                    <h4>Desenvolvedor Fullstack</h4>
-                    <p class="exp-period">10/2025 — Atual</p>
-                  </div>
-                  <span class="exp-badge">Estágio</span>
-                </div>
-                <ul class="exp-list">
-                  <li>Desenvolvo interfaces web com JavaScript, TypeScript e HTML/CSS em ciclos semanais de entrega.</li>
-                  <li>Construo endpoints REST em Python e Flask integrados a banco de dados relacional.</li>
-                  <li>Trabalho em repositórios colaborativos com Git, branches e code review.</li>
-                  <li>Implemento e mantenho soluções em WordPress para demandas internas com prazo definido.</li>
-                </ul>
-                <div class="exp-techs">
-                  <span class="tech-pill">Python</span>
-                  <span class="tech-pill">Flask</span>
-                  <span class="tech-pill">TypeScript</span>
-                  <span class="tech-pill">Git</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="tl-entry">
-              <div class="tl-dot"></div>
-              <div class="exp-card">
-                <div class="exp-head">
-                  <div>
-                    <div class="exp-company">Engesoftware Tecnologia</div>
-                    <h4>Analista de Requisitos</h4>
-                    <p class="exp-period">04/2025 — 10/2025</p>
-                  </div>
-                  <span class="exp-badge">Estágio</span>
-                </div>
-                <ul class="exp-list">
-                  <li>Levantei e documentei requisitos de mais de 20 funcionalidades em sprints quinzenais.</li>
-                  <li>Traduzi regras de negócio em especificações técnicas consumidas por 3 times de desenvolvimento.</li>
-                  <li>Organizei o backlog no Jira, com priorização por sprint em fluxo Kanban.</li>
-                  <li>Prototipei fluxos de 4 módulos do sistema no Figma, reduzindo retrabalho no front-end.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- ========== FORMAÇÃO & CERTIFICAÇÕES ========== -->
       <section class="section reveal" id="formacao" data-nav-label="Formação">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">04</span> <span>Formação, Idiomas &amp; Certificações</span></h3>
+            <h2><span class="section-index">05</span> <span>Formação, Idiomas &amp; Certificações</span></h2>
             <div class="section-line"></div>
             <span class="section-tag">README.md</span>
           </div>
@@ -485,7 +1145,7 @@
                     <path d="M10 2L2 6.5l8 4 8-4L10 2zM2 13.5l8 4 8-4M2 10l8 4 8-4"></path>
                   </svg>
                 </div>
-                <h4>Formação Acadêmica</h4>
+                <h3>Formação Acadêmica</h3>
               </div>
 
               <div class="edu-entry">
@@ -512,7 +1172,7 @@
                     <path d="M10 2l2.4 4.8 5.3.8-3.8 3.7.9 5.2L10 14l-4.8 2.5.9-5.2-3.8-3.7 5.3-.8z"></path>
                   </svg>
                 </div>
-                <h4>Certificações</h4>
+                <h3>Certificações</h3>
               </div>
 
               <div class="cert-entry">
@@ -599,671 +1259,11 @@
         </div>
       </section>
 
-      <!-- ========== PROJETOS ========== -->
-      <section class="section reveal" id="projetos" data-nav-label="Projetos">
-        <div class="container">
-          <div class="section-head">
-            <h3><span class="section-index">05</span> <span>Projetos</span></h3>
-            <div class="section-line"></div>
-            <span class="section-tag">builds</span>
-          </div>
-
-
-          <div class="projects-subsection-header">
-            <span class="projects-subsection-icon">🎓</span>
-            <div>
-              <h4 class="projects-subsection-title">Projetos Acadêmicos</h4>
-              <p class="projects-subsection-desc">Projetos de estudo, aprendizado e experimentação</p>
-            </div>
-          </div>
-
-          <div class="projects-grid">
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🌐</span>
-                <span class="proj-status proj-status-live">Concluído</span>
-              </div>
-
-              <h4>Portfólio Pessoal</h4>
-              <p class="proj-description">
-                Portfólio responsivo desenvolvido para apresentar meu perfil profissional, habilidades, experiência e
-                projetos de forma organizada e moderna.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Marca pessoal e apresentação profissional</span>
-                </div>
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Design, front-end e estruturação</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3</span>
-                <span class="tech-pill">JavaScript</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007" target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-                <a class="proj-link" href="#inicio">
-                  Ver projeto
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🗂️</span>
-                <span class="proj-status proj-status-live">Concluído</span>
-              </div>
-
-              <h4>Task Manager API</h4>
-              <p class="proj-description">
-                API REST para gerenciamento de tarefas com operações CRUD, desenvolvida para praticar fundamentos de
-                backend moderno com Python, organização de código e persistência de dados.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment"># GET /tasks</span>
-<span class="pp-key">curl</span> http://localhost:8000/tasks
-
-<span class="pp-string">[
-  {"id": 1, "title": "Revisar spec", "done": false},
-  {"id": 2, "title": "Deploy API",   "done": true }
-]</span></pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Criar uma API robusta para cadastro, listagem, edição e remoção de
-                    tarefas</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Desenvolvimento backend, modelagem de dados e estruturação da
-                    aplicação</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">FastAPI</span>
-                <span class="tech-pill">SQLAlchemy</span>
-                <span class="tech-pill">SQLite</span>
-                <span class="tech-pill">Pydantic</span>
-                <span class="tech-pill">Uvicorn</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/to-do-list" target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🍔</span>
-                <span class="proj-status proj-status-live">Publicado</span>
-              </div>
-
-              <h4>Sabor Express</h4>
-              <p class="proj-description">
-                Gerenciador de restaurantes em Python com duas interfaces sobre a mesma camada de regras: um menu no
-                terminal e uma aplicação web em Flask. Cadastro com validação de campo vazio e nome duplicado, filtro
-                por categoria, busca por nome e ativação/desativação de estabelecimentos.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment"># uma lógica, duas interfaces</span>
-<span class="pp-key">restaurantes.py</span> <span class="pp-arrow">→</span> regras + dados
-   <span class="pp-arrow">├──</span> <span class="pp-key">app.py</span> <span class="pp-arrow">→</span> <span class="pp-string">menu no terminal</span>
-   <span class="pp-arrow">└──</span> <span class="pp-key">web.py</span> <span class="pp-arrow">→</span> <span class="pp-string">rotas Flask</span></pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Tirar as regras de dentro da interface, de forma que terminal e web
-                    nunca divirjam de comportamento</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Refatoração da lógica em módulo próprio, construção da interface web
-                    em Flask e deploy serverless</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">Flask</span>
-                <span class="tech-pill">Jinja2</span>
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/sabor-express" target="_blank"
-                  rel="noreferrer">
-                  GitHub
-                </a>
-                <a class="proj-link" href="https://sabor-express-eight.vercel.app/" target="_blank" rel="noreferrer">
-                  Ver site
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🤖</span>
-                <span class="proj-status proj-status-live">Concluído</span>
-              </div>
-
-              <h4>FactoryFlow AI</h4>
-              <p class="proj-description">
-                Protótipo de mini fábrica de software orientada por agentes de IA. Recebe um requisito em linguagem
-                natural e executa um pipeline multiagente para gerar análise técnica, arquitetura, plano de
-                implementação, código Python, testes automatizados e relatório final.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment"># Pipeline multiagente</span>
-<span class="pp-key">input</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Analista]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[Arquiteto]</span>
-       <span class="pp-arrow">→</span> <span class="pp-agent">[Dev]</span> <span class="pp-arrow">→</span> <span class="pp-agent">[QA]</span> <span class="pp-arrow">→</span> <span class="pp-string">report.md</span>
-
-<span class="pp-comment">✓ spec.md  ✓ arch.md  ✓ code.py  ✓ tests</span></pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Demonstrar uso de IA generativa e arquitetura agêntica aplicada ao ciclo
-                    de desenvolvimento de software</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Arquitetura do pipeline, orquestração de agentes, integração com LLM,
-                    geração de artefatos e estruturação backend em Python</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">OpenAI SDK</span>
-                <span class="tech-pill">Agents</span>
-                <span class="tech-pill">pytest</span>
-                <span class="tech-pill">python-dotenv</span>
-                <span class="tech-pill">Generative AI</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/factoryflow-ai" target="_blank"
-                  rel="noreferrer">
-                  GitHub
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">⛪</span>
-                <span class="proj-status proj-status-live">Publicado</span>
-              </div>
-
-              <h4>Portal do Aluno — Catequese IC</h4>
-              <p class="proj-description">
-                Site multipágina desenvolvido para a turma de Iniciação Cristã de Adultos da Paróquia São José, reunindo
-                conteúdos, devoção, organização dos encontros e materiais de apoio em uma navegação simples e acessível.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Centralizar conteúdos e informações da turma em um portal estático, leve
-                    e fácil de manter</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Estruturação do site, organização das páginas, desenvolvimento frontend
-                    e definição da experiência de navegação</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">HTML</span>
-                <span class="tech-pill">CSS</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">GitHub Pages</span>
-                <span class="tech-pill">Frontend</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/catequese-adultos-ic" target="_blank"
-                  rel="noreferrer">
-                  GitHub
-                </a>
-                <a class="proj-link" href="https://plc232007.github.io/catequese-adultos-ic/" target="_blank"
-                  rel="noreferrer">
-                  Ver site
-                </a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">📊</span>
-                <span class="proj-status proj-status-idea">Em evolução</span>
-              </div>
-
-              <h4>Anime Finance</h4>
-              <p class="proj-description">
-                Aplicação fullstack de finanças pessoais com temática anime: lançamento de transações, metas de
-                economia, dashboards com gráficos e um módulo de IA que analisa os hábitos de gasto e sugere ajustes.
-                Backend em Django REST com autenticação JWT e frontend React consumindo a API.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment"># apps do backend</span>
-<span class="pp-key">users</span>      <span class="pp-arrow">→</span> cadastro + <span class="pp-string">JWT</span>
-<span class="pp-key">transactions</span> <span class="pp-arrow">→</span> receitas, gastos, categorias
-<span class="pp-key">goals</span>      <span class="pp-arrow">→</span> metas e progresso
-<span class="pp-key">ai</span>         <span class="pp-arrow">→</span> análise de hábitos via LLM</pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Exercitar uma arquitetura fullstack completa — API versionada,
-                    autenticação, testes e frontend desacoplado</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Modelagem do domínio, API em Django REST, integração com LLM,
-                    testes com pytest e construção da interface em React</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Django</span>
-                <span class="tech-pill">Django REST</span>
-                <span class="tech-pill">JWT</span>
-                <span class="tech-pill">MySQL</span>
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Vite</span>
-                <span class="tech-pill">Tailwind</span>
-                <span class="tech-pill">Recharts</span>
-                <span class="tech-pill">pytest</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/anime-finance" target="_blank"
-                  rel="noreferrer">GitHub</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🧮</span>
-                <span class="proj-status proj-status-live">Contínuo</span>
-              </div>
-
-              <h4>Fundamentos em Linguagem C</h4>
-              <p class="proj-description">
-                Repositórios de estudo e das aulas de APC II, onde trabalho os fundamentos que a web esconde:
-                ponteiros, aritmética de ponteiros, alocação de memória, manipulação de arquivos e estruturas de
-                dados implementadas do zero.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment">/* aritmética de ponteiros */</span>
-<span class="pp-key">int</span> v[] = {10, 20, 30};
-<span class="pp-key">int</span> *p = v;
-
-printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment">// 30</span></pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Firmar a base de computação — memória, ponteiros e complexidade —
-                    que sustenta qualquer linguagem de alto nível</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Implementação dos exercícios, organização por tópico e
-                    documentação do progresso</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Linguagem C</span>
-                <span class="tech-pill">Ponteiros</span>
-                <span class="tech-pill">Estruturas de Dados</span>
-                <span class="tech-pill">Arquivos</span>
-                <span class="tech-pill">Algoritmos</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/c-learning" target="_blank"
-                  rel="noreferrer">c-learning</a>
-                <a class="proj-link" href="https://github.com/plc232007/aulas-c" target="_blank"
-                  rel="noreferrer">aulas-c</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🧪</span>
-                <span class="proj-status proj-status-idea">Em evolução</span>
-              </div>
-
-              <h4>PromptLab AI</h4>
-              <p class="proj-description">
-                Plataforma interativa para criar, testar e comparar prompts e agentes de IA em diferentes cenários, com
-                foco em experimentação, avaliação de respostas e melhoria iterativa de resultados.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Explorar IA generativa de forma prática e interativa, comparando
-                    estratégias de prompting e comportamento de agentes</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Concepção do produto, backend em Python, integração com LLM e
-                    desenvolvimento da experiência interativa</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">FastAPI</span>
-                <span class="tech-pill">LLM</span>
-                <span class="tech-pill">Agents</span>
-                <span class="tech-pill">Prompt Engineering</span>
-                <span class="tech-pill">UI/UX</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link proj-link-disabled" href="javascript:void(0)" aria-disabled="true">
-                  Em desenvolvimento
-                </a>
-              </div>
-            </article>
-          </div>
-
-          <!-- Projetos Reais -->
-          <div class="projects-subsection-header projects-subsection-header--real">
-            <span class="projects-subsection-icon">🏢</span>
-            <div>
-              <h4 class="projects-subsection-title">Projetos Reais</h4>
-              <p class="projects-subsection-desc">Soluções entregues para clientes reais</p>
-            </div>
-          </div>
-          <div class="projects-grid">
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">📚</span>
-                <span class="proj-status proj-status-live">Em produção</span>
-              </div>
-
-              <h4>App dos Catequistas — Paróquia São José</h4>
-              <p class="proj-description">
-                Plataforma web usada por cerca de 70 catequistas: biblioteca de materiais de formação, mural de avisos,
-                calendário de encontros e painel administrativo para a coordenação publicar conteúdo. Autenticação e
-                permissões controladas por Row Level Security no banco.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Substituir grupos de WhatsApp e pastas soltas por um lugar único,
-                    organizado e com controle de acesso</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Desenvolvimento completo — modelagem no Postgres, políticas de
-                    segurança, SPA em React, painel admin e deploy</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Vite</span>
-                <span class="tech-pill">React Router</span>
-                <span class="tech-pill">Supabase</span>
-                <span class="tech-pill">PostgreSQL</span>
-                <span class="tech-pill">Tailwind</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/app-catequese" target="_blank"
-                  rel="noreferrer">GitHub</a>
-                <a class="proj-link" href="https://app-catequese-taupe.vercel.app" target="_blank"
-                  rel="noreferrer">Ver app</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">💰</span>
-                <span class="proj-status proj-status-idea">Em evolução</span>
-              </div>
-
-              <h4>Organizador de Contas</h4>
-              <p class="proj-description">
-                Sistema de finanças pessoais construído em Next.js: registro de gastos e receitas, contas a pagar com
-                vencimento, compras parceladas e resumo do mês. Cada pessoa tem sua própria conta e enxerga apenas os
-                próprios dados. Instalável como PWA no celular.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Resolver o controle financeiro da família sem depender de planilha,
-                    com isolamento real de dados por usuário</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Desenvolvimento completo — App Router, migrations SQL, Row Level
-                    Security, design system com shadcn/ui e configuração de PWA</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Next.js 16</span>
-                <span class="tech-pill">React 19</span>
-                <span class="tech-pill">TypeScript</span>
-                <span class="tech-pill">Tailwind</span>
-                <span class="tech-pill">shadcn/ui</span>
-                <span class="tech-pill">Supabase</span>
-                <span class="tech-pill">Zod</span>
-                <span class="tech-pill">PWA</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/organizador-contas" target="_blank"
-                  rel="noreferrer">GitHub</a>
-                <a class="proj-link" href="https://organizador-contas-et4n.vercel.app/" target="_blank"
-                  rel="noreferrer">Ver app</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🏢</span>
-                <span class="proj-status proj-status-live">Publicado</span>
-              </div>
-
-              <h4>Leite Campos Consultoria</h4>
-              <p class="proj-description">
-                Site institucional da consultoria da família, apresentando os serviços, a proposta de valor e os
-                canais de contato. Página leve, responsiva e sem dependências, publicada em GitHub Pages.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Dar presença digital à empresa e centralizar a captação de
-                    contatos</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Concepção, design, desenvolvimento front-end e publicação</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">HTML5</span>
-                <span class="tech-pill">CSS3</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">GitHub Pages</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/leite-campos" target="_blank"
-                  rel="noreferrer">GitHub</a>
-                <a class="proj-link" href="https://plc232007.github.io/leite-campos/" target="_blank"
-                  rel="noreferrer">Ver site</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">🛍️</span>
-                <span class="proj-status proj-status-live">Concluído</span>
-              </div>
-
-              <h4>Catálogo Naty</h4>
-              <p class="proj-description">
-                Plataforma web para catálogo de produtos e gerenciamento de estoque — permite cadastrar itens com fotos,
-                preços e categorias, controlar entradas e saídas do inventário e compartilhar o catálogo com clientes via
-                link público.
-              </p>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Digitalizar a vitrine de produtos e o controle de estoque para uma
-                    empreendedora, eliminando planilhas manuais</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Desenvolvimento completo — concepção, design, frontend e deploy em
-                    produção</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">HTML</span>
-                <span class="tech-pill">CSS</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/catalogo-naty" target="_blank"
-                  rel="noreferrer">GitHub</a>
-                <a class="proj-link" href="https://catalogo-naty.vercel.app/" target="_blank"
-                  rel="noreferrer">Ver site</a>
-              </div>
-            </article>
-
-            <article class="proj-card">
-              <div class="proj-top">
-                <span class="proj-icon">📐</span>
-                <span class="proj-status proj-status-live">Em produção</span>
-              </div>
-
-              <h4>LVM — Laboratório Virtual de Matemática (IFB)</h4>
-              <p class="proj-description">
-                Laboratório de matemática desenvolvido para o TCC de um cliente do IFB. O aluno arrasta o triângulo
-                e vê as relações métricas continuarem valendo em qualquer posição, com exercícios gerados por semente
-                — os números mudam a cada tentativa, então não há gabarito para decorar. Inclui o Fermat, assistente
-                de IA que tira dúvidas no contexto da atividade sem entregar a resposta.
-              </p>
-
-              <div class="proj-preview">
-                <div class="proj-preview-bar"><span></span><span></span><span></span></div>
-                <pre class="proj-preview-code"><span class="pp-comment">/* relações métricas — valem em qualquer posição */</span>
-<span class="pp-key">a·h</span> = b·c      <span class="pp-key">b²</span> = a·n
-<span class="pp-key">c²</span> = a·m      <span class="pp-key">h²</span> = m·n
-
-<span class="pp-comment">// exercício por semente → números novos a cada tentativa</span></pre>
-              </div>
-
-              <div class="proj-meta">
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Objetivo</span>
-                  <span class="proj-meta-value">Substituir um mural de links estático por um laboratório
-                    interativo, em que a geometria é manipulada em vez de apenas lida</span>
-                </div>
-
-                <div class="proj-meta-item">
-                  <span class="proj-meta-label">Meu papel</span>
-                  <span class="proj-meta-value">Desenvolvimento completo — arquitetura com domínio puro isolado da UI,
-                    geradores determinísticos, testes de propriedade, assistente de IA server-side e deploy</span>
-                </div>
-              </div>
-
-              <div class="proj-techs">
-                <span class="tech-pill">Next.js 16</span>
-                <span class="tech-pill">React 19</span>
-                <span class="tech-pill">TypeScript</span>
-                <span class="tech-pill">Tailwind</span>
-                <span class="tech-pill">shadcn/ui</span>
-                <span class="tech-pill">Mafs</span>
-                <span class="tech-pill">KaTeX</span>
-                <span class="tech-pill">MDX</span>
-                <span class="tech-pill">Vitest</span>
-                <span class="tech-pill">fast-check</span>
-                <span class="tech-pill">LLM</span>
-                <span class="tech-pill">Vercel</span>
-              </div>
-
-              <div class="proj-links">
-                <a class="proj-link" href="https://github.com/plc232007/lvm" target="_blank"
-                  rel="noreferrer">GitHub</a>
-                <a class="proj-link" href="https://lvm-seven.vercel.app" target="_blank"
-                  rel="noreferrer">Ver app</a>
-              </div>
-            </article>
-          </div>
-
-        </div>
-      </section>
-
       <!-- ========== CONTATO ========== -->
       <section class="section reveal" id="contato" data-nav-label="Contato">
         <div class="container">
           <div class="section-head">
-            <h3><span class="section-index">06</span> <span>Contato</span></h3>
+            <h2><span class="section-index">06</span> <span>Contato</span></h2>
             <div class="section-line"></div>
             <span class="section-tag">ping me</span>
           </div>
@@ -1297,7 +1297,7 @@ printf(<span class="pp-string">"%d"</span>, *(p + 2));  <span class="pp-comment"
             </div>
 
             <div class="contact-right">
-              <h4>Vamos conversar sobre oportunidades</h4>
+              <h3>Vamos conversar sobre oportunidades</h3>
               <a class="cta-open" href="mailto:pleitecampos@gmail.com">
                 Enviar e-mail agora
               </a>
