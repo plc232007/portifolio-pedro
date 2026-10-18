@@ -653,6 +653,10 @@ body.light-theme .hero-intro {
   overflow: hidden;
 }
 
+.about-text p + p {
+  margin-top: 1rem;
+}
+
 .about-text::before {
   content: "";
   position: absolute;

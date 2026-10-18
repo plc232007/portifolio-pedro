@@ -40,17 +40,19 @@ body.light-theme .workspace-hero .btn-primary { color: #f1fff5; }
 .workspace-hero .hero-name span { text-shadow: 0 0 50px #4dff8014; }
 .workspace-hero { padding: 5rem 0 3rem; }
 .workspace-hero .hero-grid { grid-template-columns: .9fr 1.25fr; gap: 2rem; }
-.studio-eyebrow, .studio-stack { font-size: .65rem; letter-spacing: .13em; color: var(--muted); }
-.studio-eyebrow { margin: .7rem 0 1.2rem; }
+.studio-stack { font-size: .65rem; letter-spacing: .13em; color: var(--muted); }
 .workspace-hero .hero-name { font-size: clamp(3rem, 5.5vw, 5.6rem); letter-spacing: -.065em; }
 .workspace-hero .hero-name span { font-size: .72em; color: var(--text); background: none; -webkit-text-fill-color: currentColor; }
-.workspace-hero .hero-role { font-size: .95rem; max-width: 36ch; margin-top: 1.5rem; }
+.workspace-hero .hero-role { font-size: clamp(1.05rem, 1.6vw, 1.25rem); font-weight: 600; color: var(--text); max-width: none; margin-top: 1.5rem; }
 .workspace-hero .hero-intro { max-width: 42ch; color: var(--muted); }
 .studio-stack { margin: 1.5rem 0; letter-spacing: .04em; }
 .studio-stack span { color: var(--cyan); margin: 0 .35rem; }
 .workspace-hero .hero-badge { font-size: .62rem; letter-spacing: 0; box-shadow: none; padding: .4rem .7rem; }
 .workspace-hero .cta-group { gap: .6rem; }
 .workspace-hero .cta-group .btn { font-size: .7rem; padding: .7rem 1rem; }
+.hero-contact { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: 1.2rem; list-style: none; padding: 0; font-size: .75rem; }
+.hero-contact a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.hero-contact a:hover, .hero-contact a:focus-visible { color: var(--cyan); }
 .workspace { min-width: 0; --desk-lime: #70ff9c; }
 .workspace-heading { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font-size: .58rem; letter-spacing: .1em; }
 .workspace-heading i { display: inline-block; width: 6px; height: 6px; background: var(--desk-lime); border-radius: 50%; margin-right: 6px; }
@@ -166,3 +168,4 @@ body.light-theme .room-halo { background: radial-gradient(ellipse, #72984b25, tr
   .header .nav-links .icon-xs { display: none; }
   .proj-card, .exp-card { scroll-margin-top: 125px; }
 }
+.exp-techs { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }

@@ -37,16 +37,16 @@
 
   // Reuse portfolio content so the monitor stays aligned with the project cards.
   const cards = [...document.querySelectorAll('#projetos .proj-card')];
-  const featuredNames = ['App dos Catequistas', 'Organizador de Contas', 'Leite Campos Consultoria'];
+  const featuredNames = ['LVM', 'Organizador de Contas', 'App dos Catequistas'];
   const featured = featuredNames.map(name => cards.find(card => card.querySelector('h4')?.textContent.includes(name))).filter(Boolean);
   const monitor = document.getElementById('desk-monitor');
   const title = document.getElementById('screen-title');
   const description = document.getElementById('screen-description');
   const next = document.getElementById('workspace-next');
   const summaries = [
-    'Uma plataforma para conectar cerca de 70 catequistas.',
-    'Receitas, despesas e uma visão clara das finanças pessoais.',
-    'Soluções digitais para necessidades de negócios reais.'
+    'Geometria interativa com exercícios gerados por semente e assistente de IA.',
+    'Finanças pessoais em Next.js com dados isolados por usuário via RLS.',
+    'Plataforma usada por cerca de 70 catequistas, com painel administrativo.'
   ];
   let current = 0;
   featured.forEach((card, index) => { if (!card.id) card.id = `workspace-project-${index + 1}`; });
