@@ -39,3 +39,4 @@ python3 -m http.server 8000
 
 - E-mail: pleitecampos@gmail.com
 - GitHub: https://github.com/plc232007
+- LinkedIn: https://www.linkedin.com/in/pedro-campos-1473a5345/
