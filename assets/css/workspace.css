@@ -169,3 +169,22 @@ body.light-theme .room-halo { background: radial-gradient(ellipse, #72984b25, tr
   .proj-card, .exp-card { scroll-margin-top: 125px; }
 }
 .exp-techs { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+
+/* Projetos: três em destaque (problema → solução → decisões) e o resto compacto. */
+.projects-intro { color: var(--muted); font-size: .85rem; margin: -.5rem 0 1.5rem; }
+.projects-grid--featured { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.projects-grid--compact { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.proj-card--featured { display: flex; flex-direction: column; border-color: var(--border-h); }
+.proj-card--featured .proj-links, .proj-card--compact .proj-links { margin-top: auto; padding-top: 1rem; }
+.proj-card--compact { display: flex; flex-direction: column; padding: 1.1rem; }
+.proj-card--compact h3 { font-size: .95rem; }
+.proj-card--compact .proj-description { font-size: .78rem; line-height: 1.7; }
+.proj-case { margin: .4rem 0 0; }
+.proj-case dt { margin-top: .9rem; font: .62rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--cyan); }
+.proj-case dd { margin: .3rem 0 0; font-size: .82rem; line-height: 1.7; color: var(--muted); }
+.projects-subtitle { margin: 3rem 0 1rem; font: 700 1.05rem var(--display); color: var(--text); }
+.proj-link--primary { color: var(--bg); background: var(--cyan); border-color: var(--cyan); font-weight: 600; }
+.proj-link--primary:hover, .proj-link--primary:focus-visible { color: var(--bg); background: var(--cyan); text-decoration: underline; }
+@media (max-width: 900px) {
+  .projects-grid--featured, .projects-grid--compact { grid-template-columns: 1fr; }
+}

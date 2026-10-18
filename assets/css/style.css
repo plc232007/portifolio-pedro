@@ -1034,44 +1034,6 @@ body.light-theme .cert-entry {
   letter-spacing: 0.04em;
 }
 
-/* PROJETOS */
-.projects-subsection-header {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: rgba(0, 200, 255, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  border-left: 3px solid var(--cyan);
-}
-
-.projects-subsection-header--real {
-  margin-top: 2.5rem;
-  background: rgba(57, 255, 138, 0.05);
-  border-left-color: var(--green);
-}
-
-.projects-subsection-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.projects-subsection-title {
-  font-family: var(--display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.15rem;
-}
-
-.projects-subsection-desc {
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-
 /* FAB — Floating Action Buttons */
 .fab-group {
   position: fixed;
@@ -1285,34 +1247,6 @@ body.light-theme .fab--whatsapp {
   margin-bottom: 1rem;
 }
 
-.proj-meta {
-  display: grid;
-  gap: 0.7rem;
-  margin-bottom: 1rem;
-}
-
-.proj-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.65rem 0.75rem;
-  border-radius: 10px;
-  background: rgba(0, 200, 255, 0.05);
-  border: 1px solid var(--border);
-}
-
-.proj-meta-label {
-  font-size: 0.68rem;
-  color: var(--cyan);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.proj-meta-value {
-  font-size: 0.78rem;
-  color: var(--text);
-}
-
 .proj-techs {
   display: flex;
   flex-wrap: wrap;
@@ -1353,74 +1287,6 @@ body.light-theme .fab--whatsapp {
   border-color: var(--cyan);
   background: rgba(0, 200, 255, 0.05);
 }
-
-.proj-link-disabled {
-  opacity: 0.55;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-/* Project terminal preview */
-.proj-preview {
-  margin: 0.8rem 0;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-}
-
-.proj-preview-bar {
-  display: flex;
-  gap: 0.35rem;
-  align-items: center;
-  padding: 0.45rem 0.75rem;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.proj-preview-bar span {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.proj-preview-bar span:nth-child(1) { background: #ff5f57; }
-.proj-preview-bar span:nth-child(2) { background: #ffbd2e; }
-.proj-preview-bar span:nth-child(3) { background: #28ca41; }
-
-.proj-preview-code {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
-  font-size: 0.72rem;
-  line-height: 1.6;
-  padding: 0.75rem 1rem;
-  margin: 0;
-  color: #c9d1d9;
-  white-space: pre;
-  overflow-x: auto;
-}
-
-.pp-comment { color: #6a9955; }
-.pp-key     { color: var(--cyan); font-weight: 600; }
-.pp-string  { color: #ce9178; }
-.pp-agent   { color: var(--green); font-weight: 600; }
-.pp-arrow   { color: var(--muted); }
-
-body.light-theme .proj-preview {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.1);
-}
-
-body.light-theme .proj-preview-bar {
-  background: rgba(0, 0, 0, 0.04);
-  border-bottom-color: rgba(0, 0, 0, 0.06);
-}
-
-body.light-theme .proj-preview-code { color: #24292e; }
-body.light-theme .pp-comment { color: #6a737d; }
-body.light-theme .pp-key     { color: var(--cyan); }
-body.light-theme .pp-string  { color: #e36209; }
-body.light-theme .pp-agent   { color: var(--green); }
 
 @media (max-width: 900px) {
   .projects-grid {
@@ -1830,10 +1696,6 @@ body.light-theme .back-to-top {
 
   .skills-grid {
     grid-template-columns: 1fr;
-  }
-
-  .proj-meta {
-    gap: 0.5rem;
   }
 
   .proj-techs {

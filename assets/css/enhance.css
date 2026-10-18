@@ -35,12 +35,6 @@ html.js-reveal .reveal-item.is-in {
   will-change: auto;
 }
 
-/* Cards entram com um leve giro 3D */
-html.js-reveal .proj-card.reveal-item,
-html.js-reveal .skill-card.reveal-item {
-  transform: perspective(1200px) rotateX(-4deg) translateY(30px);
-}
-
 html.js-reveal .tl-entry.reveal-item {
   transform: translateX(-24px);
 }
