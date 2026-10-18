@@ -689,11 +689,6 @@ body.light-theme .about-text {
   gap: 1rem;
 }
 
-.skill-card--wide {
-  grid-column: 1 / -1;
-  overflow: visible;
-}
-
 .skill-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -744,13 +739,6 @@ body.light-theme .about-text {
 .skill-card > * {
   position: relative;
   z-index: 2;
-}
-
-.skill-card-head {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
 }
 
 .skill-icon-wrap,

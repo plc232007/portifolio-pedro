@@ -231,7 +231,7 @@
           <p class="projects-intro">Três projetos em produção, de ponta a ponta. Os outros estão mais abaixo.</p>
 
           <div class="projects-grid projects-grid--featured">
-            <article class="proj-card proj-card--featured">
+            <article id="proj-lvm" class="proj-card proj-card--featured">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">📐</span>
                 <span class="proj-status proj-status-live">Em produção</span>
@@ -262,7 +262,7 @@
                 <a class="proj-link" href="https://github.com/plc232007/lvm" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--featured">
+            <article id="proj-organizador" class="proj-card proj-card--featured">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">💰</span>
                 <span class="proj-status proj-status-live">Em produção</span>
@@ -293,7 +293,7 @@
                 <a class="proj-link" href="https://github.com/plc232007/organizador-contas" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--featured">
+            <article id="proj-catequistas" class="proj-card proj-card--featured">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">📚</span>
                 <span class="proj-status proj-status-live">Em produção</span>
@@ -328,7 +328,7 @@
 
           <h3 class="projects-subtitle">Outros projetos</h3>
           <div class="projects-grid projects-grid--compact">
-            <article class="proj-card proj-card--compact">
+            <article id="proj-factoryflow" class="proj-card proj-card--compact">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">🤖</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -345,7 +345,7 @@
                 <a class="proj-link" href="https://github.com/plc232007/factoryflow-ai" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--compact">
+            <article id="proj-anime-finance" class="proj-card proj-card--compact">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">📊</span>
                 <span class="proj-status proj-status-idea">Em evolução</span>
@@ -380,7 +380,7 @@
                 <a class="proj-link" href="https://github.com/plc232007/sabor-express" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--compact">
+            <article id="proj-task-manager" class="proj-card proj-card--compact">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">🗂️</span>
                 <span class="proj-status proj-status-live">Concluído</span>
@@ -451,7 +451,7 @@
                 <a class="proj-link" href="https://github.com/plc232007/catequese-adultos-ic" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--compact">
+            <article id="proj-c" class="proj-card proj-card--compact">
               <div class="proj-top">
                 <span class="proj-icon" aria-hidden="true">🧮</span>
                 <span class="proj-status proj-status-live">Contínuo</span>
@@ -484,7 +484,7 @@
           <div class="timeline">
             <div class="tl-entry">
               <div class="tl-dot"></div>
-              <div class="exp-card">
+              <div class="exp-card" id="exp-cnt">
                 <div class="exp-head">
                   <div>
                     <div class="exp-company">CNT</div>
@@ -509,7 +509,7 @@
 
             <div class="tl-entry">
               <div class="tl-dot"></div>
-              <div class="exp-card">
+              <div class="exp-card" id="exp-engesoftware">
                 <div class="exp-head">
                   <div>
                     <div class="exp-company">Engesoftware Tecnologia</div>
@@ -565,100 +565,96 @@
             <span class="section-tag">skills.json</span>
           </div>
 
-          <div class="skills-grid">
-            <!-- Soft Skills -->
-            <div class="skill-card">
-              <div class="skill-card-head">
-                <div class="skill-icon-wrap">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--cyan)" stroke-width="1.5" class="icon-md"
-                    aria-hidden="true">
-                    <circle cx="10" cy="8" r="3"></circle>
-                    <path d="M5 17c0-2.8 2.2-5 5-5s5 2.2 5 5"></path>
-                  </svg>
-                </div>
-                <h3>Soft Skills</h3>
+          <div class="skills-grid stack-grid">
+            <div class="skill-card stack-card stack-card--focus">
+              <div class="stack-head">
+                <h3>IA e Visão Computacional</h3>
+                <span class="stack-tag">Foco atual</span>
               </div>
-
-              <ul>
-                <li>Raciocínio lógico e analítico</li>
-                <li>Resolução de problemas</li>
-                <li>Aprendizado contínuo</li>
-                <li>Comunicação técnica clara</li>
-                <li>Resiliência &amp; Proatividade</li>
-              </ul>
-
-              <div class="flow">
-                <span class="flow-label">// como eu trabalho</span>
-                <ol class="flow-steps">
-                  <li>
-                    <span class="flow-num">01</span>
-                    <span class="flow-title">Entender</span>
-                    <span class="flow-desc">Escuto o problema antes de propor solução</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">02</span>
-                    <span class="flow-title">Mapear</span>
-                    <span class="flow-desc">Traduzo em requisitos e critérios claros</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">03</span>
-                    <span class="flow-title">Construir</span>
-                    <span class="flow-desc">Entrego em partes pequenas e versionadas</span>
-                  </li>
-                  <li>
-                    <span class="flow-num">04</span>
-                    <span class="flow-title">Iterar</span>
-                    <span class="flow-desc">Meço o resultado e ajusto o que não serviu</span>
-                  </li>
-                </ol>
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Machine Learning</span>
+                <span class="tech-pill">Deep Learning</span>
+                <span class="tech-pill">Visão Computacional</span>
+                <span class="tech-pill">Treino e avaliação de modelos</span>
+                <span class="tech-pill">LLMs e agentes</span>
               </div>
+              <p class="stack-where">Onde aparece: <a href="#exp-cnt">estágio na CNT</a> · <a href="#proj-factoryflow">FactoryFlow AI</a> · <a href="#proj-lvm">assistente do LVM</a></p>
             </div>
-
-            <!-- Ferramentas & Stack — linha inteira -->
-            <div class="skill-card skill-card--wide">
-              <div class="skill-card-head">
-                <div class="skill-icon-wrap">
-                  <svg viewBox="0 0 20 20" fill="none" stroke="var(--orange)" stroke-width="1.5" class="icon-md"
-                    aria-hidden="true">
-                    <rect x="3" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="11" y="3" width="6" height="6" rx="1"></rect>
-                    <rect x="3" y="11" width="6" height="6" rx="1"></rect>
-                    <rect x="11" y="11" width="6" height="6" rx="1"></rect>
-                  </svg>
-                </div>
-                <h3>Ferramentas &amp; Stack</h3>
+            <div class="skill-card stack-card">
+              <div class="stack-head">
+                <h3>Front-end</h3>
               </div>
-
-              <div class="tech-sphere-wrap">
-                <div class="tech-legend">
-                  <span class="tech-legend-title">Tudo conectado, do clique ao dado.</span>
-                  <p>
-                    Selecione um componente da placa para conhecer as tecnologias e um projeto em que elas aparecem.
-                  </p>
-
-                  <dl class="tech-index">
-                    <dt>Linguagens</dt>
-                    <dd>Python · JavaScript · TypeScript · PHP · Linguagem C · SQL</dd>
-
-                    <dt>Frameworks</dt>
-                    <dd>Laravel · Node.js · React · Next.js · Django · Flask</dd>
-
-                    <dt>Dados &amp; infra</dt>
-                    <dd>PostgreSQL · Supabase · AWS · Vercel · Git · APIs REST</dd>
-
-                    <dt>Produto</dt>
-                    <dd>Figma · Jira · Kanban · WordPress</dd>
-
-                    <dt>UI &amp; análise</dt>
-                    <dd>Tailwind · Vite · Pandas</dd>
-
-                    <dt>IA &amp; assistentes</dt>
-                    <dd>Claude Code · Codex · Cursor · GitHub Copilot</dd>
-                  </dl>
-                </div>
+              <div class="proj-techs">
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Next.js</span>
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">shadcn/ui</span>
+                <span class="tech-pill">Vite</span>
               </div>
+              <p class="stack-where">Onde aparece: <a href="#proj-lvm">LVM</a> · <a href="#proj-organizador">Organizador de Contas</a> · <a href="#proj-catequistas">App dos Catequistas</a></p>
+            </div>
+            <div class="skill-card stack-card">
+              <div class="stack-head">
+                <h3>Back-end</h3>
+              </div>
+              <div class="proj-techs">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">FastAPI</span>
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">Django REST</span>
+                <span class="tech-pill">APIs REST</span>
+                <span class="tech-pill">JWT</span>
+              </div>
+              <p class="stack-where">Onde aparece: <a href="#exp-engesoftware">estágio na Engesoftware</a> · <a href="#proj-anime-finance">Anime Finance</a> · <a href="#proj-task-manager">Task Manager API</a></p>
+            </div>
+            <div class="skill-card stack-card">
+              <div class="stack-head">
+                <h3>Dados</h3>
+              </div>
+              <div class="proj-techs">
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">Row Level Security</span>
+                <span class="tech-pill">SQL</span>
+                <span class="tech-pill">SQLite</span>
+                <span class="tech-pill">MySQL</span>
+              </div>
+              <p class="stack-where">Onde aparece: <a href="#proj-organizador">Organizador de Contas</a> · <a href="#proj-catequistas">App dos Catequistas</a> · <a href="#proj-anime-finance">Anime Finance</a></p>
+            </div>
+            <div class="skill-card stack-card">
+              <div class="stack-head">
+                <h3>Qualidade e entrega</h3>
+              </div>
+              <div class="proj-techs">
+                <span class="tech-pill">Vitest</span>
+                <span class="tech-pill">fast-check</span>
+                <span class="tech-pill">pytest</span>
+                <span class="tech-pill">Zod</span>
+                <span class="tech-pill">Git</span>
+                <span class="tech-pill">Vercel</span>
+              </div>
+              <p class="stack-where">Onde aparece: <a href="#proj-lvm">LVM</a> · <a href="#proj-anime-finance">Anime Finance</a> · <a href="#proj-factoryflow">FactoryFlow AI</a></p>
+            </div>
+            <div class="skill-card stack-card">
+              <div class="stack-head">
+                <h3>Base de computação</h3>
+              </div>
+              <div class="proj-techs">
+                <span class="tech-pill">Linguagem C</span>
+                <span class="tech-pill">Ponteiros e memória</span>
+                <span class="tech-pill">Estruturas de dados</span>
+              </div>
+              <p class="stack-where">Onde aparece: <a href="#proj-c">Fundamentos em C</a></p>
             </div>
           </div>
+
+          <p class="stack-extra">
+            Também uso Jira, Figma e WordPress no trabalho, e assistentes de IA (Claude Code, Cursor, GitHub Copilot)
+            sempre revisando o código gerado. Já tive contato com PHP/Laravel, Node.js e AWS, mas ainda não tenho projeto
+            público com eles.
+          </p>
         </div>
       </section>
 
@@ -716,6 +712,34 @@
                 Também desenvolvo sites e sistemas para clientes reais pela <strong class="about-highlight">Leite Campos
                 Consultoria</strong>, empresa da minha família.
               </p>
+            </div>
+
+            <div class="about-flow">
+              <div class="flow">
+                <span class="flow-label">// como eu trabalho</span>
+                <ol class="flow-steps">
+                  <li>
+                    <span class="flow-num">01</span>
+                    <span class="flow-title">Entender</span>
+                    <span class="flow-desc">Escuto o problema antes de propor solução</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">02</span>
+                    <span class="flow-title">Mapear</span>
+                    <span class="flow-desc">Traduzo em requisitos e critérios claros</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">03</span>
+                    <span class="flow-title">Construir</span>
+                    <span class="flow-desc">Entrego em partes pequenas e versionadas</span>
+                  </li>
+                  <li>
+                    <span class="flow-num">04</span>
+                    <span class="flow-title">Iterar</span>
+                    <span class="flow-desc">Meço o resultado e ajusto o que não serviu</span>
+                  </li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
