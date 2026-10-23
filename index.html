@@ -230,7 +230,7 @@
                       <span class="screen-kicker">PROJECT / <span id="screen-number">01</span></span>
                       <strong id="screen-title">LVM</strong>
                       <p id="screen-description">Geometria interativa com exercícios gerados por semente e assistente de IA.</p>
-                      <div class="screen-terminal" aria-hidden="true"><span><b>const</b> developer = <em>"Pedro Campos"</em>;</span><span><b>focus</b>: [visão computacional, python, web]</span><span class="terminal-prompt">❯ explorar projeto</span></div>
+                      <div class="screen-terminal" aria-hidden="true"><span><b>❯</b> python <em>train.py</em> --model plc-net</span><span>epoch <em id="train-epoch">20</em>/20 <b id="train-progress">██████████</b> loss <em id="train-loss">0.041</em></span><span><b>focus</b>: [visão comp., python, web]</span><span class="terminal-prompt">❯ explorar projeto</span><svg class="screen-net" viewBox="0 0 60 48"><g class="net-edges"><line x1="6" y1="10" x2="30" y2="6"/><line x1="6" y1="10" x2="30" y2="18"/><line x1="6" y1="10" x2="30" y2="30"/><line x1="6" y1="10" x2="30" y2="42"/><line x1="6" y1="24" x2="30" y2="6"/><line x1="6" y1="24" x2="30" y2="18"/><line x1="6" y1="24" x2="30" y2="30"/><line x1="6" y1="24" x2="30" y2="42"/><line x1="6" y1="38" x2="30" y2="6"/><line x1="6" y1="38" x2="30" y2="18"/><line x1="6" y1="38" x2="30" y2="30"/><line x1="6" y1="38" x2="30" y2="42"/><line x1="30" y1="6" x2="54" y2="17"/><line x1="30" y1="6" x2="54" y2="31"/><line x1="30" y1="18" x2="54" y2="17"/><line x1="30" y1="18" x2="54" y2="31"/><line x1="30" y1="30" x2="54" y2="17"/><line x1="30" y1="30" x2="54" y2="31"/><line x1="30" y1="42" x2="54" y2="17"/><line x1="30" y1="42" x2="54" y2="31"/></g><g class="net-nodes"><circle cx="6" cy="10" r="3" style="--d:0.00s"/><circle cx="6" cy="24" r="3" style="--d:0.12s"/><circle cx="6" cy="38" r="3" style="--d:0.24s"/><circle cx="30" cy="6" r="3" style="--d:0.35s"/><circle cx="30" cy="18" r="3" style="--d:0.47s"/><circle cx="30" cy="30" r="3" style="--d:0.59s"/><circle cx="30" cy="42" r="3" style="--d:0.71s"/><circle cx="54" cy="17" r="3" style="--d:0.70s"/><circle cx="54" cy="31" r="3" style="--d:0.82s"/></g></svg></div>
                       <span class="screen-open">Conhecer projeto <span>↗</span></span>
                     </div>
                   </div>
@@ -241,7 +241,7 @@
                 <a class="desk-notebook desk-object" href="#experiencia" aria-label="Caderno: conhecer minha trajetória"><span>DEV<br />NOTES_</span><small>MINHA TRAJETÓRIA ↗</small></a>
                 <a class="desk-photo desk-object" href="#sobre" aria-label="Porta-retrato: sobre Pedro"><img src="./assets/img/pedro.webp" alt="" width="320" height="320" /><span>oi, sou o Pedro :)</span></a>
                 <a class="desk-cup desk-object" href="#contato" aria-label="Caneca: vamos conversar"><span>&lt;/&gt;<br />coffee.</span></a>
-                <div class="desk-plant" aria-hidden="true"><i></i><i></i><i></i><span></span></div>
+                <div class="desk-crucifix" aria-hidden="true"><i></i><i></i><span></span></div>
                 <span class="desk-sticker" aria-hidden="true">~/plc</span>
               </div>
               </div>
@@ -334,35 +334,35 @@
                 <a class="proj-link" href="https://github.com/plc232007/organizador-contas" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article id="proj-catequistas" class="proj-card proj-card--featured">
+            <article id="proj-portal-aluno" class="proj-card proj-card--featured">
               <div class="proj-top">
-                <span class="proj-icon" aria-hidden="true">📚</span>
-                <span class="proj-status proj-status-live">Em produção</span>
+                <span class="proj-icon" aria-hidden="true">⛪</span>
+                <span class="proj-status proj-status-live">Em uso</span>
               </div>
 
-              <h3>App dos Catequistas — Paróquia São José</h3>
+              <h3>Portal do Aluno — Catequese IC</h3>
 
               <dl class="proj-case">
                 <dt>Problema</dt>
-                <dd>Cerca de 70 catequistas dependiam de grupos de WhatsApp e pastas soltas para achar materiais e avisos.</dd>
+                <dd>A turma de Iniciação Cristã de Adultos precisava de um só lugar, fácil de abrir no celular, para o cronograma, o conteúdo de cada encontro, os santos da semana e as orações.</dd>
                 <dt>Solução</dt>
-                <dd>SPA em React com biblioteca de materiais, mural de avisos, calendário de encontros e painel para a coordenação publicar conteúdo. Está em uso pela equipe.</dd>
+                <dd>PWA instalável e com navegação offline: encontros organizados pelos pilares do Catecismo, santos semana a semana e orações em português e latim. O Aquino, um assistente de IA, tira dúvidas de fé a partir do material da própria turma.</dd>
                 <dt>Decisões técnicas</dt>
-                <dd>Modelagem no PostgreSQL com permissões por Row Level Security: quem é coordenador publica, quem é catequista lê. Deploy na Vercel.</dd>
+                <dd>HTML, CSS e JavaScript puro, sem framework nem build. Service Worker para o cache offline e vídeos do YouTube carregados só no clique. O Aquino roda numa função serverless com o Gemini, então a chave da API nunca chega ao navegador, e a rota limita o tamanho das mensagens.</dd>
               </dl>
 
               <div class="proj-techs">
-                <span class="tech-pill">React</span>
-                <span class="tech-pill">Vite</span>
-                <span class="tech-pill">React Router</span>
-                <span class="tech-pill">Supabase</span>
-                <span class="tech-pill">PostgreSQL</span>
-                <span class="tech-pill">Tailwind</span>
+                <span class="tech-pill">JavaScript</span>
+                <span class="tech-pill">PWA</span>
+                <span class="tech-pill">Service Worker</span>
+                <span class="tech-pill">Gemini API</span>
+                <span class="tech-pill">Serverless</span>
+                <span class="tech-pill">LLM</span>
               </div>
 
               <div class="proj-links">
-                <a class="proj-link proj-link--primary" href="https://app-catequese-taupe.vercel.app" target="_blank" rel="noreferrer">Ver app ↗</a>
-                <a class="proj-link" href="https://github.com/plc232007/app-catequese" target="_blank" rel="noreferrer">Código</a>
+                <a class="proj-link proj-link--primary" href="https://catequese-adultos-icv1.vercel.app/" target="_blank" rel="noreferrer">Ver site ↗</a>
+                <a class="proj-link" href="https://github.com/plc232007/catequese-adultos-ic" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
           </div>
@@ -474,22 +474,22 @@
                 <a class="proj-link" href="https://github.com/plc232007/leite-campos" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
-            <article class="proj-card proj-card--compact">
+            <article id="proj-catequistas" class="proj-card proj-card--compact">
               <div class="proj-top">
-                <span class="proj-icon" aria-hidden="true">⛪</span>
-                <span class="proj-status proj-status-live">Publicado</span>
+                <span class="proj-icon" aria-hidden="true">📚</span>
+                <span class="proj-status proj-status-live">Em produção</span>
               </div>
-              <h3>Portal do Aluno — Catequese IC</h3>
-              <p class="proj-description">Site multipágina para uma turma de catequese de adultos, com conteúdos, encontros e materiais de apoio.</p>
+              <h3>App dos Catequistas — Paróquia São José</h3>
+              <p class="proj-description">SPA usada por cerca de 70 catequistas: materiais, mural de avisos, calendário e painel da coordenação, com permissões por Row Level Security.</p>
               <div class="proj-techs">
-                <span class="tech-pill">HTML</span>
-                <span class="tech-pill">CSS</span>
-                <span class="tech-pill">JavaScript</span>
-                <span class="tech-pill">GitHub Pages</span>
+                <span class="tech-pill">React</span>
+                <span class="tech-pill">Supabase</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Tailwind</span>
               </div>
               <div class="proj-links">
-                <a class="proj-link proj-link--primary" href="https://plc232007.github.io/catequese-adultos-ic/" target="_blank" rel="noreferrer">Ver site ↗</a>
-                <a class="proj-link" href="https://github.com/plc232007/catequese-adultos-ic" target="_blank" rel="noreferrer">Código</a>
+                <a class="proj-link proj-link--primary" href="https://app-catequese-taupe.vercel.app" target="_blank" rel="noreferrer">Ver app ↗</a>
+                <a class="proj-link" href="https://github.com/plc232007/app-catequese" target="_blank" rel="noreferrer">Código</a>
               </div>
             </article>
             <article id="proj-c" class="proj-card proj-card--compact">
@@ -736,7 +736,7 @@
                 <div class="stat-lbl">Projetos no ar</div>
               </div>
               <div class="stat-item">
-                <div class="stat-num">11</div>
+                <div class="stat-num">12</div>
                 <div class="stat-lbl">Cursos</div>
               </div>
             </div>
@@ -824,7 +824,7 @@
 
               <div class="edu-entry edu-entry-no-border">
                 <div class="edu-inst edu-inst-muted">🌐 Idiomas</div>
-                <div class="edu-detail">Português · Nativo &nbsp;&nbsp; Inglês · Intermediário</div>
+                <div class="edu-detail">Português · Nativo &nbsp;&nbsp; Inglês · Intermediário (cursando no CILG)</div>
               </div>
             </div>
 
@@ -834,13 +834,13 @@
               </div>
 
               <ul class="course-list">
-                <li><strong>Python</strong> — primeira aplicação; orientação a objetos <span class="course-src">Alura</span></li>
+                <li><strong>Python</strong> — primeira aplicação; orientação a objetos e consumo de API <span class="course-src">Alura</span></li>
                 <li><strong>JavaScript / TypeScript</strong> <span class="course-src">Udemy</span></li>
                 <li><strong>Git e GitHub</strong> — colaboração em projetos <span class="course-src">Alura</span></li>
                 <li><strong>Claude Code</strong> — Claude 101, Claude Code, Claude Code in Action <span class="course-src">Anthropic</span></li>
                 <li><strong>Fundamentos</strong> — algoritmos, pensamento computacional, redes, Linux <span class="course-src">Udemy · Alura</span></li>
               </ul>
-              <p class="course-wip">Em andamento na Alura: Python (OO e consumo de API) e JAVAI.</p>
+              <p class="course-wip">Em andamento: Visão Computacional: reconhecimento de texto com OCR e OpenCV e JAVAI (Alura); inglês no CILG.</p>
             </div>
           </div>
         </div>
@@ -902,6 +902,7 @@
     <footer class="footer">
       <div class="container">
         <p>© <span id="year"></span> <span>Pedro Leite Campos</span></p>
+        <p class="footer-motto"><em>Ad Maiorem Dei Gloriam</em></p>
       </div>
     </footer>
   </div>
