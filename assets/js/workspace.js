@@ -72,11 +72,11 @@
   // Monitor: primeiro a demo de visão computacional, depois os projetos em destaque.
   // Título e link vêm dos cards reais para o monitor nunca divergir da seção de projetos.
   const cards = [...document.querySelectorAll('#projetos .proj-card')];
-  const featuredNames = ['LVM', 'Organizador de Contas', 'App dos Catequistas'];
+  const featuredNames = ['LVM', 'Organizador de Contas', 'Portal do Aluno'];
   const summaries = [
     'Geometria interativa com exercícios gerados por semente e assistente de IA.',
     'Finanças pessoais em Next.js com dados isolados por usuário via RLS.',
-    'Plataforma usada por cerca de 70 catequistas, com painel administrativo.'
+    'PWA offline da turma de catequese, com o Aquino, um assistente de IA.'
   ];
   const projects = featuredNames
     .map((name, index) => ({ card: cards.find(card => card.querySelector('h3')?.textContent.includes(name)), summary: summaries[index] }))
@@ -113,6 +113,24 @@
     monitor.href = `#${card.id}`;
     monitor.setAttribute('aria-label', `Monitor: conhecer ${fullTitle}`);
   }
+
+  // Treino simulado no terminal dos projetos; sem animação, fica na última época.
+  const epoch = document.getElementById('train-epoch');
+  const loss = document.getElementById('train-loss');
+  const progress = document.getElementById('train-progress');
+  const EPOCHS = 20;
+  let step = 0;
+  function train() {
+    step = step % EPOCHS + 1;
+    const value = .04 + .94 * Math.exp(-step / 4.5) + Math.random() * .015;
+    const filled = Math.round(step / EPOCHS * 10);
+    epoch.textContent = String(step).padStart(2, '0');
+    loss.textContent = value.toFixed(3);
+    progress.textContent = '█'.repeat(filled) + '░'.repeat(10 - filled);
+    // Segura o resultado convergido um instante antes da próxima rodada.
+    setTimeout(train, step === EPOCHS ? 2500 : 700);
+  }
+  if (epoch && !reduced.matches) train();
 
   next.hidden = projects.length === 0;
   screen.setAttribute('aria-live', 'polite');
